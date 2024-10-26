@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { DatePicker, type Props } from '.'
+import { DatePicker, type Props } from './date-picker'
 
 type Story = StoryObj<typeof meta>
 
