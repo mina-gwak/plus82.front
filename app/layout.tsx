@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 
+import { cn } from 'shared/lib'
+import { GNB } from 'shared/ui'
+
 import { AppProviders } from 'app/providers'
 import { SpoqaHanSansNeo } from 'app/styles'
 
@@ -18,8 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={SpoqaHanSansNeo.variable}>
-      <body className="font-spoqa-han-sans-neo">
-        <AppProviders>{children}</AppProviders>
+      <body className={cn('font-spoqa-han-sans-neo', 'w-full', 'h-dvh')}>
+        <AppProviders>
+          <GNB />
+          {children}
+        </AppProviders>
       </body>
     </html>
   )
