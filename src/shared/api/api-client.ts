@@ -12,7 +12,7 @@ type RequestOption = {
   contentType: ContentType
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
+const API_URL = `${window.location.origin}/api/v1`
 
 const DEFAULT_ERROR_MESSAGE = '기술팀에 문의해주세요'
 
