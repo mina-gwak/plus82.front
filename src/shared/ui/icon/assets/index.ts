@@ -9,6 +9,7 @@ import ChevronUp from './chevron-up.svg'
 import Clear from './clear.svg'
 import Close from './close.svg'
 import Date from './date.svg'
+import ExclamationMark from './exclamation-mark.svg'
 import EyesOff from './eyes-off.svg'
 import EyesOn from './eyes-on.svg'
 import Language from './language.svg'
@@ -28,6 +29,7 @@ export const IconComponent = {
   Clear,
   Close,
   Date,
+  ExclamationMark,
   EyesOff,
   EyesOn,
   Language,

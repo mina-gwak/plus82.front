@@ -1,4 +1,5 @@
 export { apiClient } from './api-client'
 export * from './exception'
 export * from './common-response'
-export * from './http-error'
+export { HttpError } from './error/http-error'
+export { QueryErrorBoundary } from './error/error-boundary'

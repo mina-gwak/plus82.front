@@ -1,6 +1,8 @@
+import { isNil } from 'lodash-es'
+
 import { SuccessResponse } from 'shared/api/common-response'
 
-import { HttpError } from './http-error'
+import { HttpError } from './error/http-error'
 
 export enum ContentType {
   JSON = 'application/json',
@@ -38,7 +40,7 @@ export class ApiClient {
 
     if (status >= 500) {
       throw new HttpError({
-        code: status,
+        code: body?.code ?? status,
         message: ERROR_MESSAGES[status] ?? DEFAULT_ERROR_MESSAGE,
         status,
       })
@@ -72,13 +74,14 @@ export class ApiClient {
 
   public async get<TResult = unknown>(
     endpoint: string,
-    queryParams?: Record<string, string | number>,
+    queryParams?: Record<string, string | number | null>,
     option?: { contentType: ContentType },
   ): Promise<TResult> {
     const url = new URL(`${this.baseUrl}${endpoint}`)
 
     if (queryParams) {
       Object.entries(queryParams).forEach(([key, value]) => {
+        if (isNil(value)) return
         url.searchParams.append(key, value.toString())
       })
     }

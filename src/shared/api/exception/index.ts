@@ -1,6 +1,6 @@
 export enum CommonResponseCode {
-  SUCCESS = 'CMN-001',
-  FAILED = 'CMN-002',
+  SUCCESS = 'CM-001',
+  FAILED = 'CM-002',
 }
 
 export enum AuthExceptionCode {

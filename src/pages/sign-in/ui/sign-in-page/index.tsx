@@ -90,7 +90,7 @@ export const SignInPage = () => {
           >
             Sign In
           </Button>
-          <Link href="/" variant="tertiary">
+          <Link href="/password/find" variant="tertiary">
             Password forgot
           </Link>
         </div>
