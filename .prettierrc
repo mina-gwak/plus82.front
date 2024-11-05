@@ -18,7 +18,6 @@
   "tailwindFunctions": [
     "clsx",
     "cn",
-    "twmerge",
-    "cva"
+    "twmerge"
   ]
 }
