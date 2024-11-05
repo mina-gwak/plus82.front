@@ -1,0 +1,3 @@
+lint-staged.config.js
+commitlint.config.js
+public/mockServiceWorker.js
