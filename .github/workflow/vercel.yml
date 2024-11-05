@@ -2,6 +2,7 @@ name: Deployment Notification to Discord
 
 on:
   deployment_status:
+  deployment:
 
 jobs:
   notify-discord:
