@@ -31,6 +31,11 @@ const meta: Meta<typeof Select> = {
         type: { summary: 'string' },
       },
     },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+      description: 'You can set the size of the field.',
+    },
     error: {
       control: 'boolean',
       description: 'You can set the error status.',
@@ -106,6 +111,7 @@ const meta: Meta<typeof Select> = {
   },
   args: {
     name: '',
+    size: 'large',
     required: false,
     disabled: false,
     readOnly: false,

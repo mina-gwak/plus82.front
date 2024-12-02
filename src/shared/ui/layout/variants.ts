@@ -1,19 +1,19 @@
 import { cva, VariantProps } from 'class-variance-authority'
 
-export const outerWrapper = cva('h-fit min-h-full w-full', {
+export const outerWrapper = cva('h-fit min-h-full w-fit', {
   variants: {
     wide: {
-      true: '',
-      false: 'flex justify-center',
+      true: 'mx-auto my-0 flex',
+      false: 'mx-auto my-0 flex',
     },
   },
 })
 
-export const innerWrapper = cva('', {
+export const innerWrapper = cva('flex-shrink-0', {
   variants: {
     wide: {
-      true: '',
-      false: 'm-[50px] w-[360px]',
+      true: 'm-[40px] w-[1060px] min-w-[1060px]',
+      false: 'm-[50px] w-[360px] min-w-[360px]',
     },
   },
 })

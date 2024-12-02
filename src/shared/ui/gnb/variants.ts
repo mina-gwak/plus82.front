@@ -1,10 +1,14 @@
 import { cva } from 'class-variance-authority'
 
-export const wrapper = cva(
-  'flex w-full items-center justify-between border-b border-b-gray-300 px-[7.5rem] py-3',
+export const header = cva('w-fit min-w-full border-b border-b-gray-300 py-3')
+
+export const outerWrapper = cva('mx-auto flex w-fit')
+
+export const innerWrapper = cva(
+  'mx-10 flex w-[1060px] items-center justify-between',
 )
 
-export const leftSection = cva('flex items-center gap-[7.5rem]')
+export const leftSection = cva('flex cursor-pointer items-center gap-[7.5rem]')
 
 export const rightSection = cva('flex items-center gap-2')
 

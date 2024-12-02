@@ -4,8 +4,18 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
-    });
-    return config;
+    })
+    return config
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'd1zl1w0yhwh5x4.cloudfront.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   async rewrites() {
     return [
@@ -13,8 +23,8 @@ const nextConfig = {
         source: '/api/:path*',
         destination: `https://back.plus82.co/api/:path*`,
       },
-    ];
+    ]
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

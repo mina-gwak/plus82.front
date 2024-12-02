@@ -21,5 +21,5 @@ export const MSWProvider = ({ children }: Props) => {
     }
   }, [mswReady])
 
-  return <>{children}</>
+  return <>{mswReady ? children : <></>}</>
 }

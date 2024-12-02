@@ -1,3 +1,5 @@
 import { setupServer } from 'msw/node'
 
-export const server = setupServer()
+import { jobPostHandlers } from 'entities/job-post'
+
+export const server = setupServer(...jobPostHandlers)

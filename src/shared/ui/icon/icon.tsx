@@ -10,7 +10,7 @@ export const colors = flatMap(values(colorTokens), value =>
   typeof value === 'object' ? values(value) : value,
 )
 
-type Props = IconVariants & {
+export type Props = IconVariants & {
   name: IconType
   color?: (typeof colors)[number]
   className?: string

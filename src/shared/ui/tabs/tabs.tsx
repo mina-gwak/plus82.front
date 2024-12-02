@@ -7,6 +7,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  MouseEvent,
 } from 'react'
 
 import { cn } from 'shared/lib'
@@ -75,10 +76,15 @@ const Trigger = ({
 
   const isActive = activatedTab === value
 
+  const handleClick = (event: MouseEvent) => {
+    event.stopPropagation()
+    handleTabChange(value)
+  }
+
   return (
     <button
       className={cn(css.trigger({ active: isActive, className }))}
-      onClick={() => handleTabChange(value)}
+      onClick={handleClick}
     >
       {children}
     </button>

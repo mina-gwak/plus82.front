@@ -1,3 +1,5 @@
 import { setupWorker } from 'msw/browser'
 
-export const worker = setupWorker()
+import { jobPostHandlers } from 'entities/job-post'
+
+export const worker = setupWorker(...jobPostHandlers)

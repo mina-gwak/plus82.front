@@ -1,4 +1,4 @@
-import { isNil } from 'lodash-es'
+import { isArray, isNil } from 'lodash-es'
 
 import { SuccessResponse } from 'shared/api/common-response'
 
@@ -72,9 +72,9 @@ export class ApiClient {
     return { requestBody, headers }
   }
 
-  public async get<TResult = unknown>(
+  public async get<TResult = unknown, TParams = Record<string, any>>(
     endpoint: string,
-    queryParams?: Record<string, string | number | null>,
+    queryParams?: TParams,
     option?: { contentType: ContentType },
   ): Promise<TResult> {
     const url = new URL(`${this.baseUrl}${endpoint}`)
@@ -82,7 +82,11 @@ export class ApiClient {
     if (queryParams) {
       Object.entries(queryParams).forEach(([key, value]) => {
         if (isNil(value)) return
-        url.searchParams.append(key, value.toString())
+        if (isArray(value)) {
+          value.forEach(item => url.searchParams.append(key, item.toString()))
+        } else {
+          url.searchParams.append(key, (value as any).toString())
+        }
       })
     }
 

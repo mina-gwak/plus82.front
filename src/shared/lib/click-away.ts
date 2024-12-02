@@ -18,12 +18,14 @@ export const useClickAway = <T extends HTMLElement>({
 
   const handleClick = useCallback(
     (event: MouseEvent) => {
+      if (!isOpen) return
+
       if (!ref.current?.contains(event.target as Node)) {
         setIsOpen(false)
         callback?.(event)
       }
     },
-    [callback, ref],
+    [callback, isOpen, ref],
   )
 
   useEffect(() => {

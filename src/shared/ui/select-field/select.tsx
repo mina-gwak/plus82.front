@@ -14,14 +14,16 @@ import {
 import { Icon } from '../icon'
 
 import SelectProvider, { useSelectContext } from './context'
+import { SelectVariants } from './variants'
 import * as css from './variants'
 
 export type SelectValue = ListValue
 
 export type SelectRootProps = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,
-  'onChange' | 'onBlur'
+  'onChange' | 'onBlur' | 'size'
 > &
+  SelectVariants &
   Pick<DropdownRootProps, 'displayLimit'> & {
     children?: ReactNode
     error?: boolean
@@ -45,6 +47,7 @@ const DEFAULT_SELECTION_LIMIT_IN_MULTI_SELECT = 3
 
 const SelectRoot = ({
   name,
+  size = 'large',
   multiple = false,
   selectionLimit: customSelectionLimit,
   displayLimit,
@@ -140,6 +143,7 @@ const SelectRoot = ({
         aria-haspopup="listbox"
         className={cn(
           css.selected({
+            size,
             error,
             disabled,
             readOnly,
@@ -154,7 +158,7 @@ const SelectRoot = ({
       >
         {!isSelectedValuesEmpty && renderValue()}
         {showPlaceholder && (
-          <span className={cn(css.placeholder({ readOnly }))}>
+          <span className={cn(css.placeholder({ size, readOnly }))}>
             {placeholder}
           </span>
         )}
