@@ -1,10 +1,25 @@
 import { cva } from 'class-variance-authority'
 
 export const dropdownWrapper = cva(
-  'absolute left-0 top-[calc(100%+6px)] z-dropdown w-full overflow-hidden rounded-lg border border-gray-300 bg-white',
+  'absolute left-0 top-[calc(100%+6px)] z-dropdown w-full rounded-lg border border-gray-300 bg-white',
+  {
+    variants: {
+      scrollable: {
+        true: 'overflow-hidden',
+        false: 'overflow-visible',
+      },
+    },
+  },
 )
 
-export const dropdown = cva('scrollbar overflow-auto')
+export const dropdown = cva('', {
+  variants: {
+    scrollable: {
+      true: 'scrollbar overflow-auto',
+      false: 'overflow-visible',
+    },
+  },
+})
 
 export const dropdownGroup = cva('group')
 

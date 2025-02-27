@@ -20,8 +20,12 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: `https://back.plus82.co/api/:path*`,
+        source: '/api/v1/:path*',
+        destination: `https://back.plus82.co/api/v1/:path*`,
+      },
+      {
+        source: '/cdn/:path*',
+        destination: `${process.env.NEXT_PUBLIC_CDN_URL}/:path*`,
       },
     ]
   },

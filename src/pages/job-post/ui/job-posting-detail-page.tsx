@@ -1,6 +1,3 @@
-import { colors } from 'shared/config'
-import { Layout, Button, Icon } from 'shared/ui'
-
 import {
   convertToJobPost,
   PostingDetail,
@@ -9,8 +6,9 @@ import {
 } from 'entities/job-post'
 import { getJobPost } from 'entities/job-post'
 import { getResumeCount } from 'entities/resume'
-
 import { ApplyToJobButton } from 'features/apply'
+import { colors } from 'shared/config'
+import { Layout, Button, Icon } from 'shared/ui'
 
 type Params = {
   jobPostId: string
@@ -26,7 +24,11 @@ const RegisterResumeButton = () => {
   )
 }
 
-export const JobPostingDetailPage = async ({ params }: { params: Params }) => {
+export const JobPostingDetailPage = async ({
+  params,
+}: {
+  params: Promise<Params>
+}) => {
   const { jobPostId } = await params
 
   const resumeCount = await getResumeCount()

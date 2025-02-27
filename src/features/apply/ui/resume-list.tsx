@@ -5,9 +5,8 @@ import Link from 'next/link'
 import { colors } from 'shared/config'
 import { Icon } from 'shared/ui'
 
-import { useResumes } from '../api/use-resumes'
-
 import { ResumeCard } from './resume-card'
+import { useResumes } from '../api/use-resumes'
 
 type Props = {
   selectedResumeId: number | null
@@ -22,7 +21,7 @@ export const ResumeList = ({ selectedResumeId, onSelect }: Props) => {
       <div className="flex h-11 items-center justify-between">
         <h2 className="title-medium font-bold text-gray-900">Resume</h2>
         <Link
-          href="/resumes"
+          href="/setting/resume"
           target="_blank"
           className="body-large flex items-center font-medium text-gray-700"
         >

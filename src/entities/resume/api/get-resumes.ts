@@ -1,13 +1,14 @@
-import { apiClient } from 'shared/api'
-import type { Pagination } from 'shared/api'
-import { getCookie } from 'shared/lib'
+'use server'
 
-import { Resume } from '../model/resume'
+import { getNullableSession, getSession } from 'entities/auth'
+import { apiClient, Pagination } from 'shared/api'
 
-type GetResumesResponse = Pagination<Resume>
+import { ResumeSummary } from '../model/resume'
+
+type GetResumesResponse = Pagination<ResumeSummary>
 
 export const getResumes = async () => {
-  const accessToken = await getCookie('accessToken')
+  const { accessToken } = await getSession()
 
   const response = await apiClient.get<GetResumesResponse>({
     endpoint: '/resumes/me',
@@ -16,6 +17,7 @@ export const getResumes = async () => {
     },
     option: {
       authorization: `Bearer ${accessToken}`,
+      tags: ['resumes'],
     },
   })
 
@@ -23,21 +25,22 @@ export const getResumes = async () => {
 }
 
 export const getResumeCount = async () => {
-  const accessToken = await getCookie('accessToken')
+  const session = await getNullableSession()
 
-  try {
-    const response = await apiClient.get<GetResumesResponse>({
-      endpoint: '/resumes/me',
-      queryParams: {
-        rowCount: 100,
-      },
-      option: {
-        authorization: `Bearer ${accessToken}`,
-      },
-    })
-
-    return response.numberOfElements
-  } catch (error) {
+  if (!session) {
     return null
   }
+
+  const response = await apiClient.get<GetResumesResponse>({
+    endpoint: '/resumes/me',
+    queryParams: {
+      rowCount: 100,
+    },
+    option: {
+      authorization: `Bearer ${session.accessToken}`,
+      tags: ['resumes'],
+    },
+  })
+
+  return response.numberOfElements
 }

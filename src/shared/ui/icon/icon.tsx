@@ -12,7 +12,7 @@ export const colors = flatMap(values(colorTokens), value =>
 
 export type Props = IconVariants & {
   name: IconType
-  color?: (typeof colors)[number]
+  color?: (typeof colors)[number] | 'currentColor'
   className?: string
 }
 

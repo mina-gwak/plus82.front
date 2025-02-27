@@ -10,7 +10,7 @@ import { isNumber } from 'lodash-es'
 import { useRouter } from 'next/navigation'
 import { ReactNode, useState } from 'react'
 
-import { deleteCookie } from 'shared/lib'
+import { deleteCookie } from 'shared/server-lib'
 
 type Props = {
   children: ReactNode

@@ -13,6 +13,7 @@ export enum ContentType {
 type RequestOption = {
   contentType?: ContentType
   authorization?: string
+  tags?: string[]
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? ''
@@ -105,6 +106,7 @@ export class ApiClient {
         'Content-Type': option?.contentType ?? 'application/json',
         ...(option?.authorization && { Authorization: option.authorization }),
       },
+      ...(option?.tags && { next: { tags: option.tags } }),
     })
 
     return this.handleResponse<TResult>(response)
@@ -156,7 +158,7 @@ export class ApiClient {
     option,
   }: {
     endpoint: string
-    body: TData
+    body?: TData
     option?: RequestOption
   }): Promise<TResult> {
     const { requestBody, headers } = this.getRequestInit(body, option)

@@ -1,4 +1,5 @@
 import ArrowBack from './arrow-back.svg'
+import Bell from './bell.svg'
 import BookMarkOff from './bookmark-off.svg'
 import BookMarkOn from './bookmark-on.svg'
 import Business from './business.svg'
@@ -37,6 +38,7 @@ import User from './user.svg'
 
 export const IconComponent = {
   ArrowBack,
+  Bell,
   BookMarkOff,
   BookMarkOn,
   Business,

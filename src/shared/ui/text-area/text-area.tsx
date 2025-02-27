@@ -1,30 +1,38 @@
-import { ChangeEvent } from 'react'
+import { forwardRef, TextareaHTMLAttributes } from 'react'
 
 import { cn } from 'shared/lib'
 
 import * as css from './variants'
+import { type TextAreaVariants } from './variants'
 
-type Props = {
-  value?: string
-  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
-  placeholder?: string
-  fullWidth?: boolean
-  className?: string
-}
+export type Props = TextareaHTMLAttributes<HTMLTextAreaElement> &
+  TextAreaVariants
 
-export const TextArea = ({
-  placeholder,
-  fullWidth = false,
-  className,
-  value,
-  onChange,
-}: Props) => {
-  return (
-    <textarea
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className={cn(css.textarea({ fullWidth }), className)}
-    />
-  )
-}
+export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
+  (
+    {
+      placeholder,
+      fullWidth = false,
+      className,
+      value,
+      onChange,
+      error,
+      disabled,
+      ...restProps
+    },
+    ref,
+  ) => {
+    return (
+      <textarea
+        ref={ref}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={cn(css.textarea({ fullWidth, error, disabled }), className)}
+        disabled={disabled}
+        {...restProps}
+      />
+    )
+  },
+)
+TextArea.displayName = 'TextArea'

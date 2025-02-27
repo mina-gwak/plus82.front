@@ -4,10 +4,9 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
+import { Form } from 'shared/form'
 import { useCheckbox } from 'shared/lib'
 import { Button, Checkbox, Layout, Link } from 'shared/ui'
-
-import { Form } from 'features/form'
 
 import { useSignUp } from '../../api/use-sign-up'
 import { useEmailValidationState } from '../../lib/use-email-validation-state'
@@ -18,7 +17,6 @@ import {
 } from '../../model/form-values'
 import { Account } from '../account'
 import { PersonalInformation } from '../personal-information'
-
 import * as css from './variants'
 
 export const SignUpPage = () => {

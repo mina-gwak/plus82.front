@@ -32,3 +32,7 @@ export const confirmPasswordRules = {
     return 'The password you entered do not match'
   },
 }
+
+export const currentPasswordRules = {
+  required: true,
+}

@@ -1,4 +1,4 @@
-export { apiClient } from './api-client'
+export { apiClient, ContentType } from './api-client'
 export * from './exception'
 export * from './common-response'
 export { HttpError } from './error/http-error'

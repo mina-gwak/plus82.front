@@ -1,64 +1,35 @@
 'use server'
 
-import { apiClient, AuthExceptionCode, HttpError } from 'shared/api'
-import { setCookie } from 'shared/lib'
+import { apiClient } from 'shared/api'
 
-type SignInRequest = {
+export type SignInRequest = {
   email: string
   password: string
 }
 
 type SignInResponse = {
   accessToken: string
+  accessTokenExpireTime: number
+  refreshToken: string
+  refreshTokenExpireTime: number
 }
 
-const handleSuccess = (accessToken: string) => {
-  setCookie('accessToken', accessToken, {
-    httpOnly: true,
-    secure: true,
-    maxAge: 86400000,
-  })
-}
+const handleSuccess = (response: SignInResponse) => {
+  const currentTime = Date.now()
 
-const handleError = (error: Error) => {
-  const isHttpError = error instanceof HttpError
-  if (!isHttpError) throw error
-
-  if (error.code === AuthExceptionCode.EMAIL_NOT_CORRECT) {
-    return {
-      type: 'toast',
-      message: "We couldn't find an account with that email",
-    }
-  } else if (error.code === AuthExceptionCode.PW_NOT_CORRECT) {
-    return {
-      type: 'form',
-      field: 'password',
-      message: 'The password you entered is incorrect',
-    }
-  } else if (error.code === AuthExceptionCode.DELETED_USER) {
-    return {
-      type: 'toast',
-      message: 'This account has been deactivated',
-    }
-  } else {
-    return {
-      type: 'toast',
-      message: error.message || 'An error occurred while signing in',
-    }
+  return {
+    accessToken: response.accessToken,
+    accessTokenExpiresAt: currentTime + response.accessTokenExpireTime,
+    refreshToken: response.refreshToken,
+    refreshTokenExpiresAt: currentTime + response.refreshTokenExpireTime,
   }
 }
 
 export const signIn = async (data: SignInRequest) => {
-  try {
-    const response = await apiClient.post<SignInResponse, SignInRequest>({
-      endpoint: '/auth/sign-in',
-      body: data,
-    })
+  const response = await apiClient.post<SignInResponse, SignInRequest>({
+    endpoint: '/auth/sign-in',
+    body: data,
+  })
 
-    const { accessToken } = response
-
-    handleSuccess(accessToken)
-  } catch (error) {
-    return handleError(error as Error)
-  }
+  return handleSuccess(response)
 }

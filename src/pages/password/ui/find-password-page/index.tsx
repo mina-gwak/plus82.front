@@ -11,10 +11,9 @@ import {
   HttpError,
   ResourceNotFoundExceptionCode,
 } from 'shared/api'
+import { Form } from 'shared/form'
 import { isEmptyString } from 'shared/lib'
 import { Button, Label, Layout } from 'shared/ui'
-
-import { Form } from 'features/form'
 
 import { useRequestPasswordReset } from '../../api/use-request-password-reset'
 import { FindFormValues, findFormDefaultValues } from '../../model/form-values'

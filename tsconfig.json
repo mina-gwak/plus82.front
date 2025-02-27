@@ -24,8 +24,10 @@
       "widgets/*": ["./src/widgets/*"],
       "features/*": ["./src/features/*"],
       "entities/*": ["./src/entities/*"],
-      "shared/*": ["./src/shared/*"]
-    }
+      "shared/*": ["./src/shared/*"],
+      "auth": ["./src/auth"]
+    },
+    "target": "ES2017"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

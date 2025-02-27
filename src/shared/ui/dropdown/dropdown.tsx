@@ -10,7 +10,6 @@ import { colors } from 'shared/config'
 import { cn } from 'shared/lib'
 
 import { Icon } from '../icon'
-
 import { ITEM_HEIGHT } from './constants'
 import {
   dropdownWrapper,
@@ -26,20 +25,28 @@ export type DropdownRootProps = PropsWithChildren<{
   onClick?: (event?: MouseEvent) => void
   displayLimit?: number
   role?: AriaRole
+  scrollable?: boolean
 }>
 
 const DropdownRoot = forwardRef<HTMLDivElement, DropdownRootProps>(
   (
-    { role = 'menu', className, displayLimit = 5, children, ...restProps },
+    {
+      role = 'menu',
+      className,
+      displayLimit = 5,
+      scrollable = true,
+      children,
+      ...restProps
+    },
     ref,
   ) => {
     const itemHeight = ITEM_HEIGHT.DEFAULT
     const dropdownHeight = displayLimit * itemHeight + itemHeight / 2
 
     return (
-      <div className={cn(dropdownWrapper({ className }))} ref={ref}>
+      <div className={cn(dropdownWrapper({ scrollable, className }))} ref={ref}>
         <ul
-          className={cn(dropdown())}
+          className={cn(dropdown({ scrollable }))}
           role={role}
           style={{ maxHeight: `${dropdownHeight}rem` }}
           onWheel={event => event.stopPropagation()}

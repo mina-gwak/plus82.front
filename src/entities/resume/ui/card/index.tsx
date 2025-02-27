@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react'
+import { forwardRef, PropsWithChildren } from 'react'
 
 import { colors } from 'shared/config'
 import { cn } from 'shared/lib'
@@ -11,17 +11,18 @@ type Props = {
   className?: string
 }
 
-const CardRoot = ({
-  size = 'small',
-  className,
-  children,
-}: PropsWithChildren<Props>) => {
-  return (
-    <div className={cn(css.container({ size }), className)}>{children}</div>
-  )
-}
+const CardRoot = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(
+  ({ size = 'small', className, children }, ref) => {
+    return (
+      <div className={cn(css.container({ size }), className)} ref={ref}>
+        {children}
+      </div>
+    )
+  },
+)
+CardRoot.displayName = 'Card'
 
-const FileBadge = () => {
+const PlatformBadge = () => {
   return (
     <Chip size="small" variant="lined">
       <Chip.Label>+82 Created</Chip.Label>
@@ -45,9 +46,9 @@ const Header = ({ children }: PropsWithChildren) => {
   )
 }
 
-const Title = ({ children }: PropsWithChildren) => {
+const Title = ({ children, className }: PropsWithChildren<Props>) => {
   return (
-    <div className="flex-grow">
+    <div className={cn('flex-grow', className)}>
       <h4 className="title-small line-clamp-2 break-all text-gray-900">
         {children}
       </h4>
@@ -55,14 +56,18 @@ const Title = ({ children }: PropsWithChildren) => {
   )
 }
 
-const Footer = ({ children }: PropsWithChildren) => {
-  return <div className="flex items-center justify-between">{children}</div>
+const Footer = ({ children, className }: PropsWithChildren<Props>) => {
+  return (
+    <div className={cn('flex items-center justify-between', className)}>
+      {children}
+    </div>
+  )
 }
 
 export const Card = Object.assign(CardRoot, {
   Header,
   Title,
   Footer,
-  FileBadge,
+  PlatformBadge,
   RepresentativeBadge,
 })

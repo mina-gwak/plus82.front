@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
@@ -19,17 +20,20 @@ export const isServerError = (error: any): error is ServerError => {
 export const useServerErrorHandler = <T extends FieldValues>(
   form?: UseFormReturn<T, any, undefined>,
 ) => {
-  const handleServerError = (error: ServerError) => {
-    if (error.type === 'toast') {
-      toast.error(error.message)
-    } else if (error.type === 'form' && error.field) {
-      form?.setError(error.field as Path<T>, {
-        message: error.message,
-      })
-    } else if (error.type === 'modal') {
-      // TODO: Show modal
-    }
-  }
+  const handleServerError = useCallback(
+    (error: ServerError) => {
+      if (error.type === 'toast') {
+        toast.error(error.message)
+      } else if (error.type === 'form' && error.field) {
+        form?.setError(error.field as Path<T>, {
+          message: error.message,
+        })
+      } else if (error.type === 'modal') {
+        // TODO: Show modal
+      }
+    },
+    [form],
+  )
 
   return { handleServerError }
 }

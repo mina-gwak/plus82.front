@@ -2,11 +2,12 @@
 
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import { useState } from 'react'
-
-import { Button, Modal } from 'shared/ui'
+import { toast } from 'react-toastify'
 
 import { resumeQueries } from 'entities/resume'
+import { Button, Modal } from 'shared/ui'
 
 import { ApplyForm } from './apply-form'
 
@@ -14,9 +15,19 @@ export const ApplyToJobButton = () => {
   const queryClient = useQueryClient()
   const router = useRouter()
 
+  const { status } = useSession()
+
   const [isOpen, setIsOpen] = useState(false)
 
+  const notAuthenticated = status !== 'authenticated'
+
   const handleButtonClick = async () => {
+    if (notAuthenticated) {
+      router.push('/sign-in')
+
+      return
+    }
+
     try {
       if (!queryClient.getQueryData(resumeQueries.list().queryKey)) {
         await queryClient.fetchQuery(resumeQueries.list())
@@ -24,6 +35,9 @@ export const ApplyToJobButton = () => {
       setIsOpen(true)
     } catch (error) {
       // TODO : Error Handling
+      toast.error(
+        (error as Error)?.message ?? 'Error occurred while applying to job',
+      )
       router.push('/sign-in')
     }
   }

@@ -84,9 +84,15 @@ export const useSelect = ({
   })
 
   const open = useCallback(() => setIsOpen(true), [setIsOpen])
-  const close = useCallback(() => setIsOpen(false), [setIsOpen])
+  const close = useCallback(() => {
+    setIsOpen(false)
+    removeFocus()
+  }, [setIsOpen, removeFocus])
 
-  const handleEscapeKeyDown = useCallback(() => close(), [close])
+  const handleEscapeKeyDown = useCallback(() => {
+    close()
+    removeFocus()
+  }, [close, removeFocus])
 
   useEscape({ isOpen, onClose: handleEscapeKeyDown })
 
@@ -167,7 +173,6 @@ export const useSelect = ({
       }
       if (event.key === 'Tab') {
         close()
-        removeFocus()
       }
     }
   }

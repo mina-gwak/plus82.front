@@ -8,6 +8,10 @@ export const heading = cva(
         small: 'title-small h-10',
         medium: 'title-medium h-11',
       },
+      underline: {
+        true: 'border-b',
+        false: 'border-b-0',
+      },
     },
   },
 )

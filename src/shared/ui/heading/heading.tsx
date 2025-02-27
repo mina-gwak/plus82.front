@@ -15,12 +15,16 @@ type Props<E extends ElementType> = HeadingProps<E> &
 export const Heading = <E extends ElementType>({
   as,
   size,
+  underline = true,
   className,
   ...restProps
 }: Props<E>) => {
   const $Element = as || 'h1'
 
   return (
-    <$Element className={cn(css.heading({ size, className }))} {...restProps} />
+    <$Element
+      className={cn(css.heading({ size, underline, className }))}
+      {...restProps}
+    />
   )
 }

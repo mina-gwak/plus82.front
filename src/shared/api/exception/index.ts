@@ -11,6 +11,7 @@ export enum AuthExceptionCode {
   INVALID_TOKEN_TYPE = 'AE-005',
   INVALID_TOKEN = 'AE-006',
   DELETED_USER = 'AE-007',
+  ACCESS_DENIED = 'AE-008',
 }
 
 export enum EmailVerificationCodeExceptionCode {
@@ -32,11 +33,20 @@ export enum ResourceNotFoundExceptionCode {
   EMAIL_VERIFICATION_CODE_NOT_FOUND = 'RNF-001',
   USER_NOT_FOUND = 'RNF-002',
   COUNTRY_NOT_FOUND = 'RNF-003',
+  ACADEMY_NOT_FOUND = 'RNF-004',
+  JOB_POST_NOT_FOUND = 'RNF-005',
+  RESUME_NOT_FOUND = 'RNF-006',
+  JOB_POST_RESUME_RELATION_NOT_FOUND = 'RNF-007',
 }
 
 export enum JobPostExceptionCode {
   JOB_POST_CLOSED = 'JP-001',
   RESUME_ALREADY_SUBMITTED = 'JP-002',
+}
+
+export enum ResumeExceptionCode {
+  REPRESENTATIVE_RESUME_EXISTS = 'RSM-001',
+  FILE_RESUME_CANNOT_BE_MODIFIED = 'RSM-002',
 }
 
 export type ResponseCode =
@@ -47,3 +57,4 @@ export type ResponseCode =
   | InvalidInputValueExceptionCode
   | ResourceNotFoundExceptionCode
   | JobPostExceptionCode
+  | ResumeExceptionCode

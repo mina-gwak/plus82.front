@@ -84,3 +84,14 @@ export const FullWidth: Story = {
     fullWidth: true,
   },
 }
+
+export const WithIcon: Story = {
+  args: {
+    children: (
+      <>
+        <Button.Icon name="Plus" />
+        Button
+      </>
+    ),
+  },
+}
