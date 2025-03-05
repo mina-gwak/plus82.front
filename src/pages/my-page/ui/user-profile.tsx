@@ -1,7 +1,6 @@
+import { getUserMe } from 'entities/user'
 import { colors } from 'shared/config'
 import { Icon } from 'shared/ui'
-
-import { getUserMe } from 'entities/user'
 
 import { UserImage } from './user-image'
 

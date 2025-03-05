@@ -3,7 +3,7 @@ import { capitalize } from 'lodash-es'
 
 import { type Resume as ResumeType } from 'entities/resume'
 import { colors } from 'shared/config'
-import { Heading, Icon, Image } from 'shared/ui'
+import { Heading, Icon } from 'shared/ui'
 
 type Props = {
   resume: ResumeType
@@ -42,11 +42,12 @@ export const Resume = ({ resume }: Props) => {
               <span className="body-large text-gray-700">{resume.email}</span>
             </div>
           </div>
-          <div>
-            <Image
-              src={resume.profileImagePath ?? ''}
+          <div className="relative overflow-hidden rounded-full border border-gray-200">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/cdn/${resume.profileImagePath}`}
               alt="profile"
-              className="h-[150px] w-[150px] rounded-full"
+              className="h-[150px] w-[150px]"
             />
           </div>
         </div>
@@ -56,13 +57,13 @@ export const Resume = ({ resume }: Props) => {
             <Heading className="title-medium mb-4 h-11 border-blue-800 text-blue-800">
               Nationality
             </Heading>
-            <span>{resume.countryId ?? '―'}</span>
+            <span>{resume.countryNameEn ?? '―'}</span>
           </div>
           <div>
             <Heading className="title-medium mb-4 h-11 border-blue-800 text-blue-800">
               Current Country of Residence
             </Heading>
-            <span>{resume.residenceCountryId ?? '―'}</span>
+            <span>{resume.residenceCountryNameEn ?? '―'}</span>
           </div>
           <div>
             <Heading className="title-medium mb-4 h-11 border-blue-800 text-blue-800">

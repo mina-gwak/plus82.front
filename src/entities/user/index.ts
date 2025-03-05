@@ -1,4 +1,5 @@
 export { changePassword } from './api/change-password'
+export { deleteProfileImage } from './api/delete-profile-image'
 export { deleteUserMe } from './api/delete-user-me'
 export { getUserMe } from './api/get-user-me'
 export { updateProfileImage } from './api/update-profile-image'

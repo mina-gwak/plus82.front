@@ -16,6 +16,7 @@ export const Image = ({
   className,
   fallback,
   useCDN = true,
+  fill = true,
   ...restProps
 }: Props) => {
   const [error, setError] = useState(false)
@@ -46,7 +47,7 @@ export const Image = ({
       <NextImage
         src={imageSrc}
         alt={alt}
-        fill
+        fill={fill}
         className="object-cover"
         onError={handleError}
         {...restProps}

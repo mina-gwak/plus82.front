@@ -49,7 +49,11 @@ export const PostingDetail = ({ jobPost }: Props) => {
           Academy address
         </h4>
         <div className="title-small font-normal text-gray-900">
-          <AcademyAddress address={jobPost.academyDetailedAddress} />
+          <AcademyAddress
+            address={jobPost.academyDetailedAddress}
+            lat={jobPost.lat}
+            lng={jobPost.lng}
+          />
         </div>
       </li>
     </ul>

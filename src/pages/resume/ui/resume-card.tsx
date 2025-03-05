@@ -4,6 +4,7 @@ import { format } from 'date-fns'
 import { MouseEvent } from 'react'
 
 import { Card, ResumeSummary } from 'entities/resume'
+import { CopyResumeButton } from 'features/copy-resume'
 import { DeleteResumeButton } from 'features/delete-resume'
 import {
   DownloadResumeButton,
@@ -25,13 +26,15 @@ export const ResumeCard = ({ resume }: Props) => {
     toggleIsOpen()
   }
 
-  const handleDownloadClick = () => {
+  const handleDropdownItemClick = () => {
     toggleIsOpen()
   }
 
-  const showHeader = !resume.filePath || resume.isRepresentative
+  const isFileResume = !!resume?.filePath
 
-  const title = resume.filePath ? resume.fileName : resume.title
+  const showHeader = !isFileResume || resume.isRepresentative
+
+  const title = isFileResume ? resume.fileName : resume.title
 
   return (
     <Card size="medium" ref={dropdownRef}>
@@ -56,7 +59,7 @@ export const ResumeCard = ({ resume }: Props) => {
         {isOpen && (
           <Dropdown className="left-[calc(100%-30px)] right-4 w-[210px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]">
             <Dropdown.Item className="p-0">
-              {resume.filePath ? (
+              {isFileResume ? (
                 <DownloadResumeFileButton
                   filePath={resume.filePath!}
                   fileName={resume.fileName!}
@@ -64,11 +67,18 @@ export const ResumeCard = ({ resume }: Props) => {
               ) : (
                 <DownloadResumeButton
                   resumeId={resume.id}
-                  onClick={handleDownloadClick}
+                  onClick={handleDropdownItemClick}
                 />
               )}
             </Dropdown.Item>
-            <Dropdown.Item>Copy</Dropdown.Item>
+            {!isFileResume && (
+              <Dropdown.Item className="p-0">
+                <CopyResumeButton
+                  resumeId={resume.id}
+                  onClick={handleDropdownItemClick}
+                />
+              </Dropdown.Item>
+            )}
             <Dropdown.Item className="p-0">
               <DeleteResumeButton resumeId={resume.id} />
             </Dropdown.Item>

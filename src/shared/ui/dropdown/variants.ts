@@ -1,12 +1,16 @@
 import { cva } from 'class-variance-authority'
 
 export const dropdownWrapper = cva(
-  'absolute left-0 top-[calc(100%+6px)] z-dropdown w-full rounded-lg border border-gray-300 bg-white',
+  'absolute top-[calc(100%+6px)] z-dropdown w-full rounded-lg border border-gray-300 bg-white',
   {
     variants: {
       scrollable: {
         true: 'overflow-hidden',
         false: 'overflow-visible',
+      },
+      align: {
+        left: 'left-0',
+        right: 'right-0',
       },
     },
   },

@@ -8,9 +8,9 @@ import { cn } from 'shared/lib'
 import { Button } from '../button'
 import { Tabs } from '../tabs'
 import Logo from './assets/Logo.svg'
-import * as css from './variants'
-import { Icon } from '../icon'
+import { NotificationButton } from './notification'
 import { UserButton } from './user-button'
+import * as css from './variants'
 
 export const GNB = () => {
   const router = useRouter()
@@ -50,13 +50,11 @@ export const GNB = () => {
               </div>
             ) : (
               <div className="mr-6 flex items-center gap-4">
-                <button>
-                  <Icon name="Bell" size="large" />
-                </button>
+                <NotificationButton />
                 <UserButton />
               </div>
             )}
-            <Button variant="lined" size="small">
+            <Button as="a" href="/academy" variant="lined" size="small">
               Academy
             </Button>
           </div>

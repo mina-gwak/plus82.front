@@ -18,7 +18,9 @@ export type Resume = {
   forHighSchool: boolean
   forAdult: boolean
   countryId: number
+  countryNameEn: string
   residenceCountryId: number
+  residenceCountryNameEn: string
   createdAt: string
   updatedAt: string
   profileImagePath?: string

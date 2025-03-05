@@ -26,6 +26,7 @@ export type DropdownRootProps = PropsWithChildren<{
   displayLimit?: number
   role?: AriaRole
   scrollable?: boolean
+  align?: 'left' | 'right'
 }>
 
 const DropdownRoot = forwardRef<HTMLDivElement, DropdownRootProps>(
@@ -35,6 +36,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownRootProps>(
       className,
       displayLimit = 5,
       scrollable = true,
+      align = 'left',
       children,
       ...restProps
     },
@@ -44,7 +46,10 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownRootProps>(
     const dropdownHeight = displayLimit * itemHeight + itemHeight / 2
 
     return (
-      <div className={cn(dropdownWrapper({ scrollable, className }))} ref={ref}>
+      <div
+        className={cn(dropdownWrapper({ scrollable, className, align }))}
+        ref={ref}
+      >
         <ul
           className={cn(dropdown({ scrollable }))}
           role={role}

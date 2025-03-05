@@ -2,12 +2,13 @@
 
 import { isNil } from 'lodash-es'
 import { useRouter } from 'next/navigation'
-import { ChangeEvent, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 import { CountrySelect } from 'entities/country'
 import { Resume, ResumeDTO } from 'entities/resume'
+import { ImageUploadInput } from 'features/upload-image'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { colors } from 'shared/config'
 import { fieldCss, Form } from 'shared/form'
@@ -70,13 +71,9 @@ export const ResumeForm = ({ resume, submit }: Props) => {
     })
   }
 
-  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-
-    if (file) {
-      await addImagePreview(file)
-      form.setValue('profileImage', file)
-    }
+  const handleFileChange = async (file: File) => {
+    await addImagePreview(file)
+    form.setValue('profileImage', file)
   }
 
   const studentTypeOptions = [
@@ -170,12 +167,9 @@ export const ResumeForm = ({ resume, submit }: Props) => {
               <div className="absolute -bottom-1 -right-1 flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white">
                 <Icon name="Plus" size="large" color={colors.gray[700]} />
               </div>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                className="hidden"
+              <ImageUploadInput
                 id="profile-image"
+                ref={fileInputRef}
                 onChange={handleFileChange}
               />
             </label>

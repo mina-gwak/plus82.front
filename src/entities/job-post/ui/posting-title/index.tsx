@@ -4,10 +4,9 @@ import { colors } from 'shared/config'
 import { cn } from 'shared/lib'
 import { Icon } from 'shared/ui'
 
+import * as css from './variants'
 import { convertStudentType } from '../../model/convert-to-student-type'
 import { JobPost } from '../../model/job-post'
-
-import * as css from './variants'
 
 type Props = {
   jobPost: JobPost

@@ -1,3 +1,4 @@
+export { copyResume } from './api/copy-resume'
 export { createResume } from './api/create-resume'
 export { deleteResume } from './api/delete-resume'
 export { getResume } from './api/get-resume'
