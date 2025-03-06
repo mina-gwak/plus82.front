@@ -90,6 +90,7 @@ export const ResumeForm = ({ resume, submit }: Props) => {
   }
 
   const handleUpdateResumeSuccess = () => {
+    router.push('/setting/resume')
     toast.success('Resume updated successfully')
   }
 

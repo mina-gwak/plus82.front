@@ -1,7 +1,5 @@
 'use server'
 
-import { redirect } from 'next/navigation'
-
 import { getSession } from 'entities/auth'
 import {
   apiClient,
@@ -13,10 +11,6 @@ import {
 import { ResumeDTO } from '../model/resume'
 
 type CreateResumeRequest = ResumeDTO
-
-const handleSuccess = () => {
-  redirect('/setting/resume')
-}
 
 const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
@@ -47,8 +41,6 @@ export const createResume = async (data: CreateResumeRequest) => {
       },
       body: data,
     })
-
-    handleSuccess()
   } catch (error) {
     return handleError(error as Error)
   }

@@ -17,7 +17,7 @@ type Params = {
 // TODO: 버튼 위치 고민 후 이동
 const RegisterResumeButton = () => {
   return (
-    <Button as="a" href="/resumes" variant="lined" size="large">
+    <Button as="a" href="/setting/resume" variant="lined" size="large">
       <Icon name="Plus" color={colors.gray[900]} />
       Register Resume
     </Button>

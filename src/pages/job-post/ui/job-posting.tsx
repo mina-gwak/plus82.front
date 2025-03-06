@@ -1,15 +1,12 @@
 import Link from 'next/link'
 
+import { Card } from 'entities/job-post'
+import { JobPostFilter } from 'features/job-post-filter'
 import { useObserver } from 'shared/lib/observer'
 
-import { Card } from 'entities/job-post'
-
-import { JobPostFilter } from 'features/job-post-filter'
-
+import { JobListSkeleton } from './job-list-skeleton'
 import { useJobPosts } from '../api/use-job-posts'
 import { transformFiltersToParams } from '../model/transform-filters-to-params'
-
-import { JobListSkeleton } from './job-list-skeleton'
 
 type Props = {
   filters: JobPostFilter | null

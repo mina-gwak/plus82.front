@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import { capitalize } from 'lodash-es'
 
 import { colors } from 'shared/config'
@@ -37,12 +38,10 @@ export const PostingTitle = ({ jobPost, size }: Props) => {
           <Icon name="User" color={colors.gray[500]} size={size} />
           <span>{studentType ?? '-'}</span>
         </li>
-        {size === 'medium' && (
-          <li className={cn(css.description({ size }))}>
-            <Icon name="Date" color={colors.gray[500]} size={size} />
-            <span>~{jobPost.dueDate ?? '-'}</span>
-          </li>
-        )}
+        <li className={cn(css.description({ size }))}>
+          <Icon name="Date" color={colors.gray[500]} size={size} />
+          <span>~{format(jobPost.dueDate, 'yyyy.MM.dd') ?? '-'}</span>
+        </li>
       </ul>
     </div>
   )

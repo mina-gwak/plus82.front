@@ -1,7 +1,5 @@
 'use server'
 
-import { revalidateTag } from 'next/cache'
-
 import { getSession } from 'entities/auth'
 import {
   apiClient,
@@ -14,10 +12,6 @@ import {
 import { ResumeDTO } from '../model/resume'
 
 type UpdateResumeRequest = ResumeDTO
-
-const handleSuccess = () => {
-  revalidateTag('resume')
-}
 
 const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
@@ -63,8 +57,6 @@ export const updateResume = async ({
       },
       body: data,
     })
-
-    handleSuccess()
   } catch (error) {
     return handleError(error as Error)
   }
