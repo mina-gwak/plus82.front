@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 import { CountrySelect } from 'entities/country'
 import { Resume, ResumeDTO } from 'entities/resume'
 import { ImageUploadInput } from 'features/upload-image'
-import { isServerError, useServerErrorHandler } from 'shared/api'
+import { isServerError, ServerError, useServerErrorHandler } from 'shared/api'
 import { colors } from 'shared/config'
 import { fieldCss, Form } from 'shared/form'
 import { isNilOrEmptyString } from 'shared/lib'
@@ -24,13 +24,7 @@ import * as rules from '../model/rules'
 
 type Props = {
   resume?: Resume
-  submit: (data: ResumeDTO) => Promise<
-    | {
-        type: string
-        message: string
-      }
-    | undefined
-  >
+  submit: (data: ResumeDTO) => Promise<ServerError | undefined>
 }
 
 export const ResumeForm = ({ resume, submit }: Props) => {
