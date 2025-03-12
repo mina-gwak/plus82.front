@@ -37,6 +37,7 @@ export const FormPasswordField = <T extends FieldValues>({
   }
 
   const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    console.log('handleBlur', error)
     if (resetErrorOnBlur && error) clearErrors(name)
 
     textFieldRegister.onBlur(event)

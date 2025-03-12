@@ -6,7 +6,6 @@ import { colors } from 'shared/config'
 import { Slot } from 'shared/lib'
 
 import { Icon } from '../icon'
-
 import { TextField, Props as TextFieldProps } from './text-field'
 
 export interface Props extends TextFieldProps {

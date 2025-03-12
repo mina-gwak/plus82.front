@@ -1,7 +1,7 @@
 'use server'
 
 import { getSession } from 'entities/auth'
-import { apiClient, HttpError } from 'shared/api'
+import { apiClient, errorHandler, HttpError } from 'shared/api'
 
 export type UpdateUserMeRequest = {
   firstName: string
@@ -15,10 +15,7 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return {
-    type: 'toast',
-    message: error.message || 'An error occurred while updating the user',
-  }
+  return errorHandler.toast('An error occurred while updating the user', error)
 }
 
 export const updateUserMe = async (data: UpdateUserMeRequest) => {

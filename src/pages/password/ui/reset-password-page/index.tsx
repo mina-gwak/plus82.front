@@ -5,25 +5,27 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm, useWatch } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { QueryErrorBoundary } from 'shared/api'
-import { fieldCss, Form } from 'shared/form'
-import { isEmptyString } from 'shared/lib'
-import { Button, Label, Layout } from 'shared/ui'
-
 import {
   confirmPasswordRules,
   passwordRules,
   PasswordValidation,
+  resetPassword,
 } from 'entities/auth'
+import {
+  isServerError,
+  QueryErrorBoundary,
+  useServerErrorHandler,
+} from 'shared/api'
+import { fieldCss, Form } from 'shared/form'
+import { isEmptyString } from 'shared/lib'
+import { Button, Label, Layout, Spinner } from 'shared/ui'
 
 import { useCheckCodeValidity } from '../../api/use-check-code-validity'
-import { useResetPassword } from '../../api/use-reset-password'
 import {
   resetFormDefaultValues,
   ResetFormValues,
 } from '../../model/form-values'
 import { ErrorFallback } from '../error-fallback'
-
 import * as css from './variants'
 
 const ResetPasswordPage = () => {
@@ -33,7 +35,8 @@ const ResetPasswordPage = () => {
   const code = searchParams?.get('code') ?? null
 
   useCheckCodeValidity(code)
-  const resetPassword = useResetPassword()
+
+  const { handleServerError } = useServerErrorHandler()
 
   const form = useForm<ResetFormValues>({
     defaultValues: resetFormDefaultValues,
@@ -52,7 +55,7 @@ const ResetPasswordPage = () => {
     router.replace('/sign-in')
   }
 
-  const submitForm = ({ password }: ResetFormValues) => {
+  const submitForm = async ({ password }: ResetFormValues) => {
     if (isNil(code)) return
 
     const data = {
@@ -60,9 +63,13 @@ const ResetPasswordPage = () => {
       password,
     }
 
-    resetPassword.mutate(data, {
-      onSuccess: handleResetPasswordSuccess,
-    })
+    const response = await resetPassword(data)
+
+    if (isServerError(response)) {
+      handleServerError(response)
+    } else {
+      handleResetPasswordSuccess()
+    }
   }
 
   return (
@@ -113,7 +120,7 @@ export const ResetPasswordPageWithErrorBoundary = () => {
   return (
     <QueryErrorBoundary
       errorFallback={ErrorFallback}
-      suspenseFallback={<div>Loading</div>}
+      suspenseFallback={<Spinner size="large" />}
     >
       <ResetPasswordPage />
     </QueryErrorBoundary>

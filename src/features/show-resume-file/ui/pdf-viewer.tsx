@@ -4,18 +4,13 @@ import { useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 
 import { cn } from 'shared/lib'
+import { Spinner } from 'shared/ui'
 
 // PDF.js 워커 설정
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
   import.meta.url,
 ).toString()
-
-const LoadingSpinner = () => (
-  <div className="absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-white/80">
-    <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-800 border-t-transparent" />
-  </div>
-)
 
 type Props = {
   className?: string
@@ -36,7 +31,7 @@ export const PDFViewer = ({ filePath, className }: Props) => {
           file={`/cdn/${filePath}`}
           onLoadSuccess={handleDocumentLoadSuccess}
           className="flex flex-col items-center"
-          loading={<LoadingSpinner />}
+          loading={<Spinner />}
         >
           {numPages &&
             Array.from(new Array(numPages), (_, index) => (

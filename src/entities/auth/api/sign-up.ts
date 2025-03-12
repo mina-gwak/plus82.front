@@ -1,4 +1,6 @@
-import { apiClient } from 'shared/api'
+'use server'
+
+import { apiClient, errorHandler, HttpError } from 'shared/api'
 
 export type SignUpRequest = {
   email: string
@@ -10,11 +12,20 @@ export type SignUpRequest = {
   countryId: number
 }
 
-export const signUp = async (data: SignUpRequest) => {
-  const response = await apiClient.post<null, SignUpRequest>({
-    endpoint: '/auth/sign-up',
-    body: data,
-  })
+const handleError = (error: Error) => {
+  const isHttpError = error instanceof HttpError
+  if (!isHttpError) throw error
 
-  return response
+  return errorHandler.toast('An error occurred while signing up', error)
+}
+
+export const signUp = async (data: SignUpRequest) => {
+  try {
+    await apiClient.post<null, SignUpRequest>({
+      endpoint: '/auth/sign-up',
+      body: data,
+    })
+  } catch (error) {
+    return handleError(error as Error)
+  }
 }

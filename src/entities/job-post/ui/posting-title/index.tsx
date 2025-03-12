@@ -40,7 +40,11 @@ export const PostingTitle = ({ jobPost, size }: Props) => {
         </li>
         <li className={cn(css.description({ size }))}>
           <Icon name="Date" color={colors.gray[500]} size={size} />
-          <span>~{format(jobPost.dueDate, 'yyyy.MM.dd') ?? '-'}</span>
+          <span>
+            {jobPost.dueDate
+              ? `~${format(jobPost.dueDate, 'yyyy.MM.dd')}`
+              : '-'}
+          </span>
         </li>
       </ul>
     </div>

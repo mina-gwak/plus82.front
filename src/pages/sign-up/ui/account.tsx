@@ -67,6 +67,8 @@ export const Account = () => {
       setError('email', {
         message: 'An account with that email already exists',
       })
+    } else {
+      toast.error('An error occurred while requesting verification')
     }
   }
 

@@ -4,6 +4,7 @@ import { getSession } from 'entities/auth'
 import {
   apiClient,
   ContentType,
+  errorHandler,
   HttpError,
   ResumeExceptionCode,
 } from 'shared/api'
@@ -17,16 +18,13 @@ const handleError = (error: Error) => {
   if (!isHttpError) throw error
 
   if (error.code === ResumeExceptionCode.REPRESENTATIVE_RESUME_EXISTS) {
-    return {
-      type: 'toast',
-      message: 'You can only have one representative resume',
-    }
+    return errorHandler.toast('You can only have one representative resume')
   }
 
-  return {
-    type: 'toast',
-    message: error.message || 'An error occurred while uploading resume file',
-  }
+  return errorHandler.toast(
+    'An error occurred while uploading resume file',
+    error,
+  )
 }
 
 export const createResume = async (data: CreateResumeRequest) => {

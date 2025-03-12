@@ -5,6 +5,7 @@ import { revalidateTag } from 'next/cache'
 import { getSession } from 'entities/auth'
 import {
   apiClient,
+  errorHandler,
   HttpError,
   ResourceNotFoundExceptionCode,
   ResumeExceptionCode,
@@ -19,22 +20,13 @@ const handleError = (error: Error) => {
   if (!isHttpError) throw error
 
   if (error.code === ResourceNotFoundExceptionCode.RESUME_NOT_FOUND) {
-    return {
-      type: 'toast',
-      message: 'Resume not found',
-    }
+    return errorHandler.toast('Resume not found')
   } else if (
     error.code === ResumeExceptionCode.FILE_RESUME_CANNOT_BE_MODIFIED
   ) {
-    return {
-      type: 'toast',
-      message: 'File resume cannot be modified',
-    }
+    return errorHandler.toast('File resume cannot be modified')
   } else {
-    return {
-      type: 'toast',
-      message: error.message || 'An error occurred while copying resume',
-    }
+    return errorHandler.toast('An error occurred while copying resume', error)
   }
 }
 

@@ -5,6 +5,7 @@ import {
   apiClient,
   AuthExceptionCode,
   HttpError,
+  errorHandler,
   InvalidInputValueExceptionCode,
 } from 'shared/api'
 
@@ -18,25 +19,21 @@ const handleError = (error: HttpError) => {
   if (!isHttpError) throw error
 
   if (error.code === AuthExceptionCode.PW_NOT_CORRECT) {
-    return {
-      type: 'form',
-      message: 'The current password is incorrect',
-      field: 'currentPassword',
-    }
+    return errorHandler.form({
+      currentPassword: 'The current password is incorrect',
+    })
   } else if (
     error.code === InvalidInputValueExceptionCode.INVALID_INPUT_VALUE
   ) {
-    return {
-      type: 'form',
-      message: 'The current password is incorrect',
-      field: 'currentPassword',
-    }
+    return errorHandler.form({
+      currentPassword: 'The current password is incorrect',
+    })
   }
 
-  return {
-    type: 'toast',
-    message: error?.message || 'An error occurred while changing the password',
-  }
+  return errorHandler.toast(
+    'An error occurred while changing the password',
+    error,
+  )
 }
 
 export const changePassword = async (data: ChangePasswordRequest) => {

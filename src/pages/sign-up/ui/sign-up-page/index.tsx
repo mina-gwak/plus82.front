@@ -4,11 +4,12 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
+import { signUp } from 'entities/auth'
+import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { useCheckbox } from 'shared/lib'
 import { Button, Checkbox, Layout, Link } from 'shared/ui'
 
-import { useSignUp } from '../../api/use-sign-up'
 import { useEmailValidationState } from '../../lib/use-email-validation-state'
 import {
   FormValues,
@@ -27,9 +28,9 @@ export const SignUpPage = () => {
     reValidateMode: 'onSubmit',
   })
 
-  const signUp = useSignUp()
-
   const { isChecked, getCheckboxProps } = useCheckbox({ options: ['checked'] })
+
+  const { handleServerError } = useServerErrorHandler()
 
   const handleSignUpSuccess = () => {
     toast.success('Sign up completed successfully')
@@ -39,7 +40,7 @@ export const SignUpPage = () => {
   const { isEmailVerificationRequested, isEmailVerificationCompleted } =
     useEmailValidationState()
 
-  const submitForm = (data: FormValues) => {
+  const submitForm = async (data: FormValues) => {
     if (!isEmailVerificationRequested) {
       form.setError('email', {
         message: 'This email address is not verified',
@@ -57,7 +58,13 @@ export const SignUpPage = () => {
       return
     }
 
-    signUp.mutate(convertToSignUpDTO(data), { onSuccess: handleSignUpSuccess })
+    const response = await signUp(convertToSignUpDTO(data))
+
+    if (isServerError(response)) {
+      handleServerError(response)
+    } else {
+      handleSignUpSuccess()
+    }
   }
 
   return (

@@ -7,6 +7,7 @@ import {
   HttpError,
   ResumeExceptionCode,
   ResourceNotFoundExceptionCode,
+  errorHandler,
 } from 'shared/api'
 
 import { ResumeDTO } from '../model/resume'
@@ -18,27 +19,15 @@ const handleError = (error: Error) => {
   if (!isHttpError) throw error
 
   if (error.code === ResourceNotFoundExceptionCode.RESUME_NOT_FOUND) {
-    return {
-      type: 'toast',
-      message: 'Resume is not found',
-    }
+    return errorHandler.toast('Resume is not found')
   } else if (error.code === ResumeExceptionCode.REPRESENTATIVE_RESUME_EXISTS) {
-    return {
-      type: 'toast',
-      message: 'You can only have one representative resume',
-    }
+    return errorHandler.toast('You can only have one representative resume')
   } else if (
     error.code === ResumeExceptionCode.FILE_RESUME_CANNOT_BE_MODIFIED
   ) {
-    return {
-      type: 'toast',
-      message: 'File resume cannot be modified',
-    }
+    return errorHandler.toast('File resume cannot be modified')
   } else {
-    return {
-      type: 'toast',
-      message: error.message || 'An error occurred while updating resume',
-    }
+    return errorHandler.toast('An error occurred while updating resume', error)
   }
 }
 

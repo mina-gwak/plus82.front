@@ -3,7 +3,7 @@
 import { revalidateTag } from 'next/cache'
 
 import { getSession } from 'entities/auth'
-import { apiClient, ContentType, HttpError } from 'shared/api'
+import { apiClient, ContentType, errorHandler, HttpError } from 'shared/api'
 
 export type UpdateProfileImageRequest = {
   image: File | null
@@ -17,10 +17,10 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return {
-    type: 'toast',
-    message: error.message || 'An error occurred while updating profile image',
-  }
+  return errorHandler.toast(
+    'An error occurred while updating profile image',
+    error,
+  )
 }
 
 export const updateProfileImage = async (data: UpdateProfileImageRequest) => {

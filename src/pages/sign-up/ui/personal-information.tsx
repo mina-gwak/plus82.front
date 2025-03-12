@@ -1,5 +1,4 @@
 import { Heading } from 'shared/ui'
-
 import { PersonalInformationForm } from 'widgets/my-account'
 
 export const PersonalInformation = () => {

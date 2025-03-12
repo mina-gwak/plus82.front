@@ -3,7 +3,7 @@
 import { revalidateTag } from 'next/cache'
 
 import { getSession } from 'entities/auth'
-import { apiClient, HttpError } from 'shared/api'
+import { apiClient, errorHandler, HttpError } from 'shared/api'
 
 const handleSuccess = () => {
   revalidateTag('user-me')
@@ -13,10 +13,10 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return {
-    type: 'toast',
-    message: error.message || 'An error occurred while deleting profile image',
-  }
+  return errorHandler.toast(
+    'An error occurred while deleting profile image',
+    error,
+  )
 }
 
 export const deleteProfileImage = async () => {

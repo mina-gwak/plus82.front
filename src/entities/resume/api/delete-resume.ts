@@ -3,7 +3,12 @@
 import { revalidateTag } from 'next/cache'
 
 import { getSession } from 'entities/auth'
-import { apiClient, HttpError, ResourceNotFoundExceptionCode } from 'shared/api'
+import {
+  apiClient,
+  errorHandler,
+  HttpError,
+  ResourceNotFoundExceptionCode,
+} from 'shared/api'
 
 const handleSuccess = () => {
   revalidateTag('resumes')
@@ -14,16 +19,10 @@ const handleError = (error: Error) => {
   if (!isHttpError) throw error
 
   if (error.code === ResourceNotFoundExceptionCode.RESUME_NOT_FOUND) {
-    return {
-      type: 'toast',
-      message: 'Resume is not found',
-    }
+    return errorHandler.toast('Resume is not found')
   }
 
-  return {
-    type: 'toast',
-    message: 'Failed to delete resume',
-  }
+  return errorHandler.toast('Failed to delete resume', error)
 }
 
 export const deleteResume = async (resumeId: number) => {

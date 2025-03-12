@@ -3,6 +3,7 @@
 import { getSession } from 'entities/auth'
 import {
   apiClient,
+  errorHandler,
   HttpError,
   JobPostExceptionCode,
   ServerError,
@@ -19,20 +20,14 @@ const handleError = (error: Error): ServerError => {
   if (!isHttpError) throw error
 
   if (error.code === JobPostExceptionCode.JOB_POST_CLOSED) {
-    return {
-      type: 'toast',
-      message: 'This job post is closed',
-    }
+    return errorHandler.toast('This job post is closed', error)
   } else if (error.code === JobPostExceptionCode.RESUME_ALREADY_SUBMITTED) {
-    return {
-      type: 'toast',
-      message: 'You have already applied for this job post',
-    }
+    return errorHandler.toast('You have already applied for this job post')
   } else {
-    return {
-      type: 'toast',
-      message: error.message || 'An error occurred while submitting the resume',
-    }
+    return errorHandler.toast(
+      'An error occurred while submitting the resume',
+      error,
+    )
   }
 }
 

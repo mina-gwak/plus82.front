@@ -1,7 +1,12 @@
 'use server'
 
 import { getSession } from 'entities/auth'
-import { apiClient, HttpError, ResourceNotFoundExceptionCode } from 'shared/api'
+import {
+  apiClient,
+  errorHandler,
+  HttpError,
+  ResourceNotFoundExceptionCode,
+} from 'shared/api'
 
 const handleSuccess = () => {
   return { success: true }
@@ -12,15 +17,12 @@ const handleError = (error: Error) => {
   if (!isHttpError) throw error
 
   if (error.code === ResourceNotFoundExceptionCode.USER_NOT_FOUND) {
-    return {
-      type: 'toast',
-      message: 'This account has been deactivated',
-    }
+    return errorHandler.toast('This account has been deactivated')
   } else {
-    return {
-      type: 'toast',
-      message: error.message || 'An error occurred while deleting the account',
-    }
+    return errorHandler.toast(
+      'An error occurred while deleting the account',
+      error,
+    )
   }
 }
 

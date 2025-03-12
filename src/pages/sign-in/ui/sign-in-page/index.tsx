@@ -6,8 +6,8 @@ import { useForm } from 'react-hook-form'
 
 import { signInWithCredentials } from 'entities/auth'
 import { isServerError, useServerErrorHandler } from 'shared/api'
-import { hasError } from 'shared/form'
-import { Button, HelperText, Label, Layout, Link, TextField } from 'shared/ui'
+import { Form } from 'shared/form'
+import { Button, Label, Layout, Link } from 'shared/ui'
 
 import * as css from './variants'
 import { FormValues, defaultValues } from '../../model/form-values'
@@ -22,11 +22,7 @@ export const SignInPage = () => {
     reValidateMode: 'onSubmit',
   })
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = form
+  const { handleSubmit } = form
 
   const { handleServerError } = useServerErrorHandler(form)
 
@@ -49,28 +45,21 @@ export const SignInPage = () => {
   return (
     <Layout className={css.layout()}>
       <h1 className={css.heading()}>Sign In</h1>
-      <form onSubmit={event => event.preventDefault()}>
+      <Form {...form}>
         <div className={css.fields()}>
           <div className={css.field()}>
             <Label>Email</Label>
-            <TextField
-              {...register('email', rules.email)}
-              error={hasError(errors?.email)}
-            />
-            {hasError(errors?.email) && (
-              <HelperText variant="error">{errors.email.message}</HelperText>
-            )}
+            <Form.Control name="email" rules={rules.email}>
+              <Form.TextField />
+              <Form.ErrorMessage />
+            </Form.Control>
           </div>
           <div className={css.field()}>
             <Label>Password</Label>
-            <TextField
-              {...register('password', rules.password)}
-              type="password"
-              error={hasError(errors?.password)}
-            />
-            {hasError(errors?.password) && (
-              <HelperText variant="error">{errors.password.message}</HelperText>
-            )}
+            <Form.Control name="password" rules={rules.password}>
+              <Form.PasswordField />
+              <Form.ErrorMessage />
+            </Form.Control>
           </div>
         </div>
         <div className={css.buttonGroup()}>
@@ -86,7 +75,7 @@ export const SignInPage = () => {
             Password forgot
           </Link>
         </div>
-      </form>
+      </Form>
       <div className={css.footer()}>
         <p>Not a member yet?</p>
         <Link href="/sign-up">Create an account</Link>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { isArray, isNil } from 'lodash-es'
 
 import { SuccessResponse } from 'shared/api/common-response'
@@ -11,12 +12,15 @@ export enum ContentType {
 }
 
 type RequestOption = {
+  proxy?: boolean
   contentType?: ContentType
   authorization?: string
   tags?: string[]
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? ''
+const VERSION = 'v1'
+const PROXY = 'proxy'
 
 const DEFAULT_ERROR_MESSAGE = '기술팀에 문의해주세요'
 
@@ -49,6 +53,12 @@ export class ApiClient {
     }
 
     return (body as SuccessResponse<TResult>).data
+  }
+
+  private getUrl(endpoint: string, option?: RequestOption) {
+    const version = option?.proxy ? PROXY : VERSION
+
+    return `${this.baseUrl}/${version}${endpoint}`
   }
 
   private getRequestInit<TData = Record<string, unknown>>(
@@ -87,7 +97,7 @@ export class ApiClient {
     queryParams?: TParams
     option?: RequestOption
   }): Promise<TResult> {
-    const url = new URL(`${this.baseUrl}${endpoint}`)
+    const url = new URL(this.getUrl(endpoint, option))
 
     if (queryParams) {
       Object.entries(queryParams).forEach(([key, value]) => {
@@ -123,7 +133,7 @@ export class ApiClient {
   }): Promise<TResult> {
     const { requestBody, headers } = this.getRequestInit(body, option)
 
-    const response = await fetch(`${this.baseUrl}${endpoint}`, {
+    const response = await fetch(this.getUrl(endpoint, option), {
       method: 'POST',
       headers,
       body: requestBody,
@@ -143,7 +153,7 @@ export class ApiClient {
   }): Promise<TResult> {
     const { requestBody, headers } = this.getRequestInit(body, option)
 
-    const response = await fetch(`${this.baseUrl}${endpoint}`, {
+    const response = await fetch(this.getUrl(endpoint, option), {
       method: 'PUT',
       headers,
       body: requestBody,
@@ -163,7 +173,7 @@ export class ApiClient {
   }): Promise<TResult> {
     const { requestBody, headers } = this.getRequestInit(body, option)
 
-    const response = await fetch(`${this.baseUrl}${endpoint}`, {
+    const response = await fetch(this.getUrl(endpoint, option), {
       method: 'DELETE',
       headers,
       body: requestBody,

@@ -1,7 +1,12 @@
 'use server'
 
 import { signIn, signOut } from 'auth'
-import { AuthExceptionCode, HttpError } from 'shared/api'
+import {
+  AuthExceptionCode,
+  errorHandler,
+  HttpError,
+  InvalidInputValueExceptionCode,
+} from 'shared/api'
 
 export type SignInRequest = {
   email: string
@@ -11,33 +16,23 @@ export type SignInRequest = {
 const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) {
-    return {
-      type: 'toast',
-      message: error?.message || 'An error occurred while signing in',
-    }
+    return errorHandler.toast('An error occurred while signing in', error)
   }
 
   if (error.code === AuthExceptionCode.EMAIL_NOT_CORRECT) {
-    return {
-      type: 'toast',
-      message: "We couldn't find an account with that email",
-    }
+    return errorHandler.toast("We couldn't find an account with that email")
   } else if (error.code === AuthExceptionCode.PW_NOT_CORRECT) {
-    return {
-      type: 'form',
-      field: 'password',
-      message: 'The password you entered is incorrect',
-    }
+    return errorHandler.form({
+      password: 'The password you entered is incorrect',
+    })
   } else if (error.code === AuthExceptionCode.DELETED_USER) {
-    return {
-      type: 'toast',
-      message: 'This account has been deactivated',
-    }
+    return errorHandler.toast('This account has been deactivated')
+  } else if (
+    error.code === InvalidInputValueExceptionCode.INVALID_INPUT_VALUE
+  ) {
+    return errorHandler.toast('Please check your email and password')
   } else {
-    return {
-      type: 'toast',
-      message: error.message || 'An error occurred while signing in',
-    }
+    return errorHandler.toast('An error occurred while signing in', error)
   }
 }
 

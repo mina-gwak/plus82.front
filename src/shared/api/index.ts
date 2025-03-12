@@ -6,6 +6,7 @@ export {
   type ServerError,
   isServerError,
   useServerErrorHandler,
+  errorHandler,
 } from './error/server-error'
 export { QueryErrorBoundary } from './error/error-boundary'
 export { useEmptyBoundary } from './empty/use-empty-boundary'

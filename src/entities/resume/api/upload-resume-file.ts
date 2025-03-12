@@ -3,7 +3,7 @@
 import { revalidateTag } from 'next/cache'
 
 import { getSession } from 'entities/auth'
-import { apiClient, ContentType, HttpError } from 'shared/api'
+import { apiClient, ContentType, errorHandler, HttpError } from 'shared/api'
 
 type UploadResumeFileRequest = {
   file: File
@@ -17,10 +17,10 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return {
-    type: 'toast',
-    message: error.message || 'An error occurred while uploading resume file',
-  }
+  return errorHandler.toast(
+    'An error occurred while uploading resume file',
+    error,
+  )
 }
 
 export const uploadResumeFile = async (data: UploadResumeFileRequest) => {

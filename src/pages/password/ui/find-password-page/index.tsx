@@ -4,22 +4,16 @@ import crypto from 'crypto'
 
 import { useRouter } from 'next/navigation'
 import { useForm, useWatch } from 'react-hook-form'
-import { toast } from 'react-toastify'
 
-import {
-  EmailVerificationCodeExceptionCode,
-  HttpError,
-  ResourceNotFoundExceptionCode,
-} from 'shared/api'
+import { requestPasswordReset } from 'entities/auth'
+import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { isEmptyString } from 'shared/lib'
 import { Button, Label, Layout } from 'shared/ui'
 
-import { useRequestPasswordReset } from '../../api/use-request-password-reset'
+import * as css from './variants'
 import { FindFormValues, findFormDefaultValues } from '../../model/form-values'
 import * as rules from '../../model/rules'
-
-import * as css from './variants'
 
 export const FindPasswordPage = () => {
   const router = useRouter()
@@ -34,11 +28,11 @@ export const FindPasswordPage = () => {
     control: form.control,
   })
 
+  const { handleServerError } = useServerErrorHandler()
+
   const canSubmit = !isEmptyString(email)
 
-  const requestPasswordReset = useRequestPasswordReset()
-
-  const handleRequestPasswordResetSuccess = () => {
+  const handleSuccess = () => {
     const timestamp = Date.now()
     const hash = crypto
       .createHash('sha256')
@@ -49,21 +43,14 @@ export const FindPasswordPage = () => {
     router.push(`/password/find/sent?t=${timestamp}&code=${hash}`)
   }
 
-  const handleRequestPasswordResetError = (error: HttpError) => {
-    if (error.code === EmailVerificationCodeExceptionCode.TOO_MANY_REQUEST) {
-      toast.error(
-        'You have requested too many times. Please try again in 10 minutes.',
-      )
-    } else if (error.code === ResourceNotFoundExceptionCode.USER_NOT_FOUND) {
-      toast.error("We couldn't find an account with that email")
-    }
-  }
+  const submitForm = async (data: FindFormValues) => {
+    const response = await requestPasswordReset(data)
 
-  const submitForm = (data: FindFormValues) => {
-    requestPasswordReset.mutate(data, {
-      onSuccess: handleRequestPasswordResetSuccess,
-      onError: handleRequestPasswordResetError,
-    })
+    if (isServerError(response)) {
+      handleServerError(response)
+    } else {
+      handleSuccess()
+    }
   }
 
   return (
