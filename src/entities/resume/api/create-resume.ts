@@ -21,10 +21,9 @@ const handleError = (error: Error) => {
     return errorHandler.toast('You can only have one representative resume')
   }
 
-  return errorHandler.toast(
-    'An error occurred while uploading resume file',
+  return errorHandler.toast('An error occurred while uploading resume file', {
     error,
-  )
+  })
 }
 
 export const createResume = async (data: CreateResumeRequest) => {

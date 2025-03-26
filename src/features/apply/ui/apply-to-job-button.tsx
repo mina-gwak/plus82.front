@@ -44,7 +44,7 @@ export const ApplyToJobButton = () => {
 
   return (
     <Modal open={isOpen} onOpenChange={setIsOpen}>
-      <Button type="button" onClick={handleButtonClick}>
+      <Button type="button" onClick={handleButtonClick} size="large">
         Apply Now
       </Button>
       <Modal.Content className="flex w-[728px] flex-col items-end gap-6">

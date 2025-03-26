@@ -2,17 +2,17 @@ const REG_EMAIL =
   /^([A-Za-z0-9]+([-_.]?[A-Za-z0-9])*)@([A-Za-z0-9]+([-]?[A-Za-z0-9])*)(\.([A-Za-z0-9]+([-]?[A-Za-z0-9])*))?(\.([A-Za-z0-9]([-]?[A-Za-z0-9])*))?((\.[A-Za-z]{2,63})$)/
 
 export const email = {
-  required: 'Please enter your email',
+  required: 'validation.email.required',
   maxLength: {
     value: 254,
-    message: 'Input exceeds maximum allowed length of 254 characters',
+    message: 'validation.email.maxLength',
   },
   pattern: {
     value: REG_EMAIL,
-    message: "Invalid email format. Please use the format 'example@domain.com'",
+    message: 'validation.email.pattern',
   },
 }
 
 export const password = {
-  required: 'Please enter your password',
+  required: 'validation.password.required',
 }

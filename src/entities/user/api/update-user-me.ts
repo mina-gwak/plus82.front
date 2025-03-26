@@ -15,7 +15,9 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast('An error occurred while updating the user', error)
+  return errorHandler.toast('An error occurred while updating the user', {
+    error,
+  })
 }
 
 export const updateUserMe = async (data: UpdateUserMeRequest) => {

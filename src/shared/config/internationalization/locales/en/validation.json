@@ -1,0 +1,12 @@
+{
+  "validation": {
+    "email": {
+      "required": "Please enter your email",
+      "maxLength": "Input exceeds maximum allowed length of 254 characters",
+      "pattern": "Invalid email format. Please use the format 'example@domain.com'"
+    },
+    "password": {
+      "required": "Please enter your password"
+    }
+  }
+}

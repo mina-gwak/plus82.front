@@ -23,7 +23,7 @@ export type Resume = {
   residenceCountryNameEn: string
   createdAt: string
   updatedAt: string
-  profileImagePath?: string
+  profileImagePath?: string | null
   filePath: string | null
   fileName: string | null
 }

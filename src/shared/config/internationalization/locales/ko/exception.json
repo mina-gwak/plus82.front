@@ -1,0 +1,13 @@
+{
+  "exception": {
+    "auth": {
+      "email-not-correct": "이메일을 확인해주세요",
+      "pw-not-correct": "비밀번호를 확인해주세요",
+      "deleted-user": "이 계정은 비활성화되었습니다"
+    },
+    "invalid-input-value": {
+      "invalid-email": "이메일과 비밀번호를 확인해주세요",
+      "invalid-password": "이메일과 비밀번호를 확인해주세요"
+    }
+  }
+}

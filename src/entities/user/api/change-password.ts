@@ -30,10 +30,9 @@ const handleError = (error: HttpError) => {
     })
   }
 
-  return errorHandler.toast(
-    'An error occurred while changing the password',
+  return errorHandler.toast('An error occurred while changing the password', {
     error,
-  )
+  })
 }
 
 export const changePassword = async (data: ChangePasswordRequest) => {

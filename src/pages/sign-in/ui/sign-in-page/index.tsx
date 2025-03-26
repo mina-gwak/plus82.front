@@ -1,7 +1,8 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 
 import { signInWithCredentials } from 'entities/auth'
@@ -16,6 +17,11 @@ import * as rules from '../../model/rules'
 export const SignInPage = () => {
   const router = useRouter()
   const session = useSession()
+  const pathname = usePathname()
+
+  const isBusinessSignIn = pathname?.includes('business')
+
+  const t = useTranslations('sign-in')
 
   const form = useForm<FormValues>({
     defaultValues,
@@ -44,18 +50,20 @@ export const SignInPage = () => {
 
   return (
     <Layout className={css.layout()}>
-      <h1 className={css.heading()}>Sign In</h1>
+      <h1 className={css.heading()}>
+        {isBusinessSignIn ? t('business-title') : t('user-title')}
+      </h1>
       <Form {...form}>
         <div className={css.fields()}>
           <div className={css.field()}>
-            <Label>Email</Label>
+            <Label>{t('label.email')}</Label>
             <Form.Control name="email" rules={rules.email}>
               <Form.TextField />
               <Form.ErrorMessage />
             </Form.Control>
           </div>
           <div className={css.field()}>
-            <Label>Password</Label>
+            <Label>{t('label.password')}</Label>
             <Form.Control name="password" rules={rules.password}>
               <Form.PasswordField />
               <Form.ErrorMessage />
@@ -69,16 +77,16 @@ export const SignInPage = () => {
             fullWidth
             onClick={handleSubmit(handleFormValid)}
           >
-            Sign In
+            {t('button.sign-in')}
           </Button>
           <Link href="/password/find" variant="tertiary">
-            Password forgot
+            {t('link.password-forgot')}
           </Link>
         </div>
       </Form>
       <div className={css.footer()}>
-        <p>Not a member yet?</p>
-        <Link href="/sign-up">Create an account</Link>
+        <p>{t('footer.message')}</p>
+        <Link href="/sign-up">{t('link.sign-up')}</Link>
       </div>
     </Layout>
   )

@@ -11,10 +11,9 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast(
-    'An error occurred while resetting the password',
+  return errorHandler.toast('An error occurred while resetting the password', {
     error,
-  )
+  })
 }
 
 export const resetPassword = async (data: ResetPasswordRequest) => {

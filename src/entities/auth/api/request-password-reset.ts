@@ -25,7 +25,7 @@ const handleError = (error: Error) => {
   } else {
     return errorHandler.toast(
       'An error occurred while requesting a password reset',
-      error,
+      { error },
     )
   }
 }

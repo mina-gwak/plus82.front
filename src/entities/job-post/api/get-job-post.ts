@@ -11,6 +11,9 @@ type GetJobPostResponse = JobPostDetail
 export const getJobPost = async ({ jobPostId }: GetJobPostRequest) => {
   const response = await apiClient.get<GetJobPostResponse>({
     endpoint: `/job-posts/${jobPostId}`,
+    option: {
+      tags: ['job-post'],
+    },
   })
 
   return response

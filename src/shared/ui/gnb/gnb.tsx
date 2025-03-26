@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 
 import { cn } from 'shared/lib'
 
@@ -16,6 +17,8 @@ export const GNB = () => {
   const router = useRouter()
   const pathname = usePathname()
   const session = useSession()
+
+  const t = useTranslations()
 
   const handleLogoClick = () => {
     router.push('/')
@@ -34,7 +37,9 @@ export const GNB = () => {
           <div className={cn(css.leftSection())}>
             <Logo onClick={handleLogoClick} />
             <Tabs value={pathname ?? '/'} onChange={handleTabChange}>
-              <Tabs.Trigger value="/job-board">Job Board</Tabs.Trigger>
+              <Tabs.Trigger value="/job-board">
+                {t('tab.job-board')}
+              </Tabs.Trigger>
             </Tabs>
           </div>
           <div className={cn(css.rightSection())}>
@@ -54,7 +59,7 @@ export const GNB = () => {
                 <UserButton />
               </div>
             )}
-            <Button as="a" href="/academy" variant="lined" size="small">
+            <Button as="a" href="/business" variant="lined" size="small">
               Academy
             </Button>
           </div>

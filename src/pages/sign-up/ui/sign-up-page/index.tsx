@@ -8,7 +8,7 @@ import { signUp } from 'entities/auth'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { useCheckbox } from 'shared/lib'
-import { Button, Checkbox, Layout, Link } from 'shared/ui'
+import { Button, Checkbox, Layout, Link, linkVariants } from 'shared/ui'
 
 import { useEmailValidationState } from '../../lib/use-email-validation-state'
 import {
@@ -89,9 +89,16 @@ export const SignUpPage = () => {
             <p className={className}>
               I have read and agree to the Plus 82&apos;s
               <br />
-              <Link href="/" variant="secondary">
+              <a
+                href="/terms-and-conditions-of-use"
+                target="_blank"
+                onClick={event => {
+                  event.stopPropagation()
+                }}
+                className={linkVariants({ variant: 'secondary' })}
+              >
                 Terms and Conditions of Use. (Essential)
-              </Link>
+              </a>
             </p>
           )}
         />

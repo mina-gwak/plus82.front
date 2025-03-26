@@ -1,5 +1,9 @@
+import { isAfter, parseISO } from 'date-fns'
+
+import { auth } from 'auth'
 import {
   convertToJobPost,
+  getTeacherApplicationStatus,
   PostingDetail,
   PostingImageSwiper,
   PostingTitle,
@@ -24,6 +28,40 @@ const RegisterResumeButton = () => {
   )
 }
 
+type JobPostingButtonProps = {
+  isExpired: boolean
+  hasApplied: boolean | null
+  hasNoResume: boolean
+}
+
+const JobPostingButton = ({
+  isExpired,
+  hasApplied,
+  hasNoResume,
+}: JobPostingButtonProps) => {
+  if (isExpired) {
+    return (
+      <Button type="button" size="large" disabled>
+        Closed
+      </Button>
+    )
+  }
+
+  if (hasApplied) {
+    return (
+      <Button type="button" size="large" disabled>
+        Already Applied
+      </Button>
+    )
+  }
+
+  if (hasNoResume) {
+    return <RegisterResumeButton />
+  }
+
+  return <ApplyToJobButton />
+}
+
 export const JobPostingDetailPage = async ({
   params,
 }: {
@@ -31,12 +69,26 @@ export const JobPostingDetailPage = async ({
 }) => {
   const { jobPostId } = await params
 
+  const session = await auth()
+
   const resumeCount = await getResumeCount()
   const data = await getJobPost({ jobPostId: Number(jobPostId) })
+
+  let hasApplied = null
+
+  if (session) {
+    hasApplied = await getTeacherApplicationStatus({
+      jobPostId: Number(jobPostId),
+    })
+  }
 
   const hasNoResume = resumeCount === 0
 
   const jobPost = convertToJobPost(data)
+
+  const isExpired = jobPost.dueDate
+    ? isAfter(new Date(), parseISO(jobPost.dueDate))
+    : false
 
   return (
     <Layout wide className="flex gap-5">
@@ -47,7 +99,11 @@ export const JobPostingDetailPage = async ({
       <div>
         <div className="sticky top-6 flex w-[340px] flex-col gap-6 rounded-2xl border border-gray-200 bg-white p-6">
           <PostingTitle jobPost={jobPost} size="medium" />
-          {hasNoResume ? <RegisterResumeButton /> : <ApplyToJobButton />}
+          <JobPostingButton
+            isExpired={isExpired}
+            hasApplied={hasApplied}
+            hasNoResume={hasNoResume}
+          />
         </div>
       </div>
     </Layout>

@@ -17,10 +17,9 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast(
-    'An error occurred while updating profile image',
+  return errorHandler.toast('An error occurred while updating profile image', {
     error,
-  )
+  })
 }
 
 export const updateProfileImage = async (data: UpdateProfileImageRequest) => {

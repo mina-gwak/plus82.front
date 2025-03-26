@@ -1,0 +1,12 @@
+{
+  "validation": {
+    "email": {
+      "required": "이메일을 입력해주세요",
+      "maxLength": "최대 254자를 초과할 수 없습니다",
+      "pattern": "이메일 형식이 올바르지 않습니다. 예시 : example@domain.com"
+    },
+    "password": {
+      "required": "비밀번호를 입력해주세요"
+    }
+  }
+}

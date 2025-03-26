@@ -26,7 +26,9 @@ const handleError = (error: Error) => {
   ) {
     return errorHandler.toast('File resume cannot be modified')
   } else {
-    return errorHandler.toast('An error occurred while copying resume', error)
+    return errorHandler.toast('An error occurred while copying resume', {
+      error,
+    })
   }
 }
 

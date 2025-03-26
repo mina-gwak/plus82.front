@@ -17,10 +17,9 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast(
-    'An error occurred while uploading resume file',
+  return errorHandler.toast('An error occurred while uploading resume file', {
     error,
-  )
+  })
 }
 
 export const uploadResumeFile = async (data: UploadResumeFileRequest) => {

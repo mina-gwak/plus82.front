@@ -22,7 +22,7 @@ const handleError = (error: Error) => {
     return errorHandler.toast('Resume is not found')
   }
 
-  return errorHandler.toast('Failed to delete resume', error)
+  return errorHandler.toast('Failed to delete resume', { error })
 }
 
 export const deleteResume = async (resumeId: number) => {

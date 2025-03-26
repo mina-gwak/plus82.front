@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import Link from 'next/link'
 
 import { Card } from 'entities/job-post'
@@ -20,6 +21,7 @@ export const JobPosting = ({ filters }: Props) => {
     rowCount: 20,
     orderType: 'DESC',
     sortBy: 'id',
+    fromDueDate: format(new Date(), 'yyyy-MM-dd'),
     ...params,
   })
 

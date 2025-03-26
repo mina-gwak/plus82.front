@@ -2,7 +2,7 @@ import { colors } from 'shared/config'
 import { Icon } from 'shared/ui'
 import { Layout } from 'shared/ui'
 
-export default function AcademyPage() {
+export default function BusinessPage() {
   return (
     <Layout wide>
       <div className="flex h-full flex-col items-center justify-center gap-8">

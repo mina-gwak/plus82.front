@@ -1,9 +1,8 @@
 import { ChangeEvent, KeyboardEvent } from 'react'
 
+import { Location, StudentType } from 'entities/job-post'
 import { useDebounce } from 'shared/lib'
 import { Chip, Filter, FilterValue, TextField } from 'shared/ui'
-
-import { Location, StudentType } from 'entities/job-post'
 
 import { useJobPostFilters } from '../lib/use-job-post-filters'
 import { JobPostFilter } from '../model/filter'

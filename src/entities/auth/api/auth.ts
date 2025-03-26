@@ -16,23 +16,32 @@ export type SignInRequest = {
 const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) {
-    return errorHandler.toast('An error occurred while signing in', error)
+    return errorHandler.toast('An error occurred while signing in', { error })
   }
 
   if (error.code === AuthExceptionCode.EMAIL_NOT_CORRECT) {
-    return errorHandler.toast("We couldn't find an account with that email")
-  } else if (error.code === AuthExceptionCode.PW_NOT_CORRECT) {
-    return errorHandler.form({
-      password: 'The password you entered is incorrect',
+    return errorHandler.toast('exception.auth.email-not-correct', {
+      translate: true,
     })
+  } else if (error.code === AuthExceptionCode.PW_NOT_CORRECT) {
+    return errorHandler.form(
+      {
+        password: 'exception.auth.pw-not-correct',
+      },
+      { translate: true },
+    )
   } else if (error.code === AuthExceptionCode.DELETED_USER) {
-    return errorHandler.toast('This account has been deactivated')
+    return errorHandler.toast('exception.auth.deleted-user', {
+      translate: true,
+    })
   } else if (
     error.code === InvalidInputValueExceptionCode.INVALID_INPUT_VALUE
   ) {
-    return errorHandler.toast('Please check your email and password')
+    return errorHandler.toast('exception.invalid-input-value.invalid-email', {
+      translate: true,
+    })
   } else {
-    return errorHandler.toast('An error occurred while signing in', error)
+    return errorHandler.toast('sign-in.error.sign-in', { error })
   }
 }
 
