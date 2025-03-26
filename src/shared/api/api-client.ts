@@ -18,7 +18,7 @@ type RequestOption = {
   tags?: string[]
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? ''
+const API_URL = `${process.env.NEXT_PUBLIC_URL ?? ''}/api`
 const VERSION = 'v1'
 const PROXY = 'proxy'
 
