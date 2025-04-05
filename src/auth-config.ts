@@ -5,9 +5,9 @@ import {
   signIn as _signIn,
   refreshToken,
   type SignInRequest,
+  decodeToken,
 } from 'entities/auth'
 import { HttpError, isServerError } from 'shared/api'
-import { decodeToken } from 'shared/lib'
 
 const ACCESS_TOKEN_REFRESH_THRESHOLD = 600000 // 10분을 밀리초로 표현
 export const REFRESH_TOKEN_ERROR = 'RefreshTokenError'

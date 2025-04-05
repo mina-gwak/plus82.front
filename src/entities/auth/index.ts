@@ -26,3 +26,4 @@ export {
   getNullableBusinessSession,
   updateBusinessSession,
 } from './lib/session'
+export { decodeToken } from './lib/jwt'

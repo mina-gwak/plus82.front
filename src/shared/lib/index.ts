@@ -17,7 +17,6 @@ export {
   formatCurrency,
 } from './format'
 export { isNilOrEmptyString, isEmptyString } from './helper'
-export { decodeToken } from './jwt'
 export { List, type ListValue } from './list'
 export { useIsMobile } from './mobile'
 export { padNumber } from './number'
