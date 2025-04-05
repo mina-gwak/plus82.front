@@ -11,8 +11,9 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast('An error occurred while resetting the password', {
+  return errorHandler.toast('auth.reset-password.error.reset-password', {
     error,
+    translate: true,
   })
 }
 

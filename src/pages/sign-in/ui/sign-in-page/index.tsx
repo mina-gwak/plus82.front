@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 
-import { signInWithCredentials } from 'entities/auth'
+import { teacherSignIn, businessSignIn } from 'entities/auth'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { Button, Label, Layout, Link } from 'shared/ui'
@@ -34,12 +34,14 @@ export const SignInPage = () => {
 
   const handleSignInSuccess = async () => {
     // TODO: Redirect to another page
-    router.replace('/')
+    router.replace(isBusinessSignIn ? '/business' : '/')
     session.update()
   }
 
   const handleFormValid = async (data: FormValues) => {
-    const response = await signInWithCredentials(data)
+    const response = isBusinessSignIn
+      ? await businessSignIn(data)
+      : await teacherSignIn(data)
 
     if (isServerError(response)) {
       handleServerError(response)
@@ -79,14 +81,21 @@ export const SignInPage = () => {
           >
             {t('button.sign-in')}
           </Button>
-          <Link href="/password/find" variant="tertiary">
+          <Link
+            href={
+              isBusinessSignIn ? '/business/password/find' : '/password/find'
+            }
+            variant="tertiary"
+          >
             {t('link.password-forgot')}
           </Link>
         </div>
       </Form>
       <div className={css.footer()}>
         <p>{t('footer.message')}</p>
-        <Link href="/sign-up">{t('link.sign-up')}</Link>
+        <Link href={isBusinessSignIn ? '/business/sign-up' : '/sign-up'}>
+          {t('link.sign-up')}
+        </Link>
       </div>
     </Layout>
   )

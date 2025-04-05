@@ -2,7 +2,7 @@
 
 import { revalidateTag } from 'next/cache'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   errorHandler,
@@ -42,7 +42,7 @@ export const submitResume = async ({
   resumeId,
   coverLetter,
 }: SubmitResumeRequest): Promise<ServerError | undefined> => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.post<null>({

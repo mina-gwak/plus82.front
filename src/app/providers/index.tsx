@@ -5,9 +5,14 @@ import { MSWProvider } from './msw-provider'
 import { QueryProvider } from './query-provider'
 import { ToastProvider } from './toast-provider'
 
-export const AppProviders = ({ children }: { children: ReactNode }) => {
+type Props = {
+  basePath?: string
+  children: ReactNode
+}
+
+export const AppProviders = ({ basePath, children }: Props) => {
   return (
-    <SessionProvider>
+    <SessionProvider basePath={basePath}>
       <MSWProvider>
         <ToastProvider>
           <QueryProvider>{children}</QueryProvider>

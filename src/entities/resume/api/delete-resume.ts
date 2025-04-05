@@ -2,7 +2,7 @@
 
 import { revalidateTag } from 'next/cache'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   errorHandler,
@@ -26,7 +26,7 @@ const handleError = (error: Error) => {
 }
 
 export const deleteResume = async (resumeId: number) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.delete<null>({

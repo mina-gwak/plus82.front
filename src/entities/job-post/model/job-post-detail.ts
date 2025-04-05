@@ -3,7 +3,10 @@ import { Location } from '../config/location'
 export type JobPostDetail = {
   id: number
   title: string
-  description: string
+  jobDescription: string
+  requiredQualification: string
+  preferredQualification: string
+  benefits: string
   salary: number
   salaryNegotiable: boolean
   jobStartDate: string

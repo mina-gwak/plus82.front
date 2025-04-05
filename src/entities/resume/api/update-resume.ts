@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   ContentType,
@@ -37,7 +37,7 @@ export const updateResume = async ({
   resumeId,
   ...data
 }: UpdateResumeRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.put<null, ResumeDTO>({

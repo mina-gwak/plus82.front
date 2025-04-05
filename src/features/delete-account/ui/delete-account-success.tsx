@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 
-import { signOutWithForm } from 'entities/auth'
+import { teacherSignOut } from 'entities/auth'
 import { Button, Modal } from 'shared/ui'
 
 export const DeleteUserSuccess = () => {
@@ -15,7 +15,7 @@ export const DeleteUserSuccess = () => {
     queryClient.removeQueries()
 
     await signOut({ redirect: false })
-    await signOutWithForm()
+    await teacherSignOut()
 
     router.push('/')
   }

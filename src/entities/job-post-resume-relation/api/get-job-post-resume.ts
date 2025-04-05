@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import { apiClient, Pagination, PaginationParams } from 'shared/api'
 
 import { JobPostRelation } from '../model/application'
@@ -15,7 +15,7 @@ type GetJobPostResumeResponse = Pagination<JobPostRelation>
 export const getJobPostResumeRelations = async (
   queryParams: GetJobPostResumeRequest,
 ) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   const response = await apiClient.get<GetJobPostResumeResponse>({
     endpoint: '/job-post-resume-relations',

@@ -1,6 +1,6 @@
 import { isAfter, parseISO } from 'date-fns'
 
-import { auth } from 'auth'
+import { getTeacherSession } from 'auth'
 import {
   convertToJobPost,
   getTeacherApplicationStatus,
@@ -69,7 +69,7 @@ export const JobPostingDetailPage = async ({
 }) => {
   const { jobPostId } = await params
 
-  const session = await auth()
+  const session = await getTeacherSession()
 
   const resumeCount = await getResumeCount()
   const data = await getJobPost({ jobPostId: Number(jobPostId) })

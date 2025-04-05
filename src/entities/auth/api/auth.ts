@@ -1,6 +1,11 @@
 'use server'
 
-import { signIn, signOut } from 'auth'
+import {
+  teacherSignIn as _teacherSignIn,
+  teacherSignOut as _teacherSignOut,
+  businessSignIn as _businessSignIn,
+  businessSignOut as _businessSignOut,
+} from 'auth'
 import {
   AuthExceptionCode,
   errorHandler,
@@ -40,14 +45,25 @@ const handleError = (error: Error) => {
     return errorHandler.toast('exception.invalid-input-value.invalid-email', {
       translate: true,
     })
+  } else if (error.code === 'NOT_ACADEMY_ROLE') {
+    return errorHandler.toast('exception.auth.not-academy-role', {
+      translate: true,
+    })
+  } else if (error.code === 'NOT_TEACHER_ROLE') {
+    return errorHandler.toast('exception.auth.not-teacher-role', {
+      translate: true,
+    })
   } else {
-    return errorHandler.toast('sign-in.error.sign-in', { error })
+    return errorHandler.toast('sign-in.error.sign-in', {
+      translate: true,
+      error,
+    })
   }
 }
 
-export const signInWithCredentials = async (data: SignInRequest) => {
+export const teacherSignIn = async (data: SignInRequest) => {
   try {
-    await signIn('credentials', {
+    await _teacherSignIn('credentials', {
       ...data,
       redirect: false,
       callbackUrl: '/',
@@ -59,10 +75,24 @@ export const signInWithCredentials = async (data: SignInRequest) => {
   }
 }
 
-export const signInWithGoogle = async () => {
-  await signIn('google')
+export const teacherSignOut = async () => {
+  await _teacherSignOut({ redirect: false })
 }
 
-export const signOutWithForm = async () => {
-  await signOut({ redirect: false })
+export const businessSignIn = async (data: SignInRequest) => {
+  try {
+    await _businessSignIn('credentials', {
+      ...data,
+      redirect: false,
+      callbackUrl: '/',
+    })
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    return handleError(error.cause?.err as Error)
+  }
+}
+
+export const businessSignOut = async () => {
+  await _businessSignOut({ redirect: false })
 }

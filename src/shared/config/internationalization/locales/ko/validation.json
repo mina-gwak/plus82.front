@@ -6,7 +6,15 @@
       "pattern": "이메일 형식이 올바르지 않습니다. 예시 : example@domain.com"
     },
     "password": {
-      "required": "비밀번호를 입력해주세요"
+      "required": "비밀번호를 입력해주세요",
+      "length": "9 ~ 28자 길이",
+      "has-number": "하나 이상의 숫자",
+      "has-lowercase-and-uppercase-letter": "대문자 및 소문자",
+      "has-special-char": "하나 이상의 특수문자"
+    },
+    "confirm-password": {
+      "required": "비밀번호를 입력해주세요",
+      "match": "비밀번호가 일치하지 않습니다"
     }
   }
 }

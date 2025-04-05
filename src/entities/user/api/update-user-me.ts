@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import { apiClient, errorHandler, HttpError } from 'shared/api'
 
 export type UpdateUserMeRequest = {
@@ -21,7 +21,7 @@ const handleError = (error: Error) => {
 }
 
 export const updateUserMe = async (data: UpdateUserMeRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.put<null, UpdateUserMeRequest>({

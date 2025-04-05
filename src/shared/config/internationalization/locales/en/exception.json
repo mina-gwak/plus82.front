@@ -3,11 +3,19 @@
     "auth": {
       "email-not-correct": "We couldn't find an account with that email",
       "pw-not-correct": "The password you entered is incorrect",
-      "deleted-user": "This account has been deactivated"
+      "deleted-user": "This account has been deactivated",
+      "not-academy-role": "Please sign in with an academy account",
+      "not-teacher-role": "Please sign in with a teacher account"
     },
     "invalid-input-value": {
       "invalid-email": "Please check your email and password",
       "invalid-password": "Please check your email and password"
+    },
+    "email": {
+      "too-many-request": "You have requested too many times. Please try again in 10 minutes."
+    },
+    "resource-not-found": {
+      "user": "We couldn't find an account with that email"
     }
   }
 }

@@ -2,7 +2,7 @@
 
 import { revalidateTag } from 'next/cache'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import { apiClient, ContentType, errorHandler, HttpError } from 'shared/api'
 
 type UploadResumeFileRequest = {
@@ -23,7 +23,7 @@ const handleError = (error: Error) => {
 }
 
 export const uploadResumeFile = async (data: UploadResumeFileRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.post<null, UploadResumeFileRequest>({

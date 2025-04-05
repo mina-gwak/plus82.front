@@ -1,6 +1,6 @@
 const REG_UPPER_LOWER_CASE_LETTERS = /(?=.*[a-z])(?=.*[A-Z])/
 const REG_NUMBER = /(?=.*\d)/
-const REG_SPECIAL_CHAR = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?])/
+const REG_SPECIAL_CHAR = /(?=.*[!@#$%^&*()_+\-=[\]{};":\\|,.<>/?])/
 
 export const isCorrectLength = (value: string) =>
   value.length >= 9 && value.length <= 28
@@ -22,14 +22,14 @@ export const passwordRules = {
 }
 
 export const confirmPasswordRules = {
-  required: 'Please enter your password',
+  required: 'validation.confirm-password.required',
   validate: <T extends { password: string }>(
     value: string | number | null,
     formValues: T,
   ) => {
     if (value === formValues.password) return true
 
-    return 'The password you entered do not match'
+    return 'validation.confirm-password.match'
   },
 }
 

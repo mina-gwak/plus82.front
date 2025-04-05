@@ -2,7 +2,7 @@
 
 import { revalidateTag } from 'next/cache'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import { apiClient, ContentType, errorHandler, HttpError } from 'shared/api'
 
 export type UpdateProfileImageRequest = {
@@ -23,7 +23,7 @@ const handleError = (error: Error) => {
 }
 
 export const updateProfileImage = async (data: UpdateProfileImageRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.put<null, UpdateProfileImageRequest>({

@@ -6,7 +6,15 @@
       "pattern": "Invalid email format. Please use the format 'example@domain.com'"
     },
     "password": {
-      "required": "Please enter your password"
+      "required": "Please enter your password",
+      "length": "9 ~ 28 characters long",
+      "has-number": "At least one number",
+      "has-lowercase-and-uppercase-letter": "Upper & lower case letters",
+      "has-special-char": "At least special character"
+    },
+    "confirm-password": {
+      "required": "Please enter your password",
+      "match": "The password you entered do not match"
     }
   }
 }

@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   AuthExceptionCode,
@@ -36,7 +36,7 @@ const handleError = (error: HttpError) => {
 }
 
 export const changePassword = async (data: ChangePasswordRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.put<null, ChangePasswordRequest>({

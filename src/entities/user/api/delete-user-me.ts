@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   errorHandler,
@@ -27,7 +27,7 @@ const handleError = (error: Error) => {
 
 export const deleteUserMe = async () => {
   try {
-    const { accessToken } = await getSession()
+    const { accessToken } = await getTeacherSession()
 
     await apiClient.delete({
       endpoint: '/users/me',

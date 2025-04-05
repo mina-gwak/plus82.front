@@ -1,4 +1,4 @@
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import { apiClient } from 'shared/api'
 
 type GetJobPostRequest = {
@@ -8,9 +8,9 @@ type GetJobPostRequest = {
 export const getTeacherApplicationStatus = async ({
   jobPostId,
 }: GetJobPostRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
-  let submitted = false
+  let submitted: boolean
 
   try {
     await apiClient.get<boolean>({
@@ -22,8 +22,9 @@ export const getTeacherApplicationStatus = async ({
     })
 
     submitted = true
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    console.log(error)
+    submitted = false
   }
 
   return submitted

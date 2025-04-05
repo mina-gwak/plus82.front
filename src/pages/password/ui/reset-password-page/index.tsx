@@ -1,7 +1,8 @@
 'use client'
 
 import { isNil } from 'lodash-es'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useForm, useWatch } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
@@ -30,6 +31,11 @@ import * as css from './variants'
 
 const ResetPasswordPage = () => {
   const router = useRouter()
+  const pathname = usePathname()
+
+  const isBusiness = pathname?.includes('business')
+
+  const t = useTranslations('reset-password')
 
   const searchParams = useSearchParams()
   const code = searchParams?.get('code') ?? null
@@ -51,8 +57,8 @@ const ResetPasswordPage = () => {
   const canSubmit = !isEmptyString(password) && !isEmptyString(confirmPassword)
 
   const handleResetPasswordSuccess = () => {
-    toast.success('Your password has been changed successfully')
-    router.replace('/sign-in')
+    toast.success(t('success.reset-password'))
+    router.replace(`${isBusiness ? '/business' : ''}/sign-in`)
   }
 
   const submitForm = async ({ password }: ResetFormValues) => {
@@ -74,16 +80,16 @@ const ResetPasswordPage = () => {
 
   return (
     <Layout className={css.layout()}>
-      <h1 className={css.heading()}>Reset password</h1>
+      <h1 className={css.heading()}>{t('title')}</h1>
       <Form {...form} className={css.form()}>
         <div>
           <div className={fieldCss.fieldWrapper()}>
-            <Label>New password</Label>
+            <Label>{t('label.new-password')}</Label>
             <div className={fieldCss.field()}>
               <Form.PasswordField
                 name="password"
                 rules={passwordRules}
-                placeholder="Enter the password"
+                placeholder={t('placeholder.new-password')}
                 autoComplete="one-time-code"
                 showToggle
               />
@@ -92,10 +98,10 @@ const ResetPasswordPage = () => {
           </div>
 
           <div className={fieldCss.field()}>
-            <Label>Confirm new password</Label>
+            <Label>{t('label.confirm-new-password')}</Label>
             <Form.Control name="confirmPassword" rules={confirmPasswordRules}>
               <Form.PasswordField
-                placeholder="Check the password"
+                placeholder={t('placeholder.confirm-new-password')}
                 autoComplete="one-time-code"
                 showToggle
               />
@@ -109,7 +115,7 @@ const ResetPasswordPage = () => {
           onClick={form.handleSubmit(submitForm)}
           disabled={!canSubmit}
         >
-          Reset password
+          {t('button.reset-password')}
         </Button>
       </Form>
     </Layout>

@@ -22,6 +22,7 @@ export const JobPosting = ({ filters }: Props) => {
     orderType: 'DESC',
     sortBy: 'id',
     fromDueDate: format(new Date(), 'yyyy-MM-dd'),
+    closed: false,
     ...params,
   })
 

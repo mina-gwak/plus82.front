@@ -14,10 +14,11 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 type Props = {
   className?: string
+  width?: number
   filePath: string
 }
 
-export const PDFViewer = ({ filePath, className }: Props) => {
+export const PDFViewer = ({ filePath, className, width = 800 }: Props) => {
   const [numPages, setNumPages] = useState<number>()
 
   const handleDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
@@ -41,7 +42,7 @@ export const PDFViewer = ({ filePath, className }: Props) => {
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
                 className="mb-4 max-w-full last:mb-0"
-                width={800}
+                width={width}
               />
             ))}
         </Document>

@@ -3,12 +3,11 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale } from 'next-intl/server'
 import { ReactNode } from 'react'
 
-import { AppProviders } from 'app/providers'
 import { SpoqaHanSansNeo } from 'app/styles'
 import { cn } from 'shared/lib'
-import { GNB } from 'shared/ui'
+import { GuestGNB } from 'shared/ui'
 
-import './globals.css'
+import '../globals.css'
 
 export const metadata: Metadata = {
   title: 'Plus82',
@@ -27,10 +26,8 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         )}
       >
         <NextIntlClientProvider>
-          <AppProviders>
-            <GNB />
-            {children}
-          </AppProviders>
+          <GuestGNB />
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>
