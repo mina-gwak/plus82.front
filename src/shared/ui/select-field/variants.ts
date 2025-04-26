@@ -14,9 +14,9 @@ export const selected = cva(
   {
     variants: {
       size: {
-        small: 'body-small min-h-8 px-3 py-2',
-        medium: 'body-large min-h-9 px-3 py-2',
-        large: 'body-large min-h-12 p-3',
+        small: 'body-small min-h-[30px] px-[11px] py-[6px]',
+        medium: 'body-large min-h-[36px] px-[11px] py-[7px]',
+        large: 'body-large min-h-[46px] px-[11px] py-[10px]',
       },
       error: {
         true: '',
@@ -83,6 +83,11 @@ export const arrowIcon = cva(
       isOpen: {
         true: 'rotate-180 transform',
         false: 'rotate-0',
+      },
+      size: {
+        small: 'h-4 w-4',
+        medium: 'h-5 w-5',
+        large: 'h-6 w-6',
       },
     },
   },

@@ -3,6 +3,8 @@
 import { useState, MouseEvent } from 'react'
 import { toast } from 'react-toastify'
 
+import { downloadFile } from '../lib/download-pdf'
+
 type Props = {
   filePath: string
   fileName: string
@@ -20,18 +22,7 @@ export const DownloadResumeFileButton = ({ filePath, fileName }: Props) => {
       const response = await fetch(`/cdn/${filePath}`)
 
       const blob = await response.blob()
-      const url = window.URL.createObjectURL(blob)
-
-      const link = document.createElement('a')
-
-      link.href = url
-      link.download = fileName
-
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      window.URL.revokeObjectURL(url)
-      // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+      await downloadFile(blob, fileName)
     } catch (error) {
       toast.error('Failed to download resume file')
       setIsLoading(false)

@@ -1,8 +1,15 @@
 import { useMutationState } from '@tanstack/react-query'
 
-export const useEmailValidationState = () => {
+type Props = {
+  isBusiness?: boolean
+}
+
+export const useEmailValidationState = ({ isBusiness = false }: Props = {}) => {
+  const key = isBusiness
+    ? 'academy-request-verification'
+    : 'request-verification'
   const requestVerification = useMutationState({
-    filters: { mutationKey: ['request-verification'] },
+    filters: { mutationKey: [key] },
     select: mutation => ({
       isSuccess: mutation.state.status === 'success',
       mutation: mutation,

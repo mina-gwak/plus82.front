@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 
 import { AppProviders } from 'app/providers'
 import { SpoqaHanSansNeo } from 'app/styles'
+import { GoogleAnalytics } from 'shared/config/google-analytics'
 import { cn } from 'shared/lib'
 import { BusinessGNB } from 'shared/ui'
 
@@ -26,6 +27,9 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
           'flex min-h-dvh w-full flex-col',
         )}
       >
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+        ) : null}
         <NextIntlClientProvider>
           <AppProviders basePath="/business/api/auth">
             <BusinessGNB />

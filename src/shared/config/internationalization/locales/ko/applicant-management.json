@@ -1,0 +1,18 @@
+{
+  "applicant-management-list": {
+    "title": "지원자 관리",
+    "tabs": {
+      "submitted": "접수",
+      "reviewed": "검토",
+      "accepted": "합격",
+      "rejected": "불합격"
+    },
+    "table": {
+      "applicant": "지원자",
+      "job-title": "공고 제목",
+      "memo": "메모",
+      "application-date": "지원 일자",
+      "no-data": "아직 접수된 지원자가 없습니다"
+    }
+  }
+}

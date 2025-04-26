@@ -4,6 +4,7 @@ import { getLocale } from 'next-intl/server'
 import { ReactNode } from 'react'
 
 import { SpoqaHanSansNeo } from 'app/styles'
+import { GoogleAnalytics } from 'shared/config/google-analytics'
 import { cn } from 'shared/lib'
 import { GuestGNB } from 'shared/ui'
 
@@ -25,6 +26,9 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
           'flex min-h-dvh w-full flex-col',
         )}
       >
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+        ) : null}
         <NextIntlClientProvider>
           <GuestGNB />
           {children}

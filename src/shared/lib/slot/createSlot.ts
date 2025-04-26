@@ -11,6 +11,7 @@ import {
 
 type Child =
   | ReactPortal
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   | ReactElement<unknown, string | JSXElementConstructor<any>>
 
 type Slots = {

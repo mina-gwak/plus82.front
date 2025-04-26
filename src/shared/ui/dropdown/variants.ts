@@ -19,7 +19,7 @@ export const dropdownWrapper = cva(
 export const dropdown = cva('', {
   variants: {
     scrollable: {
-      true: 'scrollbar overflow-auto',
+      true: 'scrollbar dark overflow-auto',
       false: 'overflow-visible',
     },
   },

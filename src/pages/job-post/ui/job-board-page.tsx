@@ -2,16 +2,14 @@
 
 import { Suspense } from 'react'
 
+import { JobPostFilters } from 'features/job-post-filter'
 import { EmptyBoundary } from 'shared/api'
 import { Layout } from 'shared/ui'
-
-import { JobPostFilters } from 'features/job-post-filter'
-
-import { useFilter } from '../lib/use-filter'
 
 import { JobListSkeleton } from './job-list-skeleton'
 import { JobPosting } from './job-posting'
 import { NoJobPosting } from './no-job-posting'
+import { useFilter } from '../lib/use-filter'
 
 export const JobBoardPage = () => {
   const { filters, setFilters } = useFilter({

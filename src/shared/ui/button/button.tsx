@@ -13,9 +13,8 @@ import { cn } from 'shared/lib'
 import { button, ButtonVariants } from 'shared/ui/button/variants'
 
 import { Icon } from '../icon'
-import { IconType } from '../icon/assets'
-
 import { ButtonContext, useButtonContext } from './context'
+import { IconType } from '../icon/assets'
 
 type ButtonProps = ButtonVariants & {
   as?: 'button' | 'a'

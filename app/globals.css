@@ -75,19 +75,33 @@ button {
     overflow: auto;
   }
 
-  .scrollbar::-webkit-scrollbar {
+  .scrollbar.gutter-stable {
+    scrollbar-gutter: stable;
+  }
+
+  .scrollbar.light::-webkit-scrollbar {
+    @apply h-2 w-2 bg-transparent;
+  }
+
+  .scrollbar.light::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    @apply rounded-full bg-gray-300;
+  }
+
+  .scrollbar.dark::-webkit-scrollbar {
     @apply h-3 w-3 bg-white;
   }
 
-  .scrollbar::-webkit-scrollbar-thumb {
+  .scrollbar.dark::-webkit-scrollbar-thumb {
     @apply rounded-full border border-solid border-transparent bg-gray-700 bg-clip-content;
   }
 
-  .scrollbar::-webkit-scrollbar:vertical {
+  .scrollbar.dark::-webkit-scrollbar:vertical {
     @apply border-0 border-l border-solid border-l-gray-300;
   }
 
-  .scrollbar::-webkit-scrollbar:horizontal {
+  .scrollbar.dark::-webkit-scrollbar:horizontal {
     @apply border-0 border-t border-solid border-t-gray-300;
   }
 }

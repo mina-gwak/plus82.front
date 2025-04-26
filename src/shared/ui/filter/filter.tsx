@@ -8,7 +8,6 @@ import { cn } from 'shared/lib'
 import { Checkbox } from '../checkbox'
 import { Dropdown, DropdownItemProps } from '../dropdown/dropdown'
 import { Icon } from '../icon'
-
 import { FilterProvider, useFilterContext } from './context'
 import {
   useFilter,

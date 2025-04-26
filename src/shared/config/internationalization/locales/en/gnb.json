@@ -10,7 +10,7 @@
     "sign-in": "Sign In",
     "sign-up": "Sign Up",
     "go-to-business-home": "Academy",
-    "go-to-user-home": "My Page"
+    "go-to-teacher-home": "Teacher"
   },
   "notification": {
     "empty": "You have no notifications yet"

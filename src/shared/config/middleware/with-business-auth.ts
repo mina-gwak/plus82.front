@@ -5,7 +5,10 @@ import { getBusinessSession } from 'auth'
 
 import { MiddlewareFactory } from './type'
 
-const matchersForAuth = ['/business/setting/*path']
+const matchersForAuth = [
+  '/business/setting/*path',
+  '/business/applicant-management/*path',
+]
 const matchersForSignIn = ['/business/sign-up', '/business/sign-in']
 
 export const withBusinessAuth: MiddlewareFactory = next => {

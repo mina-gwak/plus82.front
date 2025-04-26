@@ -1,21 +1,20 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 
 import { cn } from 'shared/lib'
 
 import { Button } from '../button'
-import { Tabs } from '../tabs'
 import Logo from './assets/Logo.svg'
 import { BusinessButton } from './business-button'
+import * as Navigation from './navigation'
 import { NotificationButton } from './notification'
 import * as css from './variants'
 
 export const BusinessGNB = () => {
   const router = useRouter()
-  const pathname = usePathname()
   const session = useSession()
 
   const t = useTranslations()
@@ -24,10 +23,6 @@ export const BusinessGNB = () => {
 
   const handleLogoClick = () => {
     router.push('/business')
-  }
-
-  const handleTabChange = async (value: string) => {
-    router.push(value)
   }
 
   const notAuthenticated = session.status !== 'authenticated'
@@ -39,20 +34,20 @@ export const BusinessGNB = () => {
           <div className={cn(css.leftSection())}>
             <Logo onClick={handleLogoClick} />
             {isDev && (
-              <Tabs value={pathname ?? '/'} onChange={handleTabChange}>
-                <Tabs.Trigger value="/business/find-teacher">
+              <Navigation.Root>
+                <Navigation.Item value="/business/find-teacher">
                   {t('tab.find-teacher')}
-                </Tabs.Trigger>
-                <Tabs.Trigger value="/business/applicant-management">
+                </Navigation.Item>
+                <Navigation.Item value="/business/applicant-management">
                   {t('tab.applicant-management')}
-                </Tabs.Trigger>
-                <Tabs.Trigger value="/business/academy-detail">
+                </Navigation.Item>
+                <Navigation.Item value="/business/academy-detail">
                   {t('tab.academy-detail')}
-                </Tabs.Trigger>
-                <Tabs.Trigger value="/business/job-posting">
+                </Navigation.Item>
+                <Navigation.Item value="/business/job-posting">
                   {t('tab.job-posting')}
-                </Tabs.Trigger>
-              </Tabs>
+                </Navigation.Item>
+              </Navigation.Root>
             )}
           </div>
           <div className={cn(css.rightSection())}>
@@ -65,7 +60,7 @@ export const BusinessGNB = () => {
                     variant="text"
                     size="small"
                   >
-                    Sign In
+                    {t('button.sign-in')}
                   </Button>
                   <div className={cn(css.divider())} />
                   <Button
@@ -74,7 +69,7 @@ export const BusinessGNB = () => {
                     variant="text"
                     size="small"
                   >
-                    Sign Up
+                    {t('button.sign-up')}
                   </Button>
                 </div>
               ) : (
@@ -84,7 +79,7 @@ export const BusinessGNB = () => {
                 </div>
               ))}
             <Button as="a" href="/" variant="lined" size="small">
-              Academy
+              {t('button.go-to-teacher-home')}
             </Button>
           </div>
         </div>

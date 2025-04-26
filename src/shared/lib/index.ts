@@ -9,6 +9,7 @@ export { useClickAway } from './click-away'
 export { useDebounce } from './debounce'
 export { useDropdown } from './dropdown'
 export { useEscape } from './escape'
+export { useFixWidth } from './fix-width'
 export { useFocus } from './focus'
 export {
   toDisplayValue,

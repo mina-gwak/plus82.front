@@ -4,10 +4,9 @@ import { ReactDatePickerCustomHeaderProps } from 'react-datepicker'
 
 import { colors } from 'shared/config'
 
+import { months } from './constants'
 import { Icon } from '../../icon'
 import { Select } from '../../select-field'
-
-import { months } from './constants'
 
 type Props = {
   years: number[]

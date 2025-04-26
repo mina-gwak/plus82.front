@@ -1,0 +1,18 @@
+{
+  "applicant-management-list": {
+    "title": "Applicant Management",
+    "tabs": {
+      "submitted": "Submitted",
+      "reviewed": "Reviewed",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    },
+    "table": {
+      "applicant": "Applicant",
+      "job-title": "Job Title",
+      "memo": "Memo",
+      "application-date": "Application Date",
+      "no-data": "No applications have been received yet"
+    }
+  }
+}

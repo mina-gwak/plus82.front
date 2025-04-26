@@ -1,3 +1,5 @@
+import { lowerCase } from 'lodash-es'
+import { useTranslations } from 'next-intl'
 import { ChangeEvent, KeyboardEvent } from 'react'
 
 import { Location, StudentType } from 'entities/job-post'
@@ -19,6 +21,8 @@ export const JobPostFilters = ({
   useSearchField = false,
   onChange,
 }: Props) => {
+  const t = useTranslations()
+
   const {
     filters,
     isFilterExist,
@@ -89,7 +93,7 @@ export const JobPostFilters = ({
           >
             {Object.keys(Location).map(key => (
               <Filter.Item key={key} value={key}>
-                {Location[key as keyof typeof Location]}
+                {t(`field.location.option.${lowerCase(key)}`)}
               </Filter.Item>
             ))}
           </Filter>
@@ -116,7 +120,7 @@ export const JobPostFilters = ({
             {filters.locations.map(location => (
               <Chip key={location} selected>
                 <Chip.Label>
-                  {Location[location as keyof typeof Location]}
+                  {t(`field.location.option.${lowerCase(location as string)}`)}
                 </Chip.Label>
                 <Chip.RemoveButton
                   onClick={() => handleLocationFilterRemove(location)}

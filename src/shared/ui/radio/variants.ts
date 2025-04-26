@@ -45,7 +45,7 @@ export const radio = cva(
   },
 )
 
-export const label = cva('title-small')
+export const label = cva('body-large font-medium text-gray-900')
 
 export type RadioVariants = VariantProps<typeof radioWrapper> &
   VariantProps<typeof radio>

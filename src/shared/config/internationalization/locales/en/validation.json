@@ -2,7 +2,7 @@
   "validation": {
     "email": {
       "required": "Please enter your email",
-      "maxLength": "Input exceeds maximum allowed length of 254 characters",
+      "maxLength": "Please enter less than 254 characters",
       "pattern": "Invalid email format. Please use the format 'example@domain.com'"
     },
     "password": {
@@ -15,6 +15,49 @@
     "confirm-password": {
       "required": "Please enter your password",
       "match": "The password you entered do not match"
+    },
+    "code": {
+      "required": "Please enter your email verification code"
+    },
+    "firstName": {
+      "required": "Please enter your first name",
+      "maxLength": "Please enter less than 254 characters"
+    },
+    "lastName": {
+      "required": "Please enter your last name",
+      "maxLength": "Please enter less than 254 characters"
+    },
+    "fullName": {
+      "required": "Please enter your name",
+      "maxLength": "Please enter less than 254 characters"
+    },
+    "country": {
+      "required": "Please select your nationality"
+    },
+    "birthDate": {
+      "required": "Please enter your date of birth"
+    },
+    "representativeName": {
+      "required": "Please enter the representative name",
+      "maxLength": "Please enter less than 10 characters",
+      "pattern": "Please enter Korean characters only"
+    },
+    "academyName": {
+      "required": "Please enter the academy name in Korean",
+      "maxLength": "Please enter less than 30 characters"
+    },
+    "academyNameEn": {
+      "required": "Please enter the academy name in English",
+      "maxLength": "Please enter less than 30 characters"
+    },
+    "detailedAddress": {
+      "required": "Please enter the detailed address",
+      "maxLength": "Please enter less than 100 characters"
+    },
+    "businessRegistrationNumber": {
+      "required": "Please enter the business registration number",
+      "length": "Please enter 10 digits",
+      "pattern": "Please enter numbers only"
     }
   }
 }

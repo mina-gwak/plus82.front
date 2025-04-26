@@ -6,7 +6,6 @@ import { useMemo } from 'react'
 import { colors } from 'shared/config'
 
 import { Icon, type IconProps } from '../icon'
-
 import { ChipContext, useChipContext } from './context'
 import * as css from './variants'
 import type { ChipVariants } from './variants'

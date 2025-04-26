@@ -16,6 +16,8 @@ type Pageable = {
 }
 
 export type Pagination<Content> = {
+  totalPages: number
+  totalElements: number
   size: number
   content: Content[]
   number: number

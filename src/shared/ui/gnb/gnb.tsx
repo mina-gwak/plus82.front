@@ -1,31 +1,26 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 
 import { cn } from 'shared/lib'
 
 import { Button } from '../button'
-import { Tabs } from '../tabs'
 import Logo from './assets/Logo.svg'
+import * as Navigation from './navigation'
 import { NotificationButton } from './notification'
 import { UserButton } from './user-button'
 import * as css from './variants'
 
 export const GNB = () => {
   const router = useRouter()
-  const pathname = usePathname()
   const session = useSession()
 
   const t = useTranslations()
 
   const handleLogoClick = () => {
     router.push('/')
-  }
-
-  const handleTabChange = async (value: string) => {
-    router.push(value)
   }
 
   const notAuthenticated = session.status !== 'authenticated'
@@ -36,11 +31,11 @@ export const GNB = () => {
         <div className={cn(css.innerWrapper())}>
           <div className={cn(css.leftSection())}>
             <Logo onClick={handleLogoClick} />
-            <Tabs value={pathname ?? '/'} onChange={handleTabChange}>
-              <Tabs.Trigger value="/job-board">
+            <Navigation.Root>
+              <Navigation.Item value="/job-board">
                 {t('tab.job-board')}
-              </Tabs.Trigger>
-            </Tabs>
+              </Navigation.Item>
+            </Navigation.Root>
           </div>
           <div className={cn(css.rightSection())}>
             {notAuthenticated ? (

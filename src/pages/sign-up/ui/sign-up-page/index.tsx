@@ -5,12 +5,15 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 import { signUp } from 'entities/auth'
+import {
+  TermsAndConditionsOfUse,
+  useEmailValidationState,
+} from 'features/sign-up'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { useCheckbox } from 'shared/lib'
-import { Button, Checkbox, Layout, Link, linkVariants } from 'shared/ui'
+import { Button, Layout, Link } from 'shared/ui'
 
-import { useEmailValidationState } from '../../lib/use-email-validation-state'
 import {
   FormValues,
   defaultValues,
@@ -82,26 +85,7 @@ export const SignUpPage = () => {
       <Form {...form}>
         <Account />
         <PersonalInformation />
-        <Checkbox
-          {...getCheckboxProps('checked')}
-          className={css.checkbox()}
-          label={className => (
-            <p className={className}>
-              I have read and agree to the Plus 82&apos;s
-              <br />
-              <a
-                href="/terms-and-conditions-of-use"
-                target="_blank"
-                onClick={event => {
-                  event.stopPropagation()
-                }}
-                className={linkVariants({ variant: 'secondary' })}
-              >
-                Terms and Conditions of Use. (Essential)
-              </a>
-            </p>
-          )}
-        />
+        <TermsAndConditionsOfUse locale="en" {...getCheckboxProps('checked')} />
         <Button
           size="large"
           fullWidth

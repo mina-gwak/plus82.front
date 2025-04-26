@@ -1,1 +1,5 @@
-export { Checkbox, type CheckboxValue } from './checkbox'
+export {
+  Checkbox,
+  type CheckboxValue,
+  type Props as CheckboxProps,
+} from './checkbox'

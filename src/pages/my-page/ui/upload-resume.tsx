@@ -1,10 +1,9 @@
 import { format } from 'date-fns'
 import Link from 'next/link'
 
+import { getResumes } from 'entities/resume/api/get-resumes'
 import { colors } from 'shared/config'
 import { Icon } from 'shared/ui'
-
-import { getResumes } from 'entities/resume/api/get-resumes'
 
 const ResumeBoxLink = async () => {
   const resumes = await getResumes()

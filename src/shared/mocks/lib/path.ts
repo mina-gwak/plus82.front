@@ -2,6 +2,7 @@ import { isString } from 'lodash-es'
 
 const BASE_URL = `http://localhost:3000/api/v1`
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type URLFunction = (...args: any[]) => string
 
 const getFunctionParamNames = (fn: URLFunction) => {

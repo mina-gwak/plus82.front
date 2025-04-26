@@ -1,13 +1,7 @@
 import type { NextAuthConfig } from 'next-auth'
-import Credentials from 'next-auth/providers/credentials'
 
-import {
-  signIn as _signIn,
-  refreshToken,
-  type SignInRequest,
-  decodeToken,
-} from 'entities/auth'
-import { HttpError, isServerError } from 'shared/api'
+import { refreshToken } from 'entities/auth'
+import { isServerError } from 'shared/api'
 
 const ACCESS_TOKEN_REFRESH_THRESHOLD = 600000 // 10분을 밀리초로 표현
 export const REFRESH_TOKEN_ERROR = 'RefreshTokenError'
@@ -38,43 +32,7 @@ export const authConfig = (name: string, basePath: string) =>
         name: `${name}.authjs.challenge`,
       },
     },
-    providers: [
-      Credentials({
-        name: 'Business Credentials',
-        authorize: async credentials => {
-          const userInfo = credentials as unknown as SignInRequest
-
-          const response = await _signIn(userInfo)
-
-          const decodedToken = decodeToken(response.accessToken)
-
-          if (decodedToken.valid) {
-            if (
-              name === 'business' &&
-              decodedToken.decoded.role !== 'ACADEMY'
-            ) {
-              throw new HttpError({
-                code: 'NOT_ACADEMY_ROLE',
-                message: '학원 권한이 없습니다.',
-                status: 403,
-              })
-            }
-
-            if (name === 'teacher' && decodedToken.decoded.role !== 'TEACHER') {
-              throw new HttpError({
-                code: 'NOT_TEACHER_ROLE',
-                message: '선생님 권한이 없습니다.',
-                status: 403,
-              })
-            }
-
-            return response
-          }
-
-          return response
-        },
-      }),
-    ],
+    providers: [],
     session: {
       strategy: 'jwt', // JSON Web Token 사용
       maxAge: 60 * 60 * 24 * 7, // 세션 만료 시간(sec) : 7일

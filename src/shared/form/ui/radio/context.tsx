@@ -5,6 +5,7 @@ type RadioState<T extends FieldValues, U extends Path<T>> = {
   controller: UseControllerReturn<T, U>
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RadioContext = createContext<RadioState<any, any> | null>(null)
 
 export const useRadioContext = <T extends FieldValues>() => {

@@ -6,7 +6,10 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useForm, useWatch } from 'react-hook-form'
 
-import { requestPasswordReset } from 'entities/auth'
+import {
+  academyRequestPasswordReset,
+  requestPasswordReset,
+} from 'entities/auth'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { isEmptyString } from 'shared/lib'
@@ -52,7 +55,9 @@ export const FindPasswordPage = () => {
   }
 
   const submitForm = async (data: FindFormValues) => {
-    const response = await requestPasswordReset(data)
+    const response = isBusiness
+      ? await academyRequestPasswordReset(data)
+      : await requestPasswordReset(data)
 
     if (isServerError(response)) {
       handleServerError(response)

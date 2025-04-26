@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
-import { capitalize } from 'lodash-es'
+import { lowerCase } from 'lodash-es'
+import { useTranslations } from 'next-intl'
 
 import { colors } from 'shared/config'
 import { cn } from 'shared/lib'
@@ -15,6 +16,8 @@ type Props = {
 }
 
 export const PostingTitle = ({ jobPost, size }: Props) => {
+  const t = useTranslations()
+
   const studentType = convertStudentType({
     forKindergarten: jobPost.forKindergarten,
     forElementary: jobPost.forElementary,
@@ -32,7 +35,9 @@ export const PostingTitle = ({ jobPost, size }: Props) => {
       <ul className="flex flex-col gap-1">
         <li className={cn(css.description({ size }))}>
           <Icon name="LocationFilled" color={colors.gray[500]} size={size} />
-          <span>{capitalize(jobPost.locationType ?? '-')}</span>
+          <span>
+            {t(`field.location.option.${lowerCase(jobPost.locationType)}`)}
+          </span>
         </li>
         <li className={cn(css.description({ size }))}>
           <Icon name="User" color={colors.gray[500]} size={size} />

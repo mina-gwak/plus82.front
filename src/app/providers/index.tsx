@@ -1,6 +1,7 @@
 import { SessionProvider } from 'next-auth/react'
 import { ReactNode } from 'react'
 
+import { GoogleMapProvider } from './google-map-provider'
 import { MSWProvider } from './msw-provider'
 import { QueryProvider } from './query-provider'
 import { ToastProvider } from './toast-provider'
@@ -15,7 +16,9 @@ export const AppProviders = ({ basePath, children }: Props) => {
     <SessionProvider basePath={basePath}>
       <MSWProvider>
         <ToastProvider>
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <GoogleMapProvider>{children}</GoogleMapProvider>
+          </QueryProvider>
         </ToastProvider>
       </MSWProvider>
     </SessionProvider>
