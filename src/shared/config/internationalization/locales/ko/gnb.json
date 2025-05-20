@@ -1,0 +1,22 @@
+{
+  "tab": {
+    "job-board": "공고 보기",
+    "find-teacher": "원어민 찾기",
+    "applicant-management": "지원자 관리",
+    "academy-detail": "학원 상세 정보",
+    "job-posting": "채용 공고"
+  },
+  "button": {
+    "sign-in": "로그인",
+    "sign-up": "회원가입",
+    "go-to-business-home": "학원 홈",
+    "go-to-teacher-home": "원어민 홈"
+  },
+  "notification": {
+    "empty": "알림이 없습니다."
+  },
+  "dropdown": {
+    "my-page": "마이페이지",
+    "sign-out": "로그아웃"
+  }
+}

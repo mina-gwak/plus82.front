@@ -1,0 +1,26 @@
+{
+  "job-posting-list": {
+    "title": "채용 공고",
+    "tabs": {
+      "in-progress": "채용 중",
+      "saved": "임시 저장",
+      "closed": "채용 마감"
+    },
+    "table": {
+      "job-title": "공고명",
+      "application": "지원 현황",
+      "salary": "연봉",
+      "posted-date": "등록일",
+      "expiration-date": "마감일",
+      "no-data": "아직 등록한 공고가 없어요",
+      "no-expiration-date": "상시 채용",
+      "draft": "등록 안됨"
+    },
+    "button": {
+      "register-job-posting": "공고 등록하기"
+    },
+    "success": {
+      "job-posting-copy": "공고를 복사했어요"
+    }
+  }
+}

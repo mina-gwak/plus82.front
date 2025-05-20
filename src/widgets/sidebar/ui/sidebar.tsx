@@ -5,10 +5,9 @@ import { useCallback } from 'react'
 
 import { Sidebar } from 'shared/ui'
 
+import { CollapsibleMenuItem, SingleMenuItem } from './sidebar-item'
 import { hasSubItems } from '../lib/type-guard'
 import { items } from '../model/constant'
-
-import { CollapsibleMenuItem, SingleMenuItem } from './sidebar-item'
 
 export const SettingSidebar = () => {
   const pathname = usePathname()

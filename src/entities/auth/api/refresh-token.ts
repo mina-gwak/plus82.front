@@ -28,10 +28,9 @@ const handleError = (error: Error): ServerError => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast(
-    'An error occurred while refreshing the token',
+  return errorHandler.toast('An error occurred while refreshing the token', {
     error,
-  )
+  })
 }
 
 export const refreshToken = async (refreshToken: string) => {

@@ -52,12 +52,14 @@ type FormCheckboxProps = {
   label?: string
   value?: CheckboxValue
   indeterminate?: boolean
+  className?: string
 }
 
 const FormCheckboxItem = ({
   label,
   value,
   indeterminate = false,
+  className,
 }: FormCheckboxProps) => {
   const { clearErrors } = useFormContext()
   const {
@@ -101,6 +103,7 @@ const FormCheckboxItem = ({
       error={!isEmpty(error)}
       onChange={handleCheckboxChange}
       value={field.value}
+      className={className}
     />
   )
 }

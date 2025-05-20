@@ -10,7 +10,7 @@ export const UserProfile = async () => {
   return (
     <div className="mb-10 flex gap-6 border-b border-gray-300 pb-4">
       <UserImage
-        src={user.profileImagePath}
+        src={user?.profileImagePath}
         alt={`${user.firstName} ${user.lastName} profile image`}
       />
       <div>

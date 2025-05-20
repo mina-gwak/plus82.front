@@ -16,6 +16,7 @@ export type GetJobPostsRequest = PaginationParams<{
   sortBy?: 'id' | 'dueDate'
   fromDueDate?: string
   toDueDate?: string
+  closed?: boolean
 }>
 
 type GetJobPostsResponse = Pagination<JobPost>

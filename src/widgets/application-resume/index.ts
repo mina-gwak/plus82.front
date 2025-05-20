@@ -1,0 +1,6 @@
+export { CoverLetter } from './ui/cover-letter'
+export { FileResume } from './ui/file-resume'
+export { FormResume } from './ui/form-resume'
+export { Header } from './ui/header'
+export { Introduction } from './ui/introduction'
+export { PersonalInformation } from './ui/personal-information'

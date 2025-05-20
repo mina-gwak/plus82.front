@@ -23,16 +23,17 @@ import {
 import * as rules from '../model/rules'
 
 type Props = {
+  userProfileImage?: string | null
   resume?: Resume
   submit: (data: ResumeDTO) => Promise<ServerError | undefined>
 }
 
-export const ResumeForm = ({ resume, submit }: Props) => {
+export const ResumeForm = ({ userProfileImage, resume, submit }: Props) => {
   const router = useRouter()
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [imagePreview, setImagePreview] = useState<string | null>(
-    resume?.profileImagePath ?? null,
+    resume?.profileImagePath ?? userProfileImage ?? null,
   )
 
   const form = useForm<ResumeFormValues>({

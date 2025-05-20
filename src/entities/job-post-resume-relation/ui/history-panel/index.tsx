@@ -1,12 +1,11 @@
 import Link from 'next/link'
 
-import { cn, padNumber } from 'shared/lib'
-import { Panel, shortDivide } from 'shared/ui'
-
 import {
   ApplicationStatus,
   StatusSummary,
 } from 'entities/job-post-resume-relation/model/status'
+import { cn, padNumber } from 'shared/lib'
+import { Panel, shortDivide } from 'shared/ui'
 
 const getPanels = (summary: StatusSummary) => [
   {

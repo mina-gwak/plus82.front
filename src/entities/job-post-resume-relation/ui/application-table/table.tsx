@@ -4,9 +4,8 @@ import { Children, PropsWithChildren } from 'react'
 
 import { formatDate } from 'shared/lib'
 
-import { JobPostRelation } from '../../model/application'
-
 import { ApplicationTableSkeleton } from './skeleton'
+import { JobPostRelation } from '../../model/application'
 
 const TableRoot = ({ children }: PropsWithChildren) => (
   <div className="flex w-full flex-col gap-2">{children}</div>

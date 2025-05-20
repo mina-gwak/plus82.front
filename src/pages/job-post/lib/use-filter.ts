@@ -1,9 +1,8 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { convertToSearchParams } from 'shared/lib'
-
 import { JobPostFilter } from 'features/job-post-filter'
+import { convertToSearchParams } from 'shared/lib'
 
 type Props = {
   syncWithURL?: boolean

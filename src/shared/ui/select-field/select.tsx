@@ -12,7 +12,6 @@ import {
   DropdownRootProps,
 } from '../dropdown/dropdown'
 import { Icon } from '../icon'
-
 import SelectProvider, { useSelectContext } from './context'
 import { SelectVariants } from './variants'
 import * as css from './variants'
@@ -166,7 +165,7 @@ const SelectRoot = ({
           <Icon
             name="ChevronDown"
             color={colors.gray['700']}
-            className={cn(css.arrowIcon({ isOpen }))}
+            className={cn(css.arrowIcon({ isOpen, size }))}
           />
         )}
       </div>

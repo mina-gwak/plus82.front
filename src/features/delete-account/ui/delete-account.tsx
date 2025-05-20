@@ -4,10 +4,9 @@ import { useQueryClient } from '@tanstack/react-query'
 import { isNull } from 'lodash-es'
 import { useActionState, useEffect } from 'react'
 
+import { deleteUserMe } from 'entities/user'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Button, Modal } from 'shared/ui'
-
-import { deleteUserMe } from 'entities/user'
 
 type Props = {
   onSucceed: () => void

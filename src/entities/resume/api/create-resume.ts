@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   ContentType,
@@ -21,14 +21,13 @@ const handleError = (error: Error) => {
     return errorHandler.toast('You can only have one representative resume')
   }
 
-  return errorHandler.toast(
-    'An error occurred while uploading resume file',
+  return errorHandler.toast('An error occurred while uploading resume file', {
     error,
-  )
+  })
 }
 
 export const createResume = async (data: CreateResumeRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.post<null, CreateResumeRequest>({

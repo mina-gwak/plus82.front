@@ -2,10 +2,14 @@
 
 import crypto from 'crypto'
 
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useForm, useWatch } from 'react-hook-form'
 
-import { requestPasswordReset } from 'entities/auth'
+import {
+  academyRequestPasswordReset,
+  requestPasswordReset,
+} from 'entities/auth'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { isEmptyString } from 'shared/lib'
@@ -17,6 +21,11 @@ import * as rules from '../../model/rules'
 
 export const FindPasswordPage = () => {
   const router = useRouter()
+  const pathname = usePathname()
+
+  const isBusiness = pathname?.includes('business')
+
+  const t = useTranslations('find-password')
 
   const form = useForm<FindFormValues>({
     defaultValues: findFormDefaultValues,
@@ -40,11 +49,15 @@ export const FindPasswordPage = () => {
       .digest('hex')
       .slice(0, 32)
 
-    router.push(`/password/find/sent?t=${timestamp}&code=${hash}`)
+    router.push(
+      `${isBusiness ? '/business' : ''}/password/find/sent?t=${timestamp}&code=${hash}`,
+    )
   }
 
   const submitForm = async (data: FindFormValues) => {
-    const response = await requestPasswordReset(data)
+    const response = isBusiness
+      ? await academyRequestPasswordReset(data)
+      : await requestPasswordReset(data)
 
     if (isServerError(response)) {
       handleServerError(response)
@@ -55,10 +68,15 @@ export const FindPasswordPage = () => {
 
   return (
     <Layout className={css.layout()}>
-      <h1 className={css.heading()}>Reset password</h1>
+      <div className="flex flex-col items-center justify-center gap-2">
+        <h1 className={css.heading()}>{t('title')}</h1>
+        <p className="title-small text-center font-medium text-gray-900">
+          {t('description')}
+        </p>
+      </div>
       <Form {...form} className={css.form()}>
         <div className={css.field()}>
-          <Label>Email</Label>
+          <Label>{t('label.email')}</Label>
           <Form.Control name="email" rules={rules.email}>
             <Form.TextField />
             <Form.ErrorMessage />
@@ -70,7 +88,7 @@ export const FindPasswordPage = () => {
           onClick={form.handleSubmit(submitForm)}
           disabled={!canSubmit}
         >
-          Send password reset link
+          {t('button.send-reset-link')}
         </Button>
       </Form>
     </Layout>

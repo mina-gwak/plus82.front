@@ -17,16 +17,18 @@ const handleError = (error: Error) => {
   if (!isHttpError) throw error
 
   if (error.code === EmailVerificationCodeExceptionCode.TOO_MANY_REQUEST) {
-    return errorHandler.toast(
-      'You have requested too many times. Please try again in 10 minutes.',
-    )
+    return errorHandler.toast('exception.email.too-many-request', {
+      translate: true,
+    })
   } else if (error.code === ResourceNotFoundExceptionCode.USER_NOT_FOUND) {
-    return errorHandler.toast("We couldn't find an account with that email")
+    return errorHandler.toast('exception.resource-not-found.user', {
+      translate: true,
+    })
   } else {
-    return errorHandler.toast(
-      'An error occurred while requesting a password reset',
+    return errorHandler.toast('find-password.error.request-password-reset', {
+      translate: true,
       error,
-    )
+    })
   }
 }
 

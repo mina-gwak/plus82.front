@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   errorHandler,
@@ -19,16 +19,15 @@ const handleError = (error: Error) => {
   if (error.code === ResourceNotFoundExceptionCode.USER_NOT_FOUND) {
     return errorHandler.toast('This account has been deactivated')
   } else {
-    return errorHandler.toast(
-      'An error occurred while deleting the account',
+    return errorHandler.toast('An error occurred while deleting the account', {
       error,
-    )
+    })
   }
 }
 
 export const deleteUserMe = async () => {
   try {
-    const { accessToken } = await getSession()
+    const { accessToken } = await getTeacherSession()
 
     await apiClient.delete({
       endpoint: '/users/me',

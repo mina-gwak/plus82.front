@@ -20,3 +20,23 @@ export const formatDate = (dateString?: string | null) => {
     .replace(/\s/g, '')
     .replace(/\.$/g, '')
 }
+
+export const formatNumber = (number?: number | null) => {
+  if (!number) return null
+
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+export const formatCurrency = ({
+  number,
+  code,
+}: {
+  number?: number | null
+  code: string
+}) => {
+  if (!number) return null
+
+  const formattedNumber = formatNumber(number)
+
+  return `${formattedNumber} ${code}`
+}

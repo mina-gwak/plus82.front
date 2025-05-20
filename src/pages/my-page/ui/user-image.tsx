@@ -11,7 +11,7 @@ import { isNilOrEmptyString } from 'shared/lib'
 import { Button, Icon, Image } from 'shared/ui'
 
 type Props = {
-  src: string
+  src: string | null
   alt: string
 }
 
@@ -50,7 +50,7 @@ export const UserImage = ({ src, alt }: Props) => {
     <div className="flex flex-col items-center gap-3">
       <div>
         <Image
-          src={src}
+          src={src ?? ''}
           alt={alt}
           className="h-[110px] w-[110px] rounded-full"
           fallback={

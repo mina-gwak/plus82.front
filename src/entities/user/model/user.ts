@@ -10,5 +10,5 @@ export type User = {
   countryCode: string
   countryCallingCode: string
   flag: string
-  profileImagePath: string
+  profileImagePath: string | null
 }

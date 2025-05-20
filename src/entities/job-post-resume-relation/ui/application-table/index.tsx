@@ -1,6 +1,5 @@
-import { JobPostRelation } from '../../model/application'
-
 import { Table } from './table'
+import { JobPostRelation } from '../../model/application'
 
 type ApplicationTableProps = {
   applications?: JobPostRelation[]

@@ -1,0 +1,75 @@
+{
+  "field": {
+    "email": {
+      "label": "Email",
+      "placeholder": "example@email.com"
+    },
+    "email-verification-code": {
+      "placeholder": "Enter the verification code"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter the password"
+    },
+    "confirm-password": {
+      "label": "Confirm Password",
+      "placeholder": "Check the password"
+    },
+    "full-name": {
+      "label": "Name",
+      "placeholder": "Enter your name"
+    },
+    "gender": {
+      "label": "Gender",
+      "option": {
+        "male": "Male",
+        "female": "Female"
+      }
+    },
+    "birth-date": {
+      "label": "Birth",
+      "placeholder": "Select your date of birth"
+    },
+    "representative-name": {
+      "label": "Representative Name",
+      "placeholder": "Enter the representative's name"
+    },
+    "academy-name": {
+      "label": "Academy Name (Korean)",
+      "placeholder": "Enter the academy name (Korean)"
+    },
+    "academy-name-en": {
+      "label": "Academy Name (English)",
+      "placeholder": "Enter the academy name (English)"
+    },
+    "address": {
+      "label": "Academy Address",
+      "placeholder": "Enter the remaining address"
+    },
+    "business-registration-number": {
+      "label": "Business Registration Number",
+      "placeholder": "Enter 10 digits only (no dashes)"
+    },
+    "location": {
+      "option": {
+        "seoul": "Seoul",
+        "busan": "Busan",
+        "daegu": "Daegu",
+        "incheon": "Incheon",
+        "gwangju": "Gwangju",
+        "daejeon": "Daejeon",
+        "ulsan": "Ulsan",
+        "sejong": "Sejong",
+        "gyeonggi": "Gyeonggi",
+        "gangwon": "Gangwon",
+        "chungbuk": "Chungcheongbuk-do",
+        "chungnam": "Chungcheongnam-do",
+        "jeonbuk": "Jeollabuk-do",
+        "jeonnam": "Jeollanam-do",
+        "gyeongbuk": "Gyeongsangbuk-do",
+        "gyeongnam": "Gyeongsangnam-do",
+        "jeju": "Jeju"
+      }
+    }
+  }
+}

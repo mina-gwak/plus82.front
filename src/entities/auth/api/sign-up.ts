@@ -16,7 +16,7 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast('An error occurred while signing up', error)
+  return errorHandler.toast('An error occurred while signing up', { error })
 }
 
 export const signUp = async (data: SignUpRequest) => {

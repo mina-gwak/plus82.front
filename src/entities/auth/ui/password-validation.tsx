@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { isEmptyString } from 'shared/lib'
 import { HelperText } from 'shared/ui'
 
@@ -15,6 +17,7 @@ type Props = {
 }
 
 export const PasswordValidation = ({ password }: Props) => {
+  const t = useTranslations('validation')
   const checkPasswordCondition = (condition: (value: string) => boolean) => {
     if (isEmptyString(password)) return 'default'
     if (condition(password)) return 'success'
@@ -25,19 +28,19 @@ export const PasswordValidation = ({ password }: Props) => {
   return (
     <div className="flex flex-col gap-2">
       <HelperText hasIcon variant={checkPasswordCondition(isCorrectLength)}>
-        9 ~ 28 characters long
+        {t('password.length')}
       </HelperText>
       <HelperText
         hasIcon
         variant={checkPasswordCondition(hasLowercaseAndUppercaseLetter)}
       >
-        Upper & lower case letters
+        {t('password.has-lowercase-and-uppercase-letter')}
       </HelperText>
       <HelperText hasIcon variant={checkPasswordCondition(hasNumber)}>
-        At least one number
+        {t('password.has-number')}
       </HelperText>
       <HelperText hasIcon variant={checkPasswordCondition(hasSpecialChar)}>
-        At least special character
+        {t('password.has-special-char')}
       </HelperText>
     </div>
   )

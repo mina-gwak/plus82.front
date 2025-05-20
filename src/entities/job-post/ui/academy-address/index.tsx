@@ -1,6 +1,6 @@
 'use client'
 
-import { AdvancedMarker, APIProvider, Map } from '@vis.gl/react-google-maps'
+import { AdvancedMarker, Map } from '@vis.gl/react-google-maps'
 import React from 'react'
 
 const Pin = () => {
@@ -29,22 +29,18 @@ type Props = {
 }
 
 const AcademyAddress = ({ address, lat, lng }: Props) => {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
-
   return (
     <div className="overflow-hidden rounded-[10px] border border-gray-300">
-      <APIProvider apiKey={apiKey}>
-        <Map
-          mapId="academy-address-map"
-          defaultZoom={15}
-          defaultCenter={{ lat, lng }}
-          className="h-[232px] w-full"
-        >
-          <AdvancedMarker key={address} position={{ lat, lng }}>
-            <Pin />
-          </AdvancedMarker>
-        </Map>
-      </APIProvider>
+      <Map
+        mapId="academy-address-map"
+        defaultZoom={15}
+        defaultCenter={{ lat, lng }}
+        className="h-[232px] w-full"
+      >
+        <AdvancedMarker key={address} position={{ lat, lng }}>
+          <Pin />
+        </AdvancedMarker>
+      </Map>
       <div className="title-small h-12 w-full bg-white p-3 font-normal text-gray-900">
         {address ?? '-'}
       </div>

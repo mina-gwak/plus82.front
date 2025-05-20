@@ -2,7 +2,7 @@
 
 import { revalidateTag } from 'next/cache'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   errorHandler,
@@ -26,12 +26,14 @@ const handleError = (error: Error) => {
   ) {
     return errorHandler.toast('File resume cannot be modified')
   } else {
-    return errorHandler.toast('An error occurred while copying resume', error)
+    return errorHandler.toast('An error occurred while copying resume', {
+      error,
+    })
   }
 }
 
 export const copyResume = async (resumeId: number) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.post<null, null>({

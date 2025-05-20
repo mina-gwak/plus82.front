@@ -6,7 +6,6 @@ import { colors } from 'shared/config'
 import { cn, ListValue } from 'shared/lib'
 
 import { Icon } from '../icon'
-
 import * as css from './variants'
 
 export type CheckboxValue = ListValue

@@ -2,17 +2,20 @@
 
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import { signOut } from 'next-auth/react'
 
-import { deleteCookie } from 'shared/server-lib'
+import { teacherSignOut } from 'entities/auth'
 import { Button, Modal } from 'shared/ui'
 
 export const DeleteUserSuccess = () => {
   const queryClient = useQueryClient()
   const router = useRouter()
 
-  const handleCloseButtonClick = () => {
+  const handleCloseButtonClick = async () => {
     queryClient.removeQueries()
-    deleteCookie('accessToken')
+
+    await signOut({ redirect: false })
+    await teacherSignOut()
 
     router.push('/')
   }

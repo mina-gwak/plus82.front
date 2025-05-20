@@ -1,6 +1,6 @@
 'use server'
 
-import { getSession } from 'entities/auth'
+import { getTeacherSession } from 'entities/auth'
 import {
   apiClient,
   ContentType,
@@ -27,7 +27,9 @@ const handleError = (error: Error) => {
   ) {
     return errorHandler.toast('File resume cannot be modified')
   } else {
-    return errorHandler.toast('An error occurred while updating resume', error)
+    return errorHandler.toast('An error occurred while updating resume', {
+      error,
+    })
   }
 }
 
@@ -35,7 +37,7 @@ export const updateResume = async ({
   resumeId,
   ...data
 }: UpdateResumeRequest) => {
-  const { accessToken } = await getSession()
+  const { accessToken } = await getTeacherSession()
 
   try {
     await apiClient.put<null, ResumeDTO>({

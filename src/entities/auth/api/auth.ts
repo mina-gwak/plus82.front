@@ -1,6 +1,11 @@
 'use server'
 
-import { signIn, signOut } from 'auth'
+import {
+  teacherSignIn as _teacherSignIn,
+  teacherSignOut as _teacherSignOut,
+  businessSignIn as _businessSignIn,
+  businessSignOut as _businessSignOut,
+} from 'auth'
 import {
   AuthExceptionCode,
   errorHandler,
@@ -16,29 +21,45 @@ export type SignInRequest = {
 const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) {
-    return errorHandler.toast('An error occurred while signing in', error)
+    return errorHandler.toast('An error occurred while signing in', { error })
   }
 
   if (error.code === AuthExceptionCode.EMAIL_NOT_CORRECT) {
-    return errorHandler.toast("We couldn't find an account with that email")
-  } else if (error.code === AuthExceptionCode.PW_NOT_CORRECT) {
-    return errorHandler.form({
-      password: 'The password you entered is incorrect',
+    return errorHandler.toast('exception.auth.email-not-correct', {
+      translate: true,
     })
+  } else if (error.code === AuthExceptionCode.PW_NOT_CORRECT) {
+    return errorHandler.form(
+      {
+        password: 'exception.auth.pw-not-correct',
+      },
+      { translate: true },
+    )
   } else if (error.code === AuthExceptionCode.DELETED_USER) {
-    return errorHandler.toast('This account has been deactivated')
+    return errorHandler.toast('exception.auth.deleted-user', {
+      translate: true,
+    })
   } else if (
     error.code === InvalidInputValueExceptionCode.INVALID_INPUT_VALUE
   ) {
-    return errorHandler.toast('Please check your email and password')
+    return errorHandler.toast('exception.invalid-input-value.invalid-email', {
+      translate: true,
+    })
+  } else if (error.code === AuthExceptionCode.ACCESS_DENIED) {
+    return errorHandler.toast('exception.auth.access-denied', {
+      translate: true,
+    })
   } else {
-    return errorHandler.toast('An error occurred while signing in', error)
+    return errorHandler.toast('sign-in.error.sign-in', {
+      translate: true,
+      error,
+    })
   }
 }
 
-export const signInWithCredentials = async (data: SignInRequest) => {
+export const teacherSignIn = async (data: SignInRequest) => {
   try {
-    await signIn('credentials', {
+    await _teacherSignIn('credentials', {
       ...data,
       redirect: false,
       callbackUrl: '/',
@@ -50,10 +71,24 @@ export const signInWithCredentials = async (data: SignInRequest) => {
   }
 }
 
-export const signInWithGoogle = async () => {
-  await signIn('google')
+export const teacherSignOut = async () => {
+  await _teacherSignOut({ redirect: false })
 }
 
-export const signOutWithForm = async () => {
-  await signOut({ redirect: false })
+export const businessSignIn = async (data: SignInRequest) => {
+  try {
+    await _businessSignIn('credentials', {
+      ...data,
+      redirect: false,
+      callbackUrl: '/',
+    })
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    return handleError(error.cause?.err as Error)
+  }
+}
+
+export const businessSignOut = async () => {
+  await _businessSignOut({ redirect: false })
 }

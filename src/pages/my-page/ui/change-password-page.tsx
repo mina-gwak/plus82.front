@@ -10,7 +10,7 @@ import {
   currentPasswordRules,
   passwordRules,
   PasswordValidation,
-  signOutWithForm,
+  teacherSignOut,
 } from 'entities/auth'
 import { changePassword } from 'entities/user'
 import { isServerError, useServerErrorHandler } from 'shared/api'
@@ -45,7 +45,7 @@ export const ChangePasswordPage = () => {
     toast.success('Your password has been changed. Please sign in again.')
 
     queryClient.removeQueries()
-    await signOutWithForm()
+    await teacherSignOut()
     await signOut({ redirect: false })
 
     router.push('/sign-in')

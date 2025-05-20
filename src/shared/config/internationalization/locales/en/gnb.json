@@ -1,0 +1,22 @@
+{
+  "tab": {
+    "job-board": "Job Board",
+    "find-teacher": "Find a Teacher",
+    "applicant-management": "Applicant Management",
+    "academy-detail": "Academy",
+    "job-posting": "Job Postings"
+  },
+  "button": {
+    "sign-in": "Sign In",
+    "sign-up": "Sign Up",
+    "go-to-business-home": "Academy",
+    "go-to-teacher-home": "Teacher"
+  },
+  "notification": {
+    "empty": "You have no notifications yet"
+  },
+  "dropdown": {
+    "my-page": "My Page",
+    "sign-out": "Sign Out"
+  }
+}

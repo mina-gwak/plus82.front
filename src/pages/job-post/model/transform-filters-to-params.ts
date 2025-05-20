@@ -1,7 +1,6 @@
 import { isNil } from 'lodash-es'
 
 import { GetJobPostsRequest, Location, StudentType } from 'entities/job-post'
-
 import { JobPostFilter } from 'features/job-post-filter'
 
 export const transformFiltersToParams = (

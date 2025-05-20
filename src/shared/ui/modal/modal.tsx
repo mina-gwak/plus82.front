@@ -13,7 +13,6 @@ import { colors } from 'shared/config'
 import { cn } from 'shared/lib'
 
 import { Icon } from '../icon'
-
 import { ModalContext } from './use-modal-context'
 
 const ModalRoot = ({

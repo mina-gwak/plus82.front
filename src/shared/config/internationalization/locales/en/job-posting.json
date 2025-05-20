@@ -1,0 +1,26 @@
+{
+  "job-posting-list": {
+    "title": "Job Postings",
+    "tabs": {
+      "in-progress": "In Progress",
+      "saved": "Saved",
+      "closed": "Closed"
+    },
+    "table": {
+      "job-title": "Job Title",
+      "application": "Application",
+      "salary": "Salary",
+      "posted-date": "Posted Date",
+      "expiration-date": "Expiration Date",
+      "no-data": "No job postings have been registered yet",
+      "no-expiration-date": "Open Recruitment",
+      "draft": "Not Posted"
+    },
+    "button": {
+      "register-job-posting": "Register Job Posting"
+    },
+    "success": {
+      "job-posting-copy": "Job posting copied successfully"
+    }
+  }
+}

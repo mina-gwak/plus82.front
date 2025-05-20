@@ -4,7 +4,6 @@ import { colors } from 'shared/config'
 import { cn } from 'shared/lib'
 
 import { Icon } from '../icon'
-
 import * as css from './variants'
 import { HelperTextVariants } from './variants'
 

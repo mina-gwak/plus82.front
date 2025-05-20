@@ -97,6 +97,8 @@ export const getPaginationResponse: GetPaginationResponse = <T>(
     first,
     last,
     empty: isEmpty,
+    totalPages,
+    totalElements,
   }
 
   return getCommonResponse(data)

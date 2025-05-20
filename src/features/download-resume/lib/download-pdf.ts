@@ -1,48 +1,117 @@
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import { PDFDocument } from 'pdf-lib'
+import { createRoot } from 'react-dom/client'
 
-export const downloadPDF = async (elementId: string, fileName: string) => {
+export const renderToTempContainer = (
+  id: string,
+  element: React.ReactNode,
+): HTMLDivElement => {
+  const container = document.createElement('div')
+  container.id = id
+  container.style.position = 'absolute'
+  container.style.left = '-9999px'
+  document.body.appendChild(container)
+  createRoot(container).render(element)
+
+  return container
+}
+
+const captureElementAsImage = async (
+  elementId: string,
+): Promise<HTMLCanvasElement | null> => {
   const element = document.getElementById(elementId)
-  if (!element) return
+  if (!element) return null
 
-  try {
-    const canvas = await html2canvas(element, {
-      scale: 2, // HTML을 2배 크기로 렌더링
-      useCORS: true, // 외부 이미지 허용
-      logging: false, // 디버그 로그 비활성화
-      imageTimeout: 0, // 이미지 로딩 제한시간 없음
-      removeContainer: true, // 임시 컨테이너 자동 제거
-      backgroundColor: '#ffffff', // 배경색 지정
-    })
+  return await html2canvas(element, {
+    scale: 2,
+    useCORS: true,
+    logging: false,
+    imageTimeout: 0,
+    removeContainer: true,
+    backgroundColor: '#ffffff',
+  })
+}
 
-    const pdf = new jsPDF({
-      unit: 'mm', // 단위를 밀리미터로 설정
-      format: 'a4', // A4 크기 (210mm x 297mm)
-      compress: true, // PDF 내부 압축 활성화
-    })
+export const convertToPDF = async (elementIds: string[]) => {
+  const canvases = await Promise.all(
+    elementIds.map(id => captureElementAsImage(id)),
+  )
+
+  const firstCanvas = canvases.find(Boolean)
+  if (!firstCanvas) return
+
+  const pdf = new jsPDF({
+    unit: 'mm',
+    format: 'a4',
+    compress: true,
+  })
+
+  const pageWidth = pdf.internal.pageSize.getWidth()
+  const pageHeight = pdf.internal.pageSize.getHeight()
+
+  canvases.forEach((canvas, idx) => {
+    if (!canvas) return
 
     const imgData = canvas.toDataURL('image/png')
-
-    // PDF 페이지 크기 가져오기
-    const pageWidth = pdf.internal.pageSize.getWidth()
-    const pageHeight = pdf.internal.pageSize.getHeight()
-
-    // 이미지가 페이지에 맞도록 비율 계산
     const widthRatio = pageWidth / canvas.width
     const heightRatio = pageHeight / canvas.height
     const ratio = Math.min(widthRatio, heightRatio)
-
-    // 최종 이미지 크기 계산
     const imgWidth = canvas.width * ratio
     const imgHeight = canvas.height * ratio
-
-    // 가로, 세로 여백을 계산하여 중앙 정렬
     const x = (pageWidth - imgWidth) / 2
     const y = (pageHeight - imgHeight) / 2
 
+    if (idx !== 0) pdf.addPage()
     pdf.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight)
+  })
+
+  return pdf
+}
+
+export const downloadPDF = async (elementIds: string[], fileName: string) => {
+  try {
+    const pdf = await convertToPDF(elementIds)
+
+    if (!pdf) return
+
     pdf.save(`${fileName}.pdf`)
   } catch (error) {
     console.error('PDF 생성 중 오류 발생:', error)
   }
+}
+
+export const mergePdfs = async (
+  resumePdfBytes: Uint8Array,
+  coverLetterPdfBytes?: ArrayBuffer,
+): Promise<Uint8Array> => {
+  const mergedPdf = await PDFDocument.create()
+
+  const resumePdf = await PDFDocument.load(resumePdfBytes)
+
+  const resumePages = await mergedPdf.copyPages(
+    resumePdf,
+    resumePdf.getPageIndices(),
+  )
+  resumePages.forEach(page => mergedPdf.addPage(page))
+
+  if (coverLetterPdfBytes) {
+    const coverLetterPdf = await PDFDocument.load(coverLetterPdfBytes)
+
+    const coverPages = await mergedPdf.copyPages(
+      coverLetterPdf,
+      coverLetterPdf.getPageIndices(),
+    )
+    coverPages.forEach(page => mergedPdf.addPage(page))
+  }
+
+  return await mergedPdf.save()
+}
+
+export const downloadFile = async (blob: Blob, fileName: string) => {
+  const link = document.createElement('a')
+  link.href = URL.createObjectURL(blob)
+  link.download = fileName
+  link.click()
+  URL.revokeObjectURL(link.href)
 }

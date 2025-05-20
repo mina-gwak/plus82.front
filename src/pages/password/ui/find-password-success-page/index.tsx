@@ -1,6 +1,7 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 
 import { isNilOrEmptyString } from 'shared/lib'
@@ -11,6 +12,11 @@ import * as css from './variants'
 export const FindPasswordSuccessPage = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const pathname = usePathname()
+
+  const t = useTranslations('find-password-success')
+
+  const isBusiness = pathname?.includes('business')
 
   useEffect(() => {
     const timestamp = searchParams?.get('t')
@@ -21,23 +27,20 @@ export const FindPasswordSuccessPage = () => {
     )
 
     if (!hasAccess) {
-      router.replace('/password/find')
+      router.replace(`${isBusiness ? '/business' : ''}/password/find`)
     }
-  }, [router, searchParams])
+  }, [isBusiness, router, searchParams])
 
   const handleBackButtonClick = () => {
-    router.push('/sign-in')
+    router.push(`${isBusiness ? '/business' : ''}/sign-in`)
   }
 
   return (
     <Layout className={css.layout()}>
-      <h1 className={css.heading()}>Reset password</h1>
-      <p className={css.message()}>
-        The password reset link has been sent successfully to the email address
-        you provided
-      </p>
+      <h1 className={css.heading()}>{t('title')}</h1>
+      <p className={css.message()}>{t('description')}</p>
       <Button size="large" fullWidth onClick={handleBackButtonClick}>
-        Back to Sign In
+        {t('button.back-to-sign-in')}
       </Button>
     </Layout>
   )

@@ -1,18 +1,15 @@
+import { isAfter, parseISO } from 'date-fns'
+
 import {
   convertToJobPost,
+  JobPostDetail,
   PostingDetail,
   PostingImageSwiper,
   PostingTitle,
 } from 'entities/job-post'
-import { getJobPost } from 'entities/job-post'
-import { getResumeCount } from 'entities/resume'
 import { ApplyToJobButton } from 'features/apply'
 import { colors } from 'shared/config'
 import { Layout, Button, Icon } from 'shared/ui'
-
-type Params = {
-  jobPostId: string
-}
 
 // TODO: 버튼 위치 고민 후 이동
 const RegisterResumeButton = () => {
@@ -24,30 +21,71 @@ const RegisterResumeButton = () => {
   )
 }
 
-export const JobPostingDetailPage = async ({
-  params,
-}: {
-  params: Promise<Params>
-}) => {
-  const { jobPostId } = await params
+type JobPostingButtonProps = {
+  isExpired: boolean
+  hasApplied: boolean | null
+  hasNoResume: boolean
+}
 
-  const resumeCount = await getResumeCount()
-  const data = await getJobPost({ jobPostId: Number(jobPostId) })
+const JobPostingButton = ({
+  isExpired,
+  hasApplied,
+  hasNoResume,
+}: JobPostingButtonProps) => {
+  if (isExpired) {
+    return (
+      <Button type="button" size="large" disabled>
+        Closed
+      </Button>
+    )
+  }
 
-  const hasNoResume = resumeCount === 0
+  if (hasApplied) {
+    return (
+      <Button type="button" size="large" disabled>
+        Already Applied
+      </Button>
+    )
+  }
 
-  const jobPost = convertToJobPost(data)
+  if (hasNoResume) {
+    return <RegisterResumeButton />
+  }
+
+  return <ApplyToJobButton />
+}
+
+type Props = {
+  jobPostDetail: JobPostDetail
+  hasApplied: boolean | null
+  hasNoResume: boolean
+}
+
+export const JobPostingDetailPage = ({
+  jobPostDetail,
+  hasApplied,
+  hasNoResume,
+}: Props) => {
+  const jobPost = convertToJobPost(jobPostDetail)
+
+  const isExpired = jobPost.dueDate
+    ? isAfter(new Date(), parseISO(jobPost.dueDate))
+    : false
 
   return (
     <Layout wide className="flex gap-5">
       <div className="flex-grow">
-        <PostingImageSwiper images={data.academyImageUrls} />
-        <PostingDetail jobPost={data} />
+        <PostingImageSwiper images={jobPostDetail.academyImageUrls} />
+        <PostingDetail jobPost={jobPostDetail} />
       </div>
       <div>
         <div className="sticky top-6 flex w-[340px] flex-col gap-6 rounded-2xl border border-gray-200 bg-white p-6">
           <PostingTitle jobPost={jobPost} size="medium" />
-          {hasNoResume ? <RegisterResumeButton /> : <ApplyToJobButton />}
+          <JobPostingButton
+            isExpired={isExpired}
+            hasApplied={hasApplied}
+            hasNoResume={hasNoResume}
+          />
         </div>
       </div>
     </Layout>

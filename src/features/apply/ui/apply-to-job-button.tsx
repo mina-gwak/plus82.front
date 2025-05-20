@@ -1,7 +1,7 @@
 'use client'
 
 import { useQueryClient } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
@@ -14,6 +14,7 @@ import { ApplyForm } from './apply-form'
 export const ApplyToJobButton = () => {
   const queryClient = useQueryClient()
   const router = useRouter()
+  const pathname = usePathname()
 
   const { status } = useSession()
 
@@ -22,6 +23,10 @@ export const ApplyToJobButton = () => {
   const notAuthenticated = status !== 'authenticated'
 
   const handleButtonClick = async () => {
+    if (pathname?.includes('preview')) {
+      return
+    }
+
     if (notAuthenticated) {
       router.push('/sign-in')
 
@@ -44,7 +49,7 @@ export const ApplyToJobButton = () => {
 
   return (
     <Modal open={isOpen} onOpenChange={setIsOpen}>
-      <Button type="button" onClick={handleButtonClick}>
+      <Button type="button" onClick={handleButtonClick} size="large">
         Apply Now
       </Button>
       <Modal.Content className="flex w-[728px] flex-col items-end gap-6">
