@@ -7,7 +7,7 @@ type Params = {
   jobPostId: string
 }
 
-export const JobPostingDetailPage = async ({
+const JobPostingDetailPage = async ({
   params,
 }: {
   params: Promise<Params>
@@ -37,3 +37,5 @@ export const JobPostingDetailPage = async ({
     />
   )
 }
+
+export default JobPostingDetailPage
