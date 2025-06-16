@@ -2,6 +2,7 @@
 
 import { useQueryClient } from '@tanstack/react-query'
 import { isNull } from 'lodash-es'
+import { useTranslations } from 'next-intl'
 import { useActionState, useEffect } from 'react'
 
 import { deleteUserMe } from 'entities/user'
@@ -13,6 +14,8 @@ type Props = {
 }
 
 export const DeleteUser = ({ onSucceed }: Props) => {
+  const t = useTranslations('my-account')
+
   const queryClient = useQueryClient()
 
   const [state, formAction, isPending] = useActionState(deleteUserMe, null)
@@ -31,26 +34,25 @@ export const DeleteUser = ({ onSucceed }: Props) => {
   return (
     <Modal.Content className="flex w-[620px] flex-col items-end gap-6">
       <Modal.Title className="title-large mb-5 w-full text-center font-bold text-gray-900">
-        Delete Account
+        {t('delete-account-modal.title')}
       </Modal.Title>
       <div className="mb-10">
         <Modal.Description className="title-small mb-3 text-center text-gray-900">
-          If you cancel your membership, all the resumes you have created, your
-          application history and any offers received will be permanently lost.
+          {t('delete-account-modal.description1')}
         </Modal.Description>
         <Modal.Description className="title-small text-center text-gray-900">
-          Do you still want to proceed with the cancellation?
+          {t('delete-account-modal.description2')}
         </Modal.Description>
       </div>
       <div className="flex justify-end gap-2">
         <Modal.Close asChild>
           <Button variant="lined" size="large">
-            Cancel
+            {t('button.cancel')}
           </Button>
         </Modal.Close>
         <form action={formAction}>
           <Button size="large" disabled={isPending}>
-            Delete
+            {t('button.delete')}
           </Button>
         </form>
       </div>

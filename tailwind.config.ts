@@ -15,7 +15,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        'spoqa-han-sans-neo': ['var(--font-spoqa-han-sans-neo)'],
+        pretendard: ['var(--font-pretendard)'],
       },
       colors: {
         ...colors,

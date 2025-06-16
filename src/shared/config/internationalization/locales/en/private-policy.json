@@ -1,0 +1,113 @@
+{
+  "private-policy": {
+    "title": "Privacy Policy",
+    "introduction": "Plus82 (hereinafter referred to as the \"Company\") is committed to protecting users' personal information in accordance with the Personal Information Protection Act, the Act on Promotion of Information and Communications Network Utilization and Information Protection, and other applicable laws. This Privacy Policy outlines how the Company handles personal data and applies to the job-matching platform service (hereinafter the \"Service\") provided by the Company.",
+    "article": {
+      "1": {
+        "title": "Article 1 (Items and Methods of Personal Information Collection)",
+        "content": {
+          "1": "The Company collects the following types of personal information:",
+          "items": {
+            "general": "General Information: Full name, date of birth, gender, nationality, mobile number, email address, visa status",
+            "career": "Career-Related Information: Educational background, work experience, certifications, self-introduction, portfolio, preferred working conditions, address, photo, etc.",
+            "auto": "Automatically Collected Information: IP address, cookies, service usage history, access logs, device information"
+          },
+          "2": "Collection methods include:",
+          "methods": {
+            "1": "User registration and resume submission through the website or mobile services",
+            "2": "Information inputted by users or automatically generated during service use"
+          }
+        }
+      },
+      "2": {
+        "title": "Article 2 (Purpose of Personal Information Use)",
+        "content": "The Company collects and uses personal information for the following purposes:",
+        "purposes": {
+          "1": "Operating a recruitment-matching platform between foreign native-speaking job seekers and Korean academies",
+          "2": "Providing resume registration, management, and online application services",
+          "3": "Offering customized job information and content recommendations based on user interests",
+          "4": "Responding to user inquiries, delivering announcements, and managing service operations",
+          "5": "Conducting statistical analysis and preparing internal reports to improve the Service",
+          "6": "Sending marketing and promotional content (only with prior consent)"
+        }
+      },
+      "3": {
+        "title": "Article 3 (Retention and Use Period of Personal Information)",
+        "content": {
+          "1": "The Company destroys personal information without delay once the purpose of collection and use is fulfilled.",
+          "2": "However, information may be retained for the following periods as stipulated by the Act on Consumer Protection in Electronic Commerce:",
+          "periods": {
+            "display": "Records related to display/advertising: 6 months",
+            "contract": "Records related to contract or withdrawal: 5 years",
+            "payment": "Records related to payment and supply of goods: 5 years",
+            "complaint": "Records related to customer complaints or dispute resolution: 3 years"
+          },
+          "3": "If the user requests to withdraw membership or revoke consent to use their personal information, the information will be destroyed without delay.",
+          "4": "Information that must be retained for a legally specified period will be retained until that period expires, after which it will be destroyed immediately."
+        }
+      },
+      "4": {
+        "title": "Article 4 (Provision of Personal Information to Third Parties)",
+        "content": "The Company does not provide personal information to third parties without the user's prior consent, except in the following cases:",
+        "exceptions": {
+          "1": "When the data subject has explicitly agreed to disclosure or provision",
+          "2": "When required by law or at the request of an investigative authority under legal procedures",
+          "3": "When a job seeker has publicly shared their resume with an academy, information may be provided to that specific academy only"
+        }
+      },
+      "5": {
+        "title": "Article 5 (Outsourcing of Personal Information Processing)",
+        "content": "To ensure smooth service provision, the Company may outsource certain personal information processing tasks to third-party service providers. Information regarding such outsourcing, including the names of contractors and details of outsourced tasks, will be disclosed in a separate section of this Policy or via a public notice on the Company's website."
+      },
+      "6": {
+        "title": "Article 6 (Overseas Transfer of Personal Information)",
+        "content": "The Company does not transfer personal information overseas. If overseas transfers become necessary in the future, the Company will obtain separate consent and inform users of the recipient country, transfer date and method, and the recipient party in accordance with applicable laws."
+      },
+      "7": {
+        "title": "Article 7 (Rights of the Data Subject and How to Exercise Them)",
+        "content": {
+          "1": "Users (data subjects) may exercise the following rights at any time: access their personal information, request corrections, request deletion, request suspension of processing, and withdraw consent.",
+          "2": "Rights may be exercised through written requests, email, or the customer service center.",
+          "3": "For users under the age of 14, legal guardians must exercise these rights on their behalf."
+        }
+      },
+      "8": {
+        "title": "Article 8 (Use of Cookies and Refusal Policy)",
+        "content": {
+          "1": "The Company may use cookies to provide customized services.",
+          "2": "Users can refuse the storage of cookies by adjusting their web browser settings. However, doing so may limit certain service functionalities."
+        }
+      },
+      "9": {
+        "title": "Article 9 (Destruction Procedures and Methods)",
+        "content": {
+          "1": "The Company will promptly destroy personal information once its retention period has expired or the purpose of processing has been achieved.",
+          "2": "Electronic files will be permanently deleted using irreversible technical methods, and paper documents will be shredded or incinerated."
+        }
+      },
+      "10": {
+        "title": "Article 10 (Personal Information Protection Officer)",
+        "content": "The Company designates a Personal Information Protection Officer to handle inquiries and complaints related to personal information:",
+        "officer": {
+          "title": "Chief Privacy Officer",
+          "name": "Hyeonsik Choi (CEO)",
+          "email": "hsc@plus82.co"
+        }
+      },
+      "11": {
+        "title": "Article 11 (Remedies for Infringement of Rights)",
+        "content": "Users may contact the following institutions to seek resolution or file complaints regarding the misuse of their personal information:",
+        "institutions": {
+          "1": "Personal Information Infringement Report Center: privacy.kisa.or.kr / 118",
+          "2": "Personal Information Dispute Mediation Committee",
+          "3": "Supreme Prosecutors' Office Cyber Crime Investigation Unit: spo.go.kr / 1301",
+          "4": "Cyber Bureau, Korean National Police Agency: cyberbureau.police.go.kr / 182"
+        }
+      },
+      "12": {
+        "title": "Article 12 (Changes to This Privacy Policy)",
+        "content": "This Privacy Policy is effective as of April 13, 2025. Any changes to this Policy will be notified in advance. However, certain provisions may be updated without prior notice if required by amendments to relevant laws."
+      }
+    }
+  }
+}

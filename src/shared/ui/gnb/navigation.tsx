@@ -15,7 +15,7 @@ type ItemProps = {
 export const Item = ({ value, children }: PropsWithChildren<ItemProps>) => {
   const pathname = usePathname()
 
-  const isActive = (pathname ?? '/') === value
+  const isActive = pathname?.includes(value)
 
   return (
     <li

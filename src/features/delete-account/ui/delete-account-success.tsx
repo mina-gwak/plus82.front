@@ -3,11 +3,14 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 
 import { teacherSignOut } from 'entities/auth'
 import { Button, Modal } from 'shared/ui'
 
 export const DeleteUserSuccess = () => {
+  const t = useTranslations('my-account')
+
   const queryClient = useQueryClient()
   const router = useRouter()
 
@@ -26,14 +29,14 @@ export const DeleteUserSuccess = () => {
       onClose={handleCloseButtonClick}
     >
       <Modal.Title className="title-large mb-5 w-full text-center font-bold text-gray-900">
-        Account Deletion Completed
+        {t('success.delete-account.title')}
       </Modal.Title>
       <Modal.Description className="title-small mb-10 w-full text-center text-gray-900">
-        Thank you for joining Plus82. We support you on your journey ahead!
+        {t('success.delete-account.description')}
       </Modal.Description>
       <div className="flex justify-end gap-2">
         <Modal.Close asChild onClick={handleCloseButtonClick}>
-          <Button size="large">Close</Button>
+          <Button size="large">{t('button.close')}</Button>
         </Modal.Close>
       </div>
     </Modal.Content>

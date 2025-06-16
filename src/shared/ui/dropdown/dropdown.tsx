@@ -1,5 +1,6 @@
 import {
   AriaRole,
+  CSSProperties,
   LiHTMLAttributes,
   MouseEvent,
   PropsWithChildren,
@@ -27,6 +28,7 @@ export type DropdownRootProps = PropsWithChildren<{
   role?: AriaRole
   scrollable?: boolean
   align?: 'left' | 'right'
+  style?: CSSProperties
 }>
 
 const DropdownRoot = forwardRef<HTMLDivElement, DropdownRootProps>(
@@ -38,6 +40,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownRootProps>(
       scrollable = true,
       align = 'left',
       children,
+      style,
       ...restProps
     },
     ref,
@@ -49,6 +52,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownRootProps>(
       <div
         className={cn(dropdownWrapper({ scrollable, className, align }))}
         ref={ref}
+        style={style}
       >
         <ul
           className={cn(dropdown({ scrollable }))}

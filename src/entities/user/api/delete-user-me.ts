@@ -17,9 +17,9 @@ const handleError = (error: Error) => {
   if (!isHttpError) throw error
 
   if (error.code === ResourceNotFoundExceptionCode.USER_NOT_FOUND) {
-    return errorHandler.toast('This account has been deactivated')
+    return errorHandler.toast('my-account.error.account-deactivated')
   } else {
-    return errorHandler.toast('An error occurred while deleting the account', {
+    return errorHandler.toast('my-account.error.delete-account', {
       error,
     })
   }

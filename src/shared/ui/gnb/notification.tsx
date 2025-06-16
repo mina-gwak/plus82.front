@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { colors } from 'shared/config'
 import { useDropdown } from 'shared/lib'
 
@@ -5,6 +7,8 @@ import { Dropdown } from '../dropdown'
 import { Icon } from '../icon'
 
 export const NotificationButton = () => {
+  const t = useTranslations()
+
   const { isOpen, toggleIsOpen, dropdownRef } = useDropdown()
 
   const handleClick = () => {
@@ -34,7 +38,7 @@ export const NotificationButton = () => {
                 className="relative -top-px"
               />
               <p className="body-large text-gray-500">
-                You have no notifications yet
+                {t('notification.empty')}
               </p>
             </div>
           </Dropdown.Item>

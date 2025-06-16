@@ -3,8 +3,9 @@ import { useTranslations } from 'next-intl'
 import { ChangeEvent, KeyboardEvent } from 'react'
 
 import { Location, StudentType } from 'entities/job-post'
-import { useDebounce } from 'shared/lib'
-import { Chip, Filter, FilterValue, TextField } from 'shared/ui'
+import { colors } from 'shared/config'
+import { Slot, useDebounce } from 'shared/lib'
+import { Chip, Filter, FilterValue, Icon, TextField } from 'shared/ui'
 
 import { useJobPostFilters } from '../lib/use-job-post-filters'
 import { JobPostFilter } from '../model/filter'
@@ -144,7 +145,11 @@ export const JobPostFilters = ({
           onChange={handleSearchTextChange}
           onKeyDown={handleSearchTextKeyDown}
           placeholder="Search jobs by keywords"
-        />
+        >
+          <Slot name="left">
+            <Icon name="Search" size="large" color={colors.gray[700]} />
+          </Slot>
+        </TextField>
       )}
     </div>
   )

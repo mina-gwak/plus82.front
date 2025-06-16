@@ -1,7 +1,8 @@
 'use client'
 
 import { format } from 'date-fns'
-import { MouseEvent } from 'react'
+import { MouseEvent, useState } from 'react'
+import { usePopper } from 'react-popper'
 
 import { Card, ResumeSummary } from 'entities/resume'
 import { CopyResumeButton } from 'features/copy-resume'
@@ -19,6 +20,16 @@ type Props = {
 }
 
 export const ResumeCard = ({ resume }: Props) => {
+  const [targetElement, setTargetElement] = useState<HTMLButtonElement | null>(
+    null,
+  )
+  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
+    null,
+  )
+  const { styles, attributes } = usePopper(targetElement, popperElement, {
+    placement: 'bottom-start',
+  })
+
   const { isOpen, toggleIsOpen, dropdownRef } = useDropdown()
 
   const handleMenuClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -51,13 +62,19 @@ export const ResumeCard = ({ resume }: Props) => {
         </p>
         <button
           type="button"
+          ref={setTargetElement}
           onClick={handleMenuClick}
           className="focus:outline focus:outline-[#005fcc]"
         >
           <Icon name="Dot" size="medium" color={colors.gray[700]} />
         </button>
         {isOpen && (
-          <Dropdown className="left-[calc(100%-30px)] right-4 w-[210px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]">
+          <Dropdown
+            className="left-[calc(100%-30px)] right-4 w-[210px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]"
+            ref={setPopperElement}
+            style={styles.popper}
+            {...attributes.popper}
+          >
             <Dropdown.Item className="p-0">
               {isFileResume ? (
                 <DownloadResumeFileButton

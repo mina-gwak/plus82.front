@@ -6,13 +6,15 @@ import { toast } from 'react-toastify'
 
 import { signUp } from 'entities/auth'
 import {
-  TermsAndConditionsOfUse,
+  ConsentToCollectionAndUseOfPersonalInformation,
+  PrivatePolicy,
+  TermsOfUse,
   useEmailValidationState,
 } from 'features/sign-up'
 import { isServerError, useServerErrorHandler } from 'shared/api'
 import { Form } from 'shared/form'
 import { useCheckbox } from 'shared/lib'
-import { Button, Layout, Link } from 'shared/ui'
+import { Button, Checkbox, Layout, Link, Separator } from 'shared/ui'
 
 import {
   FormValues,
@@ -31,7 +33,14 @@ export const SignUpPage = () => {
     reValidateMode: 'onSubmit',
   })
 
-  const { isChecked, getCheckboxProps } = useCheckbox({ options: ['checked'] })
+  const { isAllChecked, getCheckboxProps, getIndeterminateCheckboxProps } =
+    useCheckbox({
+      options: [
+        'terms-of-use',
+        'private-policy',
+        'consent-to-collection-and-use-of-personal-information',
+      ],
+    })
 
   const { handleServerError } = useServerErrorHandler()
 
@@ -85,11 +94,24 @@ export const SignUpPage = () => {
       <Form {...form}>
         <Account />
         <PersonalInformation />
-        <TermsAndConditionsOfUse locale="en" {...getCheckboxProps('checked')} />
+        <Checkbox
+          {...getIndeterminateCheckboxProps()}
+          className="mb-4 w-full"
+          label="Agree to All Terms"
+        />
+        <Separator className="mb-4" />
+        <TermsOfUse locale="en" {...getCheckboxProps('terms-of-use')} />
+        <PrivatePolicy locale="en" {...getCheckboxProps('private-policy')} />
+        <ConsentToCollectionAndUseOfPersonalInformation
+          locale="en"
+          {...getCheckboxProps(
+            'consent-to-collection-and-use-of-personal-information',
+          )}
+        />
         <Button
           size="large"
           fullWidth
-          disabled={!isChecked('checked')}
+          disabled={!isAllChecked()}
           onClick={form.handleSubmit(submitForm)}
         >
           Sign Up

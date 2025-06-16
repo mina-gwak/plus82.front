@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { startTransition } from 'react'
 
 import { businessSignOut } from 'entities/auth'
@@ -17,6 +17,9 @@ export const BusinessButton = () => {
   const queryClient = useQueryClient()
 
   const locale = useLocale()
+  const t = useTranslations()
+
+  const isDev = process.env.NODE_ENV === 'development'
 
   const { isOpen, toggleIsOpen, close, dropdownRef } = useDropdown()
   const {
@@ -31,17 +34,17 @@ export const BusinessButton = () => {
   }
 
   const handleMyPageClick = () => {
-    router.push('/business/setting/my-page')
+    router.push('/business/setting/my-academy')
     close()
   }
 
   const handleSignOutClick = async () => {
-    queryClient.removeQueries()
-
     await businessSignOut()
     await signOut({ redirect: false })
 
     router.push('/business')
+
+    queryClient.removeQueries()
     close()
   }
 
@@ -81,33 +84,39 @@ export const BusinessButton = () => {
           className="w-[140px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]"
           scrollable={false}
         >
-          <Dropdown.Item onClick={handleMyPageClick}>My Page</Dropdown.Item>
-          <Dropdown.Item
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="relative"
-          >
-            <div className="h-full w-full" ref={dropdownRefSubMenu}>
-              Language
-              {isSubMenuOpen && (
-                <Dropdown className="absolute -top-1 left-[90%] w-[140px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]">
-                  <Dropdown.Item
-                    selected={locale === 'en'}
-                    onClick={handleLanguageClick('en')}
-                  >
-                    English
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    selected={locale === 'ko'}
-                    onClick={handleLanguageClick('ko')}
-                  >
-                    Korean
-                  </Dropdown.Item>
-                </Dropdown>
-              )}
-            </div>
+          <Dropdown.Item onClick={handleMyPageClick}>
+            {t('dropdown.my-page')}
           </Dropdown.Item>
-          <Dropdown.Item onClick={handleSignOutClick}>Sign Out</Dropdown.Item>
+          {isDev && (
+            <Dropdown.Item
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="relative"
+            >
+              <div className="h-full w-full" ref={dropdownRefSubMenu}>
+                Language
+                {isSubMenuOpen && (
+                  <Dropdown className="absolute -top-1 left-[90%] w-[140px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]">
+                    <Dropdown.Item
+                      selected={locale === 'en'}
+                      onClick={handleLanguageClick('en')}
+                    >
+                      English
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      selected={locale === 'ko'}
+                      onClick={handleLanguageClick('ko')}
+                    >
+                      Korean
+                    </Dropdown.Item>
+                  </Dropdown>
+                )}
+              </div>
+            </Dropdown.Item>
+          )}
+          <Dropdown.Item onClick={handleSignOutClick}>
+            {t('dropdown.sign-out')}
+          </Dropdown.Item>
         </Dropdown>
       )}
     </div>

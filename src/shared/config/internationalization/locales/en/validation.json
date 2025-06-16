@@ -54,10 +54,42 @@
       "required": "Please enter the detailed address",
       "maxLength": "Please enter less than 100 characters"
     },
+    "academyDescription": {
+      "required": "Please enter the academy description",
+      "maxLength": "Please enter less than 1000 characters"
+    },
+    "images": {
+      "required": "Please upload at least one introduction image"
+    },
     "businessRegistrationNumber": {
       "required": "Please enter the business registration number",
       "length": "Please enter 10 digits",
       "pattern": "Please enter numbers only"
+    },
+    "jobPostingTitle": {
+      "required": "Please enter the job posting title",
+      "maxLength": "Please enter less than 100 characters"
+    },
+    "jobPostingDescription": {
+      "required": "Please enter the job posting description",
+      "maxLength": "Please enter less than 1000 characters"
+    },
+    "jobPostingRequiredQualification": {
+      "maxLength": "Please enter less than 1000 characters"
+    },
+    "jobPostingPreferredQualification": {
+      "maxLength": "Please enter less than 1000 characters"
+    },
+    "jobPostingBenefits": {
+      "maxLength": "Please enter less than 1000 characters"
+    },
+    "jobPostingSalary": {
+      "required": "Please enter the salary",
+      "maxLength": "Please enter less than 10 characters",
+      "invalid": "Please enter a number only"
+    },
+    "jobPostingDueDate": {
+      "required": "Please enter the due date"
     }
   }
 }

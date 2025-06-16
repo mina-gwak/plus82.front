@@ -41,11 +41,11 @@ export const GNB = () => {
             {notAuthenticated ? (
               <div className={cn(css.textButtons())}>
                 <Button as="a" href="/sign-in" variant="text" size="small">
-                  Sign In
+                  {t('button.sign-in')}
                 </Button>
                 <div className={cn(css.divider())} />
                 <Button as="a" href="/sign-up" variant="text" size="small">
-                  Sign Up
+                  {t('button.sign-up')}
                 </Button>
               </div>
             ) : (
@@ -55,7 +55,7 @@ export const GNB = () => {
               </div>
             )}
             <Button as="a" href="/business" variant="lined" size="small">
-              Academy
+              {t('button.go-to-business-home')}
             </Button>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { startTransition } from 'react'
 
 import { teacherSignOut } from 'entities/auth'
@@ -17,6 +17,7 @@ export const UserButton = () => {
   const queryClient = useQueryClient()
 
   const locale = useLocale()
+  const t = useTranslations()
 
   const isDev = process.env.NODE_ENV === 'development'
 
@@ -38,12 +39,12 @@ export const UserButton = () => {
   }
 
   const handleSignOutClick = async () => {
-    queryClient.removeQueries()
-
     await teacherSignOut()
     await signOut({ redirect: false })
 
     router.push('/')
+
+    queryClient.removeQueries()
     close()
   }
 
@@ -83,7 +84,9 @@ export const UserButton = () => {
           className="w-[140px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]"
           scrollable={false}
         >
-          <Dropdown.Item onClick={handleMyPageClick}>My Page</Dropdown.Item>
+          <Dropdown.Item onClick={handleMyPageClick}>
+            {t('dropdown.my-page')}
+          </Dropdown.Item>
           {isDev && (
             <Dropdown.Item
               onMouseEnter={handleMouseEnter}
@@ -111,7 +114,9 @@ export const UserButton = () => {
               </div>
             </Dropdown.Item>
           )}
-          <Dropdown.Item onClick={handleSignOutClick}>Sign Out</Dropdown.Item>
+          <Dropdown.Item onClick={handleSignOutClick}>
+            {t('dropdown.sign-out')}
+          </Dropdown.Item>
         </Dropdown>
       )}
     </div>

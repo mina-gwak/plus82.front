@@ -1,14 +1,19 @@
+import { getTranslations } from 'next-intl/server'
+
 import { JobPostRelationDetail } from 'entities/job-post-resume-relation'
 import {
   DownloadFileResumeRelationButton,
   DownloadResumeRelationButton,
 } from 'features/download-resume'
+import { formatDate } from 'shared/lib'
 
 type Props = {
   resumeRelation: JobPostRelationDetail
 }
 
-export const Header = ({ resumeRelation }: Props) => {
+export const Header = async ({ resumeRelation }: Props) => {
+  const t = await getTranslations('field')
+
   const hasFile = resumeRelation.filePath !== null
 
   return (
@@ -18,8 +23,8 @@ export const Header = ({ resumeRelation }: Props) => {
       </h2>
       <div className="flex items-center justify-between">
         <p className="title-small font-medium text-gray-700">
-          <span>지원 일자: </span>
-          <span>{resumeRelation.submittedDate}</span>
+          <span>{t('application-date.label')}: </span>
+          <span>{formatDate(resumeRelation.submittedDate)}</span>
         </p>
         {hasFile ? (
           <DownloadFileResumeRelationButton resumeRelation={resumeRelation} />

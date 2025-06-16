@@ -15,8 +15,9 @@ const handleError = (error: Error): ServerError => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast('Failed to update job post resume status', {
+  return errorHandler.toast('applicant-management-detail.error.update', {
     error,
+    translate: true,
   })
 }
 

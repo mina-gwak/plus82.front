@@ -10,7 +10,7 @@ export type JobPostDetail = {
   salary: number
   salaryNegotiable: boolean
   jobStartDate: string
-  dueDate: string
+  dueDate: string | null
   academyId: number
   academyName: string
   academyNameEn: string
@@ -18,7 +18,6 @@ export type JobPostDetail = {
   academyDescription: string
   academyLocationType: Location
   academyDetailedAddress: string
-  detailedAddress: string
   lat: number
   lng: number
   forKindergarten: boolean

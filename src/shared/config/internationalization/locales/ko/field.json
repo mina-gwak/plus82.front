@@ -42,9 +42,19 @@
       "label": "학원 이름 (영문)",
       "placeholder": "영어로 입력해 주세요"
     },
+    "academy-description": {
+      "label": "학원 소개",
+      "placeholder": "영어로 입력해 주세요"
+    },
     "address": {
       "label": "학원 주소",
-      "placeholder": "상세 주소 입력"
+      "placeholder": "상세 주소 입력",
+      "button": "주소 검색"
+    },
+    "introduction-image": {
+      "label": "소개 이미지",
+      "placeholder": "이미지 추가",
+      "description": "소개 이미지는 최소 1장 이상 등록해 주세요."
     },
     "business-registration-number": {
       "label": "사업자 등록번호",
@@ -70,6 +80,84 @@
         "gyeongnam": "경남",
         "jeju": "제주"
       }
+    },
+    "application-date": {
+      "label": "지원 일자"
+    },
+    "nationality": {
+      "label": "국적"
+    },
+    "residence-country": {
+      "label": "거주 지역"
+    },
+    "degree": {
+      "label": "학력"
+    },
+    "visa": {
+      "label": "비자"
+    },
+    "student-type": {
+      "label": "학생 유형"
+    },
+    "application-status": {
+      "option": {
+        "submitted": "접수",
+        "reviewed": "검토",
+        "accepted": "합격",
+        "rejected": "불합격"
+      }
+    },
+    "job-posting-title": {
+      "label": "공고 제목",
+      "placeholder": "간결하고 명확하게 입력해 주세요. ex) Full-Time ESL Instructor"
+    },
+    "job-posting-description": {
+      "label": "주요 업무",
+      "placeholder": "입사 후 맡게되는 업무에 대해 자세히 알려주세요\nex) Teach [elementary-level] English classes [30 hours per week]. Develop lesson plans and class materials."
+    },
+    "job-posting-required-qualification": {
+      "label": "자격 요건",
+      "placeholder": "지원자의 필요 조건을 입력해 주세요\nex) Native or native-level English speaker. Valid TEFL/TESOL/CELTA certification (preferred)."
+    },
+    "job-posting-preferred-qualification": {
+      "label": "우대 사항",
+      "placeholder": "채용시 우대되는 사항이 있다면 입력해 주세요\nex) Basic Korean language skills for simple communication.\nExperience teaching [elementary students/IELTS/TOEFL]."
+    },
+    "job-posting-benefits": {
+      "label": "혜택/복지",
+      "placeholder": "근무자에게 제공되는 혜택을 알려주세요\nex) Provided housing or housing allowance. Paid vacation days (ex. 10 days) + national holidays. Round-trip airfare reimbursement (depending on contract)."
+    },
+    "job-posting-salary": {
+      "label": "월급",
+      "placeholder": "숫자만 입력해 주세요"
+    },
+    "job-posting-salary-negotiable": {
+      "label": "협의 가능"
+    },
+    "target-student": {
+      "label": "대상 학생",
+      "option": {
+        "all": "전체",
+        "kindergarten": "유치원",
+        "elementary": "초등학생",
+        "middle-school": "중학생",
+        "high-school": "고등학생",
+        "adult": "성인"
+      }
+    },
+    "job-posting-start-date": {
+      "label": "업무 시작 가능 날짜",
+      "placeholder": "업무 시작 날짜를 선택해 주세요"
+    },
+    "job-posting-due-date": {
+      "label": "공고 마감일",
+      "placeholder": "공고 마감 날짜를 선택해 주세요"
+    },
+    "job-posting-no-expiration-date": {
+      "label": "상시 채용"
+    },
+    "currency-unit": {
+      "label": "만원"
     }
   }
 }

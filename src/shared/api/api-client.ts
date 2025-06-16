@@ -76,7 +76,15 @@ export class ApiClient {
       const formData = new FormData()
 
       Object.entries(body as Record<string, any>).forEach(([key, value]) => {
-        formData.append(key, value)
+        if (isArray(value)) {
+          if (value.some(item => item instanceof File)) {
+            value.forEach((file: File) => {
+              formData.append(key, file)
+            })
+          }
+        } else {
+          formData.append(key, value)
+        }
       })
 
       requestBody = formData

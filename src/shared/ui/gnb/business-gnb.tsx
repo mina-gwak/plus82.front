@@ -35,9 +35,9 @@ export const BusinessGNB = () => {
             <Logo onClick={handleLogoClick} />
             {isDev && (
               <Navigation.Root>
-                <Navigation.Item value="/business/find-teacher">
+                {/* <Navigation.Item value="/business/find-teacher">
                   {t('tab.find-teacher')}
-                </Navigation.Item>
+                </Navigation.Item> */}
                 <Navigation.Item value="/business/applicant-management">
                   {t('tab.applicant-management')}
                 </Navigation.Item>

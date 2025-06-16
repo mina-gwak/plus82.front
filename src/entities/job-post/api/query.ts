@@ -1,5 +1,9 @@
 import { infiniteQueryOptions, queryOptions } from '@tanstack/react-query'
 
+import {
+  getBusinessJobPosts,
+  type GetBusinessJobPostsRequest,
+} from './get-business-job-posts'
 import { getJobPost } from './get-job-post'
 import { getJobPosts, type GetJobPostsRequest } from './get-job-posts'
 
@@ -28,5 +32,11 @@ export const jobPostQueries = {
     queryOptions({
       queryKey: [...jobPostQueries.details(), jobPostId],
       queryFn: () => getJobPost({ jobPostId }),
+    }),
+  businessLists: () => [...jobPostQueries.all(), 'business-list'],
+  businessList: (params: GetBusinessJobPostsRequest) =>
+    queryOptions({
+      queryKey: [...jobPostQueries.businessLists(), params],
+      queryFn: () => getBusinessJobPosts(params),
     }),
 }

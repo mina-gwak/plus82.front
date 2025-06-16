@@ -1,0 +1,19 @@
+{
+  "academy-detail": {
+    "title": "학원 상세 정보",
+    "side-panel": {
+      "title": "작성에 유의해 주세요",
+      "description1": "입력한 정보는 검색에 반영돼요.",
+      "description2": "중요한 정보를 빠뜨리지 않았는지 확인해 주세요."
+    },
+    "button": {
+      "save": "저장하기"
+    },
+    "success": {
+      "register": "정보를 저장했어요"
+    },
+    "error": {
+      "register": "정보를 저장하는 중 오류가 발생했습니다"
+    }
+  }
+}

@@ -18,7 +18,7 @@ export const title = cva('font-medium text-gray-900', {
   },
 })
 
-export const academyName = cva('font-medium text-gray-500', {
+export const academyName = cva('font-normal text-gray-500', {
   variants: {
     size: {
       small: 'body-large',

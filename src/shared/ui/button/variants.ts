@@ -1,12 +1,12 @@
 import { cva, VariantProps } from 'class-variance-authority'
 
 export const button = cva(
-  'flex items-center justify-center gap-1 transition-all focus:border-2 focus:border-blue-800 disabled:bg-gray-100 disabled:text-gray-500',
+  'flex items-center justify-center gap-1 transition-all focus-visible:border-2 focus-visible:border-blue-800 disabled:bg-gray-100 disabled:text-gray-500',
   {
     variants: {
       variant: {
         primary:
-          'bg-blue-800 text-white outline outline-0 outline-white hover:bg-blue-900 focus:border-none focus:shadow-[0_0_0_4px_#3068E0] focus:outline-2',
+          'bg-blue-800 text-white outline outline-0 outline-white hover:bg-blue-900 focus-visible:border-none focus-visible:shadow-[0_0_0_4px_#3068E0] focus-visible:outline-2',
         tonal:
           'bg-blue-50 text-blue-800 hover:bg-blue-100 focus:border-blue-800',
         lined:

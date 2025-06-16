@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale } from 'next-intl/server'
 import { ReactNode } from 'react'
 
-import { SpoqaHanSansNeo } from 'app/styles'
+import { pretendard } from 'app/styles'
 import { GoogleAnalytics } from 'shared/config/google-analytics'
 import { cn } from 'shared/lib'
 import { GuestGNB } from 'shared/ui'
@@ -19,13 +19,8 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
   const locale = await getLocale()
 
   return (
-    <html lang={locale} className={SpoqaHanSansNeo.variable}>
-      <body
-        className={cn(
-          'font-spoqa-han-sans-neo',
-          'flex min-h-dvh w-full flex-col',
-        )}
-      >
+    <html lang={locale} className={pretendard.className}>
+      <body className={cn('font-pretendard', 'flex min-h-dvh w-full flex-col')}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}

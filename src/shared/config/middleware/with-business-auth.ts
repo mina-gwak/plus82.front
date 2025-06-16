@@ -7,7 +7,12 @@ import { MiddlewareFactory } from './type'
 
 const matchersForAuth = [
   '/business/setting/*path',
+  '/business/applicant-management',
   '/business/applicant-management/*path',
+  '/business/job-posting',
+  '/business/job-posting/*path',
+  '/business/academy-detail',
+  '/business/preview/*path',
 ]
 const matchersForSignIn = ['/business/sign-up', '/business/sign-in']
 
