@@ -1,0 +1,10 @@
+{
+  "notification-setting": {
+    "title": "Notification Setting",
+    "label": "Email Notification",
+    "description": "Receive notifications regarding application results",
+    "error": {
+      "update": "An error occurred while updating your notification settings"
+    }
+  }
+}

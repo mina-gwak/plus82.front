@@ -21,6 +21,7 @@ export default getRequestConfig(async () => {
         `./locales/${locale}/consent-to-collection-and-use-of-personal-information.json`
       )
     ).default,
+    ...(await import(`./locales/${locale}/my-account.json`)).default,
   }
 
   return {

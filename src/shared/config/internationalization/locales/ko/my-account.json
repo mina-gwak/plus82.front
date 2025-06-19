@@ -1,0 +1,10 @@
+{
+  "notification-setting": {
+    "title": "알림 설정",
+    "label": "이메일 알림",
+    "description": "지원자에 대한 알림을 수신합니다",
+    "error": {
+      "update": "알림 설정을 업데이트하는 중 오류가 발생했습니다"
+    }
+  }
+}

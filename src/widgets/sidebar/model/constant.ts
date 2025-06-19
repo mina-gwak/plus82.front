@@ -17,6 +17,10 @@ export const items: MenuItemData[] = [
     title: 'My Account',
     subItems: [
       {
+        title: 'Notification Setting',
+        url: '/setting/my-account/notification',
+      },
+      {
         title: 'Personal Information',
         url: '/setting/my-account/personal-information',
       },
@@ -36,6 +40,10 @@ export const businessItems: MenuItemData[] = [
   {
     title: '내 계정',
     subItems: [
+      {
+        title: '알림 설정',
+        url: '/business/setting/my-account/notification',
+      },
       {
         title: '개인 정보',
         url: '/business/setting/my-account/personal-information',

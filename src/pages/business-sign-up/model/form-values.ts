@@ -41,8 +41,6 @@ export const defaultValues: FormValues = {
 export const convertToAcademySignUpDTO = ({
   code,
   confirmPassword,
-  address,
-  detailedAddress,
   ...restFormValues
 }: FormValues): AcademySignUpRequest => {
   return {
@@ -51,6 +49,5 @@ export const convertToAcademySignUpDTO = ({
     locationType: restFormValues.locationType!,
     lat: restFormValues.lat!,
     lng: restFormValues.lng!,
-    detailedAddress: `${address} ${detailedAddress}`,
   }
 }

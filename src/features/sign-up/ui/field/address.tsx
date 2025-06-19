@@ -27,6 +27,10 @@ export const Address = () => {
   }
 
   const handleCompleteSearchingCode = (data: AddressType) => {
+    if (form.formState.errors.address) {
+      form.clearErrors('address')
+    }
+
     form.setValue('address', data.address)
     form.setValue('locationType', convertToLocationType(data.sido))
 
