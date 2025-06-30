@@ -98,6 +98,7 @@ export const convertToJobDetail = (
     academyRepresentativeName: academy.representativeName,
     academyDescription: academy.description,
     academyLocationType: academy.locationType,
+    academyAddress: academy.address,
     academyDetailedAddress: academy.detailedAddress,
     lat: academy.lat,
     lng: academy.lng,

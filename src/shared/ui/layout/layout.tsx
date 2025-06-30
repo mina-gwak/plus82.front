@@ -15,9 +15,11 @@ export const Layout = ({
   children,
 }: PropsWithChildren<Props>) => {
   return (
-    <div className={cn(css.outerWrapper({ wide }))}>
-      <div className={cn(css.innerWrapper({ wide, className }))}>
-        {children}
+    <div className="overflow-y-auto">
+      <div className={cn(css.outerWrapper({ wide }))}>
+        <div className={cn(css.innerWrapper({ wide, className }))}>
+          {children}
+        </div>
       </div>
     </div>
   )

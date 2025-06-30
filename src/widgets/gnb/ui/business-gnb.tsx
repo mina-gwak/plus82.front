@@ -4,13 +4,13 @@ import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 
+import Logo from 'public/images/logo.svg'
 import { cn } from 'shared/lib'
+import { Button } from 'shared/ui'
 
-import { Button } from '../button'
-import Logo from './assets/Logo.svg'
 import { BusinessButton } from './business-button'
+import { NotificationButton } from './business-notification/button'
 import * as Navigation from './navigation'
-import { NotificationButton } from './notification'
 import * as css from './variants'
 
 export const BusinessGNB = () => {
@@ -18,8 +18,6 @@ export const BusinessGNB = () => {
   const session = useSession()
 
   const t = useTranslations()
-
-  const isDev = process.env.NODE_ENV === 'development'
 
   const handleLogoClick = () => {
     router.push('/business')

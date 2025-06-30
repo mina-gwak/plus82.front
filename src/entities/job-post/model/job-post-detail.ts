@@ -17,6 +17,7 @@ export type JobPostDetail = {
   academyRepresentativeName: string
   academyDescription: string
   academyLocationType: Location
+  academyAddress: string
   academyDetailedAddress: string
   lat: number
   lng: number

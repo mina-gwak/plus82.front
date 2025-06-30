@@ -2,9 +2,9 @@
 
 import { useRouter } from 'next/navigation'
 
+import Logo from 'public/images/logo.svg'
 import { cn } from 'shared/lib'
 
-import Logo from './assets/Logo.svg'
 import * as css from './variants'
 
 export const GuestGNB = () => {

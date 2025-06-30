@@ -8,7 +8,6 @@ import { toast } from 'react-toastify'
 
 import { academyQueries } from 'entities/academy'
 import {
-  createJobPost,
   JobPostDetail,
   updateJobPost,
   updateJobPostDraft,

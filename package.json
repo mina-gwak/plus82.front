@@ -13,6 +13,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@next/third-parties": "^15.3.4",
     "@popperjs/core": "^2.11.8",
     "@radix-ui/react-collapsible": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.4",

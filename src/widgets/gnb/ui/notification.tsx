@@ -2,9 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { colors } from 'shared/config'
 import { useDropdown } from 'shared/lib'
-
-import { Dropdown } from '../dropdown'
-import { Icon } from '../icon'
+import { Dropdown, Icon } from 'shared/ui'
 
 export const NotificationButton = () => {
   const t = useTranslations()
