@@ -1,0 +1,120 @@
+{
+  "feed-list": {
+    "side-panel": {
+      "sign-in": "Plus 82에 로그인하고\n더 많은 기능을 이용해 보세요",
+      "button": {
+        "sign-in": "로그인",
+        "write-post": "글쓰기"
+      }
+    },
+    "search": {
+      "placeholder": "관심있는 내용을 키워드로 검색해 보세요"
+    },
+    "feed-form": {
+      "button": {
+        "cancel": "취소",
+        "post": "게시",
+        "edit": "수정"
+      },
+      "success": {
+        "post": "게시글을 등록했어요",
+        "edit": "게시글을 수정했어요"
+      },
+      "error": {
+        "add": "게시글 등록 중 오류가 발생했습니다",
+        "update": "게시글 수정 중 오류가 발생했습니다",
+        "delete": "게시글 삭제 중 오류가 발생했습니다",
+        "like": "게시글 좋아요 중 오류가 발생했습니다",
+        "unlike": "게시글 좋아요 취소 중 오류가 발생했습니다"
+      }
+    },
+    "feed-list": {
+      "empty": "아직 게시글이 없어요,\n게시글을 작성하고 공유해 보세요 !"
+    },
+    "feed-menu": {
+      "link-copied": "링크를 복사했어요",
+      "button": {
+        "report-post": "게시글 신고",
+        "report-comment": "댓글 신고",
+        "report-user": "사용자 신고",
+        "edit": "수정하기",
+        "delete": "삭제하기"
+      },
+      "error": {
+        "public": "로그인이 필요해요"
+      }
+    },
+    "feed-item": {
+      "me": "(Me)",
+      "comment": {
+        "sign-in": "로그인하고 댓글을 달아보세요",
+        "button": {
+          "cancel": "취소",
+          "post": "등록"
+        },
+        "error": {
+          "add": "댓글 등록 중 오류가 발생했습니다",
+          "update": "댓글 수정 중 오류가 발생했습니다",
+          "delete": "댓글 삭제 중 오류가 발생했습니다",
+          "like": "댓글 좋아요 중 오류가 발생했습니다",
+          "unlike": "댓글 좋아요 취소 중 오류가 발생했습니다"
+        }
+      },
+      "button": {
+        "show-more": "...더보기"
+      },
+      "liked-people-modal": {
+        "title": "게시글을 좋아하는 사람들",
+        "empty": "아직 좋아요를 누른 사람이 없어요"
+      },
+      "delete-comment-modal": {
+        "title": "댓글 삭제하기",
+        "description": "댓글을 정말 삭제할까요?\n삭제된 댓글은 되돌릴 수 없어요.",
+        "success": "댓글을 삭제했어요",
+        "button": {
+          "cancel": "취소",
+          "delete": "삭제"
+        }
+      },
+      "delete-feed-modal": {
+        "title": "게시글 삭제하기",
+        "description": "게시글을 정말 삭제할까요?\n삭제된 게시글은 되돌릴 수 없어요.",
+        "success": "게시글을 삭제했어요",
+        "button": {
+          "cancel": "취소",
+          "delete": "삭제"
+        }
+      },
+      "report-post-modal": {
+        "title": "게시글 신고하기",
+        "description": "게시글을 신고해 주세요",
+        "success": "신고가 정상적으로 접수됐어요",
+        "error": "댓글 신고 중 오류가 발생했습니다",
+        "button": {
+          "cancel": "취소",
+          "report": "신고"
+        }
+      },
+      "report-comment-modal": {
+        "title": "댓글 신고하기",
+        "description": "댓글을 신고해 주세요",
+        "success": "신고가 정상적으로 접수됐어요",
+        "error": "게시글 신고 중 오류가 발생했습니다",
+        "button": {
+          "cancel": "취소",
+          "report": "신고"
+        }
+      },
+      "report-user-modal": {
+        "title": "사용자 신고하기",
+        "description": "사용자를 신고해 주세요",
+        "success": "신고가 정상적으로 접수됐어요",
+        "error": "사용자 신고 중 오류가 발생했습니다",
+        "button": {
+          "cancel": "취소",
+          "report": "신고"
+        }
+      }
+    }
+  }
+}

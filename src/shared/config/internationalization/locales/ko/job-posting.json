@@ -6,10 +6,13 @@
       "saved": "임시 저장",
       "closed": "채용 마감"
     },
+    "currency-unit": "만원",
+    "application-count": "명",
     "table": {
       "job-title": "공고명",
       "application": "지원 현황",
       "salary": "연봉",
+      "salary-negotiable": "협의 가능",
       "posted-date": "등록일",
       "expiration-date": "마감일",
       "no-data": "아직 등록한 공고가 없어요",
@@ -21,6 +24,31 @@
     },
     "success": {
       "job-posting-copy": "공고를 복사했어요"
+    }
+  },
+  "create-job-posting": {
+    "create-title": "공고 등록",
+    "update-title": "공고 수정",
+    "side-panel": {
+      "title": "공고 내용은 영어로 작성해주세요.",
+      "description1": "입력한 정보는 검색에 반영돼요.",
+      "description2": "중요한 정보를 빠뜨리지 않았는지 확인해 주세요."
+    },
+    "button": {
+      "register-job-posting": "등록하기",
+      "save-job-posting-draft": "임시 저장"
+    },
+    "error": {
+      "job-posting-register": "공고를 등록하는 중 오류가 발생했습니다",
+      "job-posting-draft-register": "공고를 임시 저장하는 중 오류가 발생했습니다",
+      "job-posting-draft-update": "임시 저장된 공고를 수정하는 중 오류가 발생했습니다",
+      "job-posting-update": "공고를 수정하는 중 오류가 발생했습니다"
+    },
+    "success": {
+      "job-posting-draft-register": "공고를 임시 저장했어요",
+      "job-posting-register": "공고를 등록했어요",
+      "job-posting-draft-update": "임시 저장된 공고를 수정했어요",
+      "job-posting-update": "공고를 수정했어요"
     }
   }
 }

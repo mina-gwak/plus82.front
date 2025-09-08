@@ -1,14 +1,35 @@
+import { isEqual } from 'lodash-es'
+import { useLocale, useTranslations } from 'next-intl'
+import { useFormContext, useWatch } from 'react-hook-form'
+
 import { fieldCss, Form } from 'shared/form'
 import { cn, Slot } from 'shared/lib'
-import { Checkbox, Label } from 'shared/ui'
+import { Checkbox, CheckboxValue, Label } from 'shared/ui'
+
+import { FormValues } from '../model/form-values'
+import * as rules from '../model/rules'
 
 type Props = {
   className?: string
 }
 
 export const JobPostingForm = ({ className }: Props) => {
+  const locale = useLocale()
+  const t = useTranslations()
+
+  const {
+    control,
+    setValue,
+    formState: { errors },
+    clearErrors,
+  } = useFormContext<FormValues>()
+
+  const [title, studentType, noExpirationDate] = useWatch({
+    control,
+    name: ['title', 'studentType', 'noExpirationDate'],
+  })
+
   const studentTypeOptions = [
-    'All',
     'Kindergarten',
     'Elementary',
     'MiddleSchool',
@@ -16,23 +37,53 @@ export const JobPostingForm = ({ className }: Props) => {
     'Adult',
   ]
 
+  const isAllChecked = isEqual(studentType, studentTypeOptions)
+
+  const handleAllCheckboxClick = () => {
+    if (isAllChecked) {
+      setValue('studentType', null)
+    } else {
+      setValue('studentType', studentTypeOptions)
+    }
+
+    clearErrors('studentType')
+  }
+
+  const handleExpirationDateChange = (value: CheckboxValue[]) => {
+    if (value.includes('true')) {
+      setValue('dueDate', null)
+    } else {
+      setValue('dueDate', undefined)
+    }
+
+    clearErrors('dueDate')
+  }
+
   return (
     <div className={cn('rounded-3xl border border-gray-300 p-10', className)}>
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label required>공고 제목</Label>
-        <Form.Control name="title">
+        <Label required>{t('field.job-posting-title.label')}</Label>
+        <Form.Control name="title" rules={rules.title}>
           <Form.TextField
-            placeholder="간결하고 명확하게 입력해 주세요. ex) Full-Time ESL Instructor"
+            placeholder={t('field.job-posting-title.placeholder')}
+            maxLength={40}
             fullWidth
           />
-          <Form.ErrorMessage />
+          <div className="flex justify-between">
+            <div>
+              <Form.ErrorMessage name="title" />
+            </div>
+            <div className="body-small font-medium text-gray-700">
+              {title.length}/40 자 {/* TODO: 번역 */}
+            </div>
+          </div>
         </Form.Control>
       </div>
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label required>주요 업무</Label>
-        <Form.Control name="jobDescription">
+        <Label required>{t('field.job-posting-description.label')}</Label>
+        <Form.Control name="jobDescription" rules={rules.jobDescription}>
           <Form.TextArea
-            placeholder={`입사 후 맡게되는 업무에 대해 자세히 알려주세요\nex) Teach [elementary-level] English classes [30 hours per week]. Develop lesson plans and class materials.`}
+            placeholder={t('field.job-posting-description.placeholder')}
             fullWidth
             className="h-[128px]"
           />
@@ -40,10 +91,15 @@ export const JobPostingForm = ({ className }: Props) => {
         </Form.Control>
       </div>
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label>자격 요건</Label>
-        <Form.Control name="requiredQualification">
+        <Label>{t('field.job-posting-required-qualification.label')}</Label>
+        <Form.Control
+          name="requiredQualification"
+          rules={rules.requiredQualification}
+        >
           <Form.TextArea
-            placeholder={`지원자의 필요 조건을 입력해 주세요\nex) Native or native-level English speaker. Valid TEFL/TESOL/CELTA certification (preferred).`}
+            placeholder={t(
+              'field.job-posting-required-qualification.placeholder',
+            )}
             fullWidth
             className="h-[128px]"
           />
@@ -51,10 +107,15 @@ export const JobPostingForm = ({ className }: Props) => {
         </Form.Control>
       </div>
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label>우대 사항</Label>
-        <Form.Control name="preferredQualification">
+        <Label>{t('field.job-posting-preferred-qualification.label')}</Label>
+        <Form.Control
+          name="preferredQualification"
+          rules={rules.preferredQualification}
+        >
           <Form.TextArea
-            placeholder={`채용시 우대되는 사항이 있다면 입력해 주세요\nex) Basic Korean language skills for simple communication.\nExperience teaching [elementary students/IELTS/TOEFL].`}
+            placeholder={t(
+              'field.job-posting-preferred-qualification.placeholder',
+            )}
             fullWidth
             className="h-[128px]"
           />
@@ -62,10 +123,10 @@ export const JobPostingForm = ({ className }: Props) => {
         </Form.Control>
       </div>
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label>혜택/복지</Label>
-        <Form.Control name="benefits">
+        <Label>{t('field.job-posting-benefits.label')}</Label>
+        <Form.Control name="benefits" rules={rules.benefits}>
           <Form.TextArea
-            placeholder={`근무자에게 제공되는 혜택을 알려주세요\nex) Provided housing or housing allowance. Paid vacation days (ex. 10 days) + national holidays. Round-trip airfare reimbursement (depending on contract).`}
+            placeholder={t('field.job-posting-benefits.placeholder')}
             fullWidth
             className="h-[128px]"
           />
@@ -73,58 +134,111 @@ export const JobPostingForm = ({ className }: Props) => {
         </Form.Control>
       </div>
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label required>월급</Label>
-        <Form.Control name="salary">
-          <Form.TextField placeholder="숫자만 입력해 주세요" fullWidth>
+        <Label required>{t('field.job-posting-salary.label')}</Label>
+        <Form.Control name="salary" rules={rules.salary}>
+          <Form.TextField
+            placeholder={t('field.job-posting-salary.placeholder')}
+            fullWidth
+          >
             <Slot name="right">
-              <span className="body-large text-gray-700">KRW</span>
+              <span className="body-large shrink-0 text-gray-700">
+                {t('field.currency-unit.label')}
+              </span>
             </Slot>
           </Form.TextField>
           <Form.ErrorMessage />
         </Form.Control>
         <Form.Control name="salaryNegotiable">
           <Form.CheckboxGroup options={['true']}>
-            <Form.Checkbox label="협의 가능" value="true" />
+            <Form.Checkbox
+              label={t('field.job-posting-salary-negotiable.label')}
+              value="true"
+            />
           </Form.CheckboxGroup>
           <Form.ErrorMessage />
         </Form.Control>
       </div>
 
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label required>대상 학생</Label>
-        <div className="flex gap-[30px]">
-          <Form.CheckboxGroup name="studentType" options={studentTypeOptions}>
-            <Form.Checkbox label="전체" value="All" />
-            <Form.Checkbox label="유치원" value="Kindergarten" />
-            <Form.Checkbox label="초등학생" value="Elementary" />
-            <Form.Checkbox label="중학생" value="MiddleSchool" />
-            <Form.Checkbox label="고등학생" value="HighSchool" />
-            <Form.Checkbox label="성인" value="Adult" />
+        <Label required>{t('field.target-student.label')}</Label>
+        <div
+          className={cn(
+            'flex',
+            locale === 'ko' && 'gap-[30px]',
+            locale === 'en' && 'flex-wrap gap-x-[18px] gap-y-4',
+          )}
+        >
+          <Form.CheckboxGroup
+            name="studentType"
+            rules={rules.studentType}
+            options={studentTypeOptions}
+          >
+            <Checkbox
+              label={t('field.target-student.option.all')}
+              value="All"
+              checked={isAllChecked}
+              onChange={handleAllCheckboxClick}
+              error={!!errors?.studentType}
+            />
+            <Form.Checkbox
+              label={t('field.target-student.option.kindergarten')}
+              value="Kindergarten"
+            />
+            <Form.Checkbox
+              label={t('field.target-student.option.elementary')}
+              value="Elementary"
+            />
+            <Form.Checkbox
+              label={t('field.target-student.option.middle-school')}
+              value="MiddleSchool"
+            />
+            <Form.Checkbox
+              label={t('field.target-student.option.high-school')}
+              value="HighSchool"
+            />
+            <Form.Checkbox
+              label={t('field.target-student.option.adult')}
+              value="Adult"
+            />
           </Form.CheckboxGroup>
         </div>
       </div>
 
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-7' })}>
-        <Label>업무 시작 가능 날짜</Label>
+        <Label>{t('field.job-posting-start-date.label')}</Label>
         <Form.Control name="jobStartDate">
           <Form.DatePicker
-            placeholder="업무 시작 날짜를 선택해 주세요"
+            placeholder={t('field.job-posting-start-date.placeholder')}
             fullWidth
+            dateFormat="yyyy-MM-dd"
           />
           <Form.ErrorMessage />
         </Form.Control>
       </div>
 
       <div className={fieldCss.fieldWrapper({ className: 'not-last:mb-8' })}>
-        <Label required>공고 마감일</Label>
-        <Form.Control name="dueDate">
+        <Label required>{t('field.job-posting-due-date.label')}</Label>
+        <Form.Control name="dueDate" rules={rules.dueDate}>
           <Form.DatePicker
-            placeholder="공고 마감 날짜를 선택해 주세요"
+            placeholder={t('field.job-posting-due-date.placeholder')}
             fullWidth
+            disabled={noExpirationDate.includes('true')}
+            dateFormat="yyyy-MM-dd"
           />
-          <Form.ErrorMessage />
+          <Form.ErrorMessage className="-mt-[6px] mb-[6px]" />
         </Form.Control>
-        <Checkbox label="상시 채용" value="true" className="-mt-[6px]" />
+        <Form.Control name="noExpirationDate">
+          <Form.CheckboxGroup
+            options={['true']}
+            onChange={handleExpirationDateChange}
+          >
+            <Form.Checkbox
+              label={t('field.job-posting-no-expiration-date.label')}
+              value="true"
+              className="[&:last-child]:-mt-[6px]"
+            />
+          </Form.CheckboxGroup>
+        </Form.Control>
       </div>
     </div>
   )

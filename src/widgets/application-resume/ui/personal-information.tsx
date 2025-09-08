@@ -1,13 +1,19 @@
+import { capitalize } from 'lodash-es'
+import { getTranslations } from 'next-intl/server'
+
 import { convertStudentTypeToArray } from 'entities/job-post'
 import { JobPostRelationDetail } from 'entities/job-post-resume-relation'
 import { colors } from 'shared/config'
+import { formatDate } from 'shared/lib'
 import { Image, Icon } from 'shared/ui'
 
 type Props = {
   jobPostResumeRelation: JobPostRelationDetail
 }
 
-export const PersonalInformation = ({ jobPostResumeRelation }: Props) => {
+export const PersonalInformation = async ({ jobPostResumeRelation }: Props) => {
+  const t = await getTranslations()
+
   const studentType = convertStudentTypeToArray(jobPostResumeRelation)
 
   return (
@@ -33,28 +39,34 @@ export const PersonalInformation = ({ jobPostResumeRelation }: Props) => {
             {jobPostResumeRelation.firstName} {jobPostResumeRelation.lastName}
           </h3>
           <p className="body-large space-x-2 font-medium text-gray-700 *:inline-block">
-            <span>{jobPostResumeRelation.birthDate}</span>
+            <span>{formatDate(jobPostResumeRelation.birthDate)}</span>
             <span>•</span>
-            <span>{jobPostResumeRelation.genderType}</span>
+            <span>{capitalize(jobPostResumeRelation.genderType)}</span>
           </p>
         </div>
         <dl>
           <div className="flex justify-between">
             <div className="body-large w-[410px] space-y-3 font-medium">
               <div className="flex gap-2">
-                <dt className="w-[56px] shrink-0 text-gray-500">이메일</dt>
+                <dt className="min-w-[56px] shrink-0 text-gray-500">
+                  {t('field.email.label')}
+                </dt>
                 <dd className="flex-grow text-gray-900">
                   {jobPostResumeRelation.email}
                 </dd>
               </div>
               <div className="flex gap-2">
-                <dt className="w-[56px] shrink-0 text-gray-500">국적</dt>
+                <dt className="min-w-[56px] shrink-0 text-gray-500">
+                  {t('field.nationality.label')}
+                </dt>
                 <dd className="flex-grow text-gray-900">
                   {jobPostResumeRelation.countryNameEn}
                 </dd>
               </div>
               <div className="flex gap-2">
-                <dt className="w-[56px] shrink-0 text-gray-500">거주 지역</dt>
+                <dt className="min-w-[56px] shrink-0 text-gray-500">
+                  {t('field.residence-country.label')}
+                </dt>
                 <dd className="flex-grow text-gray-900">
                   {jobPostResumeRelation.residenceCountryNameEn}
                 </dd>
@@ -62,7 +74,9 @@ export const PersonalInformation = ({ jobPostResumeRelation }: Props) => {
             </div>
             <div className="body-large w-[418px] font-medium">
               <div className="mb-[20px] flex h-11 gap-2">
-                <dt className="w-[28px] text-gray-500">학력</dt>
+                <dt className="min-w-[28px] text-gray-500">
+                  {t('field.degree.label')}
+                </dt>
                 <dd className="flex-grow text-gray-900">
                   {jobPostResumeRelation.degree}
                   {jobPostResumeRelation.major &&
@@ -70,7 +84,9 @@ export const PersonalInformation = ({ jobPostResumeRelation }: Props) => {
                 </dd>
               </div>
               <div className="flex gap-2">
-                <dt className="w-[28px] text-gray-500">비자</dt>
+                <dt className="min-w-[28px] text-gray-500">
+                  {t('field.visa.label')}
+                </dt>
                 <dd className="flex-grow text-gray-900">
                   {jobPostResumeRelation.hasVisa
                     ? jobPostResumeRelation.visaType
@@ -81,7 +97,9 @@ export const PersonalInformation = ({ jobPostResumeRelation }: Props) => {
           </div>
         </dl>
         <div className="body-large mt-3 flex gap-2 font-medium">
-          <dt className="w-[56px] shrink-0 text-gray-500">학생 유형</dt>
+          <dt className="min-w-[56px] shrink-0 text-gray-500">
+            {t('field.student-type.label')}
+          </dt>
           <dd className="flex flex-grow gap-4 text-gray-900">
             {studentType.map(type => (
               <span key={type}>{type}</span>

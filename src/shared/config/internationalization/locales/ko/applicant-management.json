@@ -7,12 +7,46 @@
       "accepted": "합격",
       "rejected": "불합격"
     },
+    "button": {
+      "edit": "공고 수정",
+      "copy": "공고 복사",
+      "preview": "미리보기",
+      "copying": "복사 중..."
+    },
     "table": {
       "applicant": "지원자",
+      "nationality": "국적",
       "job-title": "공고 제목",
       "memo": "메모",
       "application-date": "지원 일자",
       "no-data": "아직 접수된 지원자가 없습니다"
+    }
+  },
+  "applicant-management-detail": {
+    "side-panel": {
+      "status": "현재 채용 단계",
+      "status-description": "채용 단계를 변경하면 지원자에게 알림으로 결과를 알려줘요",
+      "memo": "한 줄 메모",
+      "memo-placeholder": "지원자에 대해 기억하고 싶은 점이 있다면 적어주세요 (최대 100자)"
+    },
+    "status-update-modal": {
+      "title": "채용 단계 변경",
+      "description1": "채용 단계를 <prev></prev>에서 <next></next>(으)로 변경했어요.",
+      "description2": "저장하면 지원자에게 결과가 전달돼요.",
+      "description3": "변경 사항을 저장할까요?"
+    },
+    "button": {
+      "cancel": "취소",
+      "save": "저장하기",
+      "downloading": "다운로드 중...",
+      "download-as-pdf": "PDF로 다운받기"
+    },
+    "success": {
+      "save": "내용을 저장했어요"
+    },
+    "error": {
+      "download-resume": "이력서 다운로드 중 오류가 발생했습니다",
+      "update": "내용을 저장하는 중 오류가 발생했습니다"
     }
   }
 }

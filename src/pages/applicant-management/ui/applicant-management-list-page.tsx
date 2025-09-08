@@ -93,12 +93,25 @@ export const ApplicantManagementListPage = () => {
                         className="cursor-pointer"
                       >
                         <Table.Cell>
-                          {application.resumeFirstName}{' '}
-                          {application.resumeLastName}
+                          {(() => {
+                            if (
+                              application.resumeFirstName &&
+                              application.resumeLastName
+                            ) {
+                              return (
+                                <>
+                                  {application.resumeFirstName}{' '}
+                                  {application.resumeLastName}
+                                </>
+                              )
+                            }
+
+                            return '-'
+                          })()}
                         </Table.Cell>
                         <Table.Cell>{application.jobPostTitle}</Table.Cell>
                         <Table.Cell>
-                          {application?.academyMemo ?? ''}
+                          {application?.academyMemo ?? '-'}
                         </Table.Cell>
                         <Table.Cell>{application.submittedDate}</Table.Cell>
                       </Table.Row>

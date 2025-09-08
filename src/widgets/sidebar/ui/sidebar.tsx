@@ -7,9 +7,13 @@ import { Sidebar } from 'shared/ui'
 
 import { CollapsibleMenuItem, SingleMenuItem } from './sidebar-item'
 import { hasSubItems } from '../lib/type-guard'
-import { items } from '../model/constant'
+import { MenuItemData } from '../model/type'
 
-export const SettingSidebar = () => {
+type Props = {
+  items: MenuItemData[]
+}
+
+export const SettingSidebar = ({ items }: Props) => {
   const pathname = usePathname()
 
   const isActive = useCallback(

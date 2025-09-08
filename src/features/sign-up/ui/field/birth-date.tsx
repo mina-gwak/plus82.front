@@ -12,7 +12,10 @@ export const BirthDate = () => {
     <div className={fieldCss.fieldWrapper()}>
       <Label required>{t('field.birth-date.label')}</Label>
       <Form.Control name="birthDate" rules={birthDateRule}>
-        <Form.DatePicker placeholder={t('field.birth-date.placeholder')} />
+        <Form.DatePicker
+          placeholder={t('field.birth-date.placeholder')}
+          dateFormat="yyyy-MM-dd"
+        />
         <Form.ErrorMessage />
       </Form.Control>
     </div>

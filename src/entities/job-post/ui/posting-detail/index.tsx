@@ -1,4 +1,7 @@
-import { formatDate, formatCurrency, toDisplayValue } from 'shared/lib'
+import { useLocale } from 'next-intl'
+
+import { formatDate, toDisplayValue } from 'shared/lib'
+import { formatCurrencyWithRule } from 'shared/lib/format'
 
 import type { JobPostDetail } from '../../model/job-post-detail'
 import AcademyAddress from '../academy-address'
@@ -8,6 +11,9 @@ type Props = {
 }
 
 export const PostingDetail = ({ jobPost }: Props) => {
+  const locale = useLocale()
+  const negotiable = locale === 'ko' ? '협의 가능' : 'Negotiable'
+
   return (
     <ul className="flex flex-col gap-8">
       <li className="flex flex-col gap-[6px]">
@@ -52,8 +58,9 @@ export const PostingDetail = ({ jobPost }: Props) => {
         <h4 className="title-large font-medium text-gray-900">Salary</h4>
         <p className="title-small font-normal text-gray-900">
           {toDisplayValue(
-            formatCurrency({ number: jobPost.salary, code: 'KRW' }),
+            formatCurrencyWithRule({ number: jobPost.salary, locale }),
           )}
+          {jobPost.salaryNegotiable && ` (${negotiable})`}
         </p>
       </li>
       <li className="flex flex-col gap-[6px]">
@@ -64,7 +71,7 @@ export const PostingDetail = ({ jobPost }: Props) => {
       </li>
       <li className="flex flex-col gap-[6px]">
         <h4 className="title-large font-medium text-gray-900">
-          Expiration date
+          Application deadline
         </h4>
         <p className="title-small font-normal text-gray-900">
           {formatDate(jobPost.dueDate)}
@@ -76,7 +83,7 @@ export const PostingDetail = ({ jobPost }: Props) => {
         </h4>
         <div className="title-small font-normal text-gray-900">
           <AcademyAddress
-            address={jobPost.academyDetailedAddress}
+            address={`${jobPost.academyAddress} ${jobPost.academyDetailedAddress}`}
             lat={jobPost.lat}
             lng={jobPost.lng}
           />

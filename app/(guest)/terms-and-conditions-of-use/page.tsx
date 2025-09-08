@@ -1,1 +1,1 @@
-export { TermAndConditionPage as default } from 'src/pages/term-and-condition'
+export { TermAndConditionPage as default } from 'pages/term-and-condition'

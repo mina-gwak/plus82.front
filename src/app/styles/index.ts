@@ -1,1 +1,1 @@
-export { SpoqaHanSansNeo } from './font'
+export { pretendard } from './font'

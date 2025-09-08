@@ -1,7 +1,7 @@
+import { useTranslations } from 'next-intl'
 import { MouseEvent } from 'react'
 
 import { colors } from 'shared/config'
-import { cn } from 'shared/lib'
 import { Button, Icon } from 'shared/ui'
 
 import { useCopyJobPosting } from '../lib/copy-job-posting'
@@ -19,6 +19,8 @@ export const CopyJobPostingButton = ({
   onSuccess,
   disabled,
 }: Props) => {
+  const t = useTranslations('applicant-management-list')
+
   const { isLoading, copyJobPosting } = useCopyJobPosting()
 
   const handleCopyButtonClick = async (
@@ -58,7 +60,7 @@ export const CopyJobPostingButton = ({
       disabled={isLoading}
     >
       <Button.Icon name="Copy" />
-      {isLoading ? '복사 중...' : '공고 복사'}
+      {isLoading ? t('button.copying') : t('button.copy')}
     </Button>
   )
 }

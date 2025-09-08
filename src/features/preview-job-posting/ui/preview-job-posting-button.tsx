@@ -1,6 +1,7 @@
+import { useTranslations } from 'next-intl'
 import { MouseEvent } from 'react'
 
-import { getJobPost } from 'entities/job-post'
+import { getBusinessJobPost } from 'entities/job-post'
 import { JobPostDetail } from 'entities/job-post'
 import { colors } from 'shared/config'
 import { cn } from 'shared/lib'
@@ -23,6 +24,8 @@ export const PreviewJobPostingButton = ({
   disabled,
   className,
 }: Props) => {
+  const t = useTranslations('applicant-management-list')
+
   const handlePreviewButtonClick = async (
     event: MouseEvent<HTMLButtonElement>,
   ) => {
@@ -30,7 +33,7 @@ export const PreviewJobPostingButton = ({
     event.preventDefault()
 
     if (jobPostId) {
-      const jobPost = await getJobPost({ jobPostId })
+      const jobPost = await getBusinessJobPost({ jobPostId })
       setPreviewJobPosting(jobPost)
     } else {
       const jobPost = await onLoad?.()
@@ -63,7 +66,7 @@ export const PreviewJobPostingButton = ({
         disabled={disabled}
         onClick={handlePreviewButtonClick}
       >
-        미리 보기
+        {t('button.preview')}
       </button>
     )
   }
@@ -78,7 +81,7 @@ export const PreviewJobPostingButton = ({
       className={className}
     >
       <Button.Icon name="DocumentSearch" />
-      미리 보기
+      {t('button.preview')}
     </Button>
   )
 }

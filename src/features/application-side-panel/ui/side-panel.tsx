@@ -1,6 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useForm, useWatch } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
@@ -16,7 +17,6 @@ import { Separator } from 'shared/ui'
 
 import { SubmitButton } from './submit-button'
 import { FormValues } from '../model/form-values'
-
 type Params = {
   jobPostResumeRelationId: string
 }
@@ -26,6 +26,8 @@ type Props = {
 }
 
 export const ApplicationSidePanel = ({ values }: Props) => {
+  const t = useTranslations('applicant-management-detail')
+
   const params = useParams<Params>()
   const jobPostResumeRelationId = params?.jobPostResumeRelationId as string
 
@@ -95,7 +97,7 @@ export const ApplicationSidePanel = ({ values }: Props) => {
     }
 
     if (success) {
-      toast.success('내용을 저장했어요')
+      toast.success(t('success.save'))
     }
   }
 
@@ -105,23 +107,23 @@ export const ApplicationSidePanel = ({ values }: Props) => {
         <div className="mb-3 flex h-[38px] items-center gap-2">
           <Form.Control name="status">
             <label className="title-small font-bold text-gray-900">
-              현재 채용 단계:
+              {t('side-panel.status')}
             </label>
             <ApplicationStatusSelect />
           </Form.Control>
         </div>
         <p className="body-large mb-5 font-normal text-gray-900">
-          채용 단계를 변경하면 지원자에게 알림으로 결과를 알려줘요
+          {t('side-panel.status-description')}
         </p>
         <Separator className="mb-5" />
         <div className="mb-6 flex flex-col gap-2">
           <Form.Control name="memo">
             <label className="title-small font-bold text-gray-900">
-              한 줄 메모
+              {t('side-panel.memo')}
             </label>
             <Form.TextArea
               className="body-large placeholder:body-large h-12 border-0 px-0 py-1 font-normal underline placeholder:font-normal placeholder:underline"
-              placeholder="지원자에 대해 기억하고 싶은 점이 있다면 적어주세요 (최대 100자)"
+              placeholder={t('side-panel.memo-placeholder')}
             />
           </Form.Control>
         </div>

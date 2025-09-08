@@ -7,12 +7,46 @@
       "accepted": "Accepted",
       "rejected": "Rejected"
     },
+    "button": {
+      "edit": "Edit",
+      "copy": "Copy",
+      "preview": "Preview",
+      "copying": "Copying..."
+    },
     "table": {
       "applicant": "Applicant",
+      "nationality": "Nationality",
       "job-title": "Job Title",
       "memo": "Memo",
       "application-date": "Application Date",
       "no-data": "No applications have been received yet"
+    }
+  },
+  "applicant-management-detail": {
+    "side-panel": {
+      "status": "Status",
+      "status-description": "Changing the status will notify the applicant of the update",
+      "memo": "Memo",
+      "memo-placeholder": "Please note any details you'd like to remember about the applicant (up to 100 characters)"
+    },
+    "status-update-modal": {
+      "title": "Update Status",
+      "description1": "Changed the hiring stage from <prev></prev> to <next></next>.",
+      "description2": "Saving will notify the applicant of the outcome.",
+      "description3": "Would you like to save these changes?"
+    },
+    "button": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "downloading": "Downloading...",
+      "download-as-pdf": "Download as PDF"
+    },
+    "success": {
+      "save": "Updated successfully"
+    },
+    "error": {
+      "download-resume": "Failed to download resume",
+      "update": "Failed to update"
     }
   }
 }

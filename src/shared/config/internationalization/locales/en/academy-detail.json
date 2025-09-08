@@ -1,0 +1,19 @@
+{
+  "academy-detail": {
+    "title": "Academy",
+    "side-panel": {
+      "title": "Please fill out carefully",
+      "description1": "The information you enter will be reflected in search results.",
+      "description2": "Please make sure you haven't missed any important details."
+    },
+    "button": {
+      "save": "Save"
+    },
+    "success": {
+      "register": "Information saved"
+    },
+    "error": {
+      "register": "An error occurred while saving information"
+    }
+  }
+}

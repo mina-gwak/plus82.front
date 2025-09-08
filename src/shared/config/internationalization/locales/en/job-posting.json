@@ -6,12 +6,15 @@
       "saved": "Saved",
       "closed": "Closed"
     },
+    "application-count": " applicants",
+    "currency-unit": "in 10,000 KRW",
     "table": {
       "job-title": "Job Title",
       "application": "Application",
       "salary": "Salary",
+      "salary-negotiable": "Negotiable",
       "posted-date": "Posted Date",
-      "expiration-date": "Expiration Date",
+      "expiration-date": "Application deadline",
       "no-data": "No job postings have been registered yet",
       "no-expiration-date": "Open Recruitment",
       "draft": "Not Posted"
@@ -21,6 +24,31 @@
     },
     "success": {
       "job-posting-copy": "Job posting copied successfully"
+    }
+  },
+  "create-job-posting": {
+    "create-title": "Register Job Posting",
+    "update-title": "Edit Job Posting",
+    "side-panel": {
+      "title": "Please write the job posting in English.",
+      "description1": "The information you enter will be reflected in search results.",
+      "description2": "Please make sure you haven't missed any important details."
+    },
+    "button": {
+      "register-job-posting": "Register",
+      "save-job-posting-draft": "Save"
+    },
+    "error": {
+      "job-posting-register": "An error occurred while registering the job posting",
+      "job-posting-draft-register": "An error occurred while saving the job posting as a draft",
+      "job-posting-draft-update": "An error occurred while updating the job posting draft",
+      "job-posting-update": "An error occurred while updating the job posting"
+    },
+    "success": {
+      "job-posting-draft-register": "Job posting saved as a draft successfully",
+      "job-posting-register": "Job posting registered successfully",
+      "job-posting-draft-update": "Job posting draft updated successfully",
+      "job-posting-update": "Job posting updated successfully"
     }
   }
 }

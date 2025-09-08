@@ -1,6 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority'
 
-export const outerWrapper = cva('h-fit w-fit flex-grow', {
+export const outerWrapper = cva('h-[calc(100dvh-65px)] w-fit flex-grow', {
   variants: {
     wide: {
       true: 'mx-auto my-0 flex',

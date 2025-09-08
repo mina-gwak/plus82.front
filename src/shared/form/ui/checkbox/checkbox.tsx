@@ -14,6 +14,7 @@ import { commonRules } from '../../lib'
 type FormCheckboxGroupProps = UseCheckboxProps & {
   rules?: RegisterOptions
   required?: boolean
+  onChange?: (value: CheckboxValue[]) => void
 }
 
 const FormCheckboxGroup = ({
@@ -22,6 +23,7 @@ const FormCheckboxGroup = ({
   rules,
   children,
   required,
+  onChange,
 }: PropsWithChildren<FormCheckboxGroupProps>) => {
   const checkboxState = useCheckbox({ name, options })
 
@@ -37,8 +39,9 @@ const FormCheckboxGroup = ({
     () => ({
       ...checkboxState,
       controller,
+      onChange,
     }),
-    [checkboxState, controller],
+    [checkboxState, controller, onChange],
   )
 
   return (
@@ -67,6 +70,7 @@ const FormCheckboxItem = ({
     updateCheckedValue,
     getCheckboxProps,
     getIndeterminateCheckboxProps,
+    onChange,
   } = useCheckboxContext()
 
   const {
@@ -88,6 +92,7 @@ const FormCheckboxItem = ({
     checkboxProps.onChange(updatedCheckedValues => {
       field.onChange(updatedCheckedValues)
       clearErrors(field.name)
+      onChange?.(updatedCheckedValues)
     })
   }
 

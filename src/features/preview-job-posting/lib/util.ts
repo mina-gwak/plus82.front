@@ -17,6 +17,7 @@ export const convertToJobPostingDetail = ({
     academyRepresentativeName: academyDetail.representativeName,
     academyDescription: academyDetail.description,
     academyLocationType: academyDetail.locationType,
+    academyAddress: academyDetail.address,
     academyDetailedAddress: academyDetail.detailedAddress,
     lat: academyDetail.lat,
     lng: academyDetail.lng,
@@ -24,6 +25,6 @@ export const convertToJobPostingDetail = ({
     forElementary: academyDetail.forElementary,
     forMiddleSchool: academyDetail.forMiddleSchool,
     forHighSchool: academyDetail.forHighSchool,
-    academyImageUrls: academyDetail.imageUrls,
+    academyImageUrls: academyDetail.imageList.map(image => image.path),
   }
 }

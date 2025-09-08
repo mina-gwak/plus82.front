@@ -12,6 +12,7 @@ import ChevronRight from './chevron-right.svg'
 import ChevronUp from './chevron-up.svg'
 import Clear from './clear.svg'
 import Close from './close.svg'
+import Comment from './comment.svg'
 import Copy from './copy.svg'
 import Date from './date.svg'
 import Delete from './delete.svg'
@@ -23,6 +24,9 @@ import ExclamationMark from './exclamation-mark.svg'
 import EyesOff from './eyes-off.svg'
 import EyesOn from './eyes-on.svg'
 import Filter from './filter.svg'
+import HeartFilled from './heart-filled.svg'
+import Heart from './heart.svg'
+import Image from './image.svg'
 import Language from './language.svg'
 import LocationFilled from './location-filled.svg'
 import Message from './message.svg'
@@ -32,6 +36,7 @@ import Plus from './plus.svg'
 import Queen from './queen.svg'
 import Reset from './reset.svg'
 import Search from './search.svg'
+import Share from './share.svg'
 import StarFill from './star-fill.svg'
 import Upload from './upload.svg'
 import User from './user.svg'
@@ -51,6 +56,7 @@ export const IconComponent = {
   ChevronUp,
   Clear,
   Close,
+  Comment,
   Copy,
   Date,
   Delete,
@@ -62,6 +68,9 @@ export const IconComponent = {
   EyesOff,
   EyesOn,
   Filter,
+  HeartFilled,
+  Heart,
+  Image,
   Language,
   LocationFilled,
   Message,
@@ -71,6 +80,7 @@ export const IconComponent = {
   Queen,
   Reset,
   Search,
+  Share,
   StarFill,
   Upload,
   User,

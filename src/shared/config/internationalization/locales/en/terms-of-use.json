@@ -1,0 +1,116 @@
+{
+  "terms-of-use": {
+    "title": "Terms of Use (For Teacher Members)",
+    "chapter": {
+      "1": "Chapter 1. General Provisions",
+      "2": "Chapter 2. Membership Registration",
+      "3": "Chapter 3. Use of Services",
+      "4": "Chapter 4. Termination of Agreement",
+      "5": "Chapter 5. Miscellaneous"
+    },
+    "article": {
+      "1": {
+        "title": "Article 1 (Purpose)",
+        "content": "These Terms of Use (hereinafter \"Terms\") govern the rights, obligations, responsibilities, and other necessary matters between +82 (hereinafter the \"Company\") and users in relation to the job-matching platform service (hereinafter the \"Service\") provided by the Company."
+      },
+      "2": {
+        "title": "Article 2 (Definitions)",
+        "items": {
+          "site": "\"Site\" refers to the web and mobile platforms operated by the Company.",
+          "member": "\"Member\" refers to an individual user who has entered into a service agreement with the Company under these Terms.",
+          "contract": "\"Service Agreement\" means a contract for service use concluded upon the Member's agreement to these Terms and the Company's acceptance.",
+          "id": "\"ID\" means a combination of letters and numbers selected by the Member and approved by the Company for identification and service access.",
+          "password": "\"Password\" means a combination of letters and numbers set by the Member to protect their personal information."
+        }
+      },
+      "3": {
+        "title": "Article 3 (Effect and Amendment of the Terms)",
+        "items": {
+          "1": "These Terms become effective upon posting on the Site or notification via email or other methods.",
+          "2": "The Company may revise these Terms within the bounds of applicable laws and shall notify such revisions in the same manner as Paragraph 1.",
+          "3": "If a Member does not agree to the revised Terms, they may terminate the Service. Continued use after the effective date will be deemed as consent."
+        }
+      },
+      "4": {
+        "title": "Article 4 (Registration)",
+        "items": {
+          "1": "Membership registration is completed when the applicant agrees to the Terms, submits the required information in the Company's designated format, and receives approval from the Company.",
+          "2": "The Company may deny registration if:",
+          "reasons": {
+            "1": "Another person's identity or information is used",
+            "2": "False or incomplete information is provided",
+            "3": "The registration requirements are not met"
+          }
+        }
+      },
+      "5": {
+        "title": "Article 5 (Changes to Member Information)",
+        "content": "Members must promptly update any changes to their registered information. Failure to do so may result in disadvantages for which the Member is responsible."
+      },
+      "6": {
+        "title": "Article 6 (Content of Services)",
+        "content": "The Company provides the following services:",
+        "services": {
+          "1": "Resume registration and matching services for foreign teachers",
+          "2": "Viewing of academy job postings and online application features",
+          "3": "Customized job recommendations",
+          "4": "Additional job-related services as defined by the Company"
+        }
+      },
+      "7": {
+        "title": "Article 7 (Availability of Services)",
+        "items": {
+          "1": "Services are generally available 24/7, year-round, but may be suspended for system maintenance.",
+          "2": "The Company may temporarily suspend or modify part of the Service with prior notice for improvement or security reasons."
+        }
+      },
+      "8": {
+        "title": "Article 8 (Restriction or Suspension of Use)",
+        "content": "The Company may restrict or terminate a Member's use of the Service without prior notice if they:",
+        "reasons": {
+          "1": "Use another person's information",
+          "2": "Intentionally disrupt the Service",
+          "3": "Violate public order or morality",
+          "4": "Breach any laws or these Terms"
+        }
+      },
+      "9": {
+        "title": "Article 9 (Management of Posted Content)",
+        "items": {
+          "1": "All rights to resumes, self-introductions, and other postings belong to the Member.",
+          "2": "Members must not post defamatory, false, or illegal promotional content. Violations may result in deletion.",
+          "3": "The Company may edit or adjust the visibility of content to ensure service stability and reliability."
+        }
+      },
+      "10": {
+        "title": "Article 10 (Termination and Withdrawal)",
+        "items": {
+          "1": "Members may terminate their Service Agreement at any time through the Site's withdrawal menu or customer center.",
+          "2": "The Company may terminate the Service Agreement if a Member violates these Terms."
+        }
+      },
+      "11": {
+        "title": "Article 11 (Limitation of Liability)",
+        "items": {
+          "1": "The Company does not guarantee the accuracy or authenticity of resume content and bears no legal responsibility for matching outcomes.",
+          "2": "The Company shall not be liable for any damages arising from the provision of free services, except in cases of willful misconduct or gross negligence."
+        }
+      },
+      "12": {
+        "title": "Article 12 (Personal Information Protection)",
+        "items": {
+          "1": "The Company protects Members' personal information in accordance with the Personal Information Protection Act and related laws.",
+          "2": "Matters regarding the collection, use, provision, and disposal of personal information are governed by the Company's separate [Privacy Policy]."
+        }
+      },
+      "13": {
+        "title": "Article 13 (Dispute Resolution)",
+        "content": "Disputes related to these Terms shall first be resolved through mutual consultation. If no agreement is reached, the case shall be submitted to the Suwon District Court as the court of first instance."
+      }
+    },
+    "supplementary": {
+      "title": "Supplementary Provision",
+      "content": "These Terms shall take effect on April 13, 2025."
+    }
+  }
+}

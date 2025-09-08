@@ -17,12 +17,40 @@ export const items: MenuItemData[] = [
     title: 'My Account',
     subItems: [
       {
+        title: 'Notification Setting',
+        url: '/setting/my-account/notification',
+      },
+      {
         title: 'Personal Information',
         url: '/setting/my-account/personal-information',
       },
       {
         title: 'Change Password',
         url: '/setting/my-account/change-password',
+      },
+    ],
+  },
+]
+
+export const businessItems: MenuItemData[] = [
+  {
+    title: '학원 페이지',
+    url: '/business/setting/my-academy',
+  },
+  {
+    title: '내 계정',
+    subItems: [
+      {
+        title: '알림 설정',
+        url: '/business/setting/my-account/notification',
+      },
+      {
+        title: '개인 정보',
+        url: '/business/setting/my-account/personal-information',
+      },
+      {
+        title: '비밀번호 변경',
+        url: '/business/setting/my-account/change-password',
       },
     ],
   },

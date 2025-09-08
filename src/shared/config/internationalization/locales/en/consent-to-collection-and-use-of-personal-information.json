@@ -1,0 +1,100 @@
+{
+  "consent-to-collection-and-use-of-personal-information": {
+    "title": "Consent to Collection and Use of Personal Information (For Teacher Members)",
+    "introduction": "Plus82 (hereinafter referred to as the \"Company\") seeks your consent to collect and use your personal information in accordance with applicable laws, including the Personal Information Protection Act and the Act on Promotion of Information and Communications Network Utilization and Information Protection. The Company is committed to safeguarding user privacy and providing timely and efficient resolution to any related concerns.",
+    "article": {
+      "1": {
+        "title": "Article 1 (Items and Methods of Personal Information Collection)",
+        "content": {
+          "1": {
+            "title": "(1) Items Collected",
+            "items": {
+              "1": "Name, date of birth, gender, nationality, mobile phone number, email address, visa status, educational background, work experience, certifications, photo and resume information, address, self-introduction, portfolio, preferred working conditions, and other job-seeking details",
+              "2": "Automatically collected items: IP address, cookies, service usage records, access logs, device information, etc."
+            }
+          },
+          "2": {
+            "title": "(2) Collection Methods",
+            "items": {
+              "1": "Through website/mobile membership registration, resume submission, and user-generated or system-generated data during service use"
+            }
+          }
+        }
+      },
+      "2": {
+        "title": "Article 2 (Purpose of Collection and Use of Personal Information)",
+        "content": "The Company collects and uses personal information for the following purposes:",
+        "purposes": {
+          "1": "Operating a recruitment-matching platform between foreign native job seekers and Korean academies",
+          "2": "Resume submission, management, and online job application services",
+          "3": "Providing customized job information and content recommendations based on user interests",
+          "4": "Responding to user inquiries, issuing notices, and managing service operations",
+          "5": "Internal analytics and reporting for service improvement",
+          "6": "Marketing and promotional notifications (only with prior consent)"
+        }
+      },
+      "3": {
+        "title": "Article 3 (Retention and Use Period of Personal Information)",
+        "content": {
+          "1": "In principle, personal information will be destroyed without delay once the purpose of its collection and use has been fulfilled.",
+          "2": "However, data may be retained for the periods specified under the Act on Consumer Protection in Electronic Commerce, including:",
+          "periods": {
+            "display": "Records on display/advertisement: 6 months",
+            "contract": "Records on contract or withdrawal: 5 years",
+            "payment": "Records on payment or supply of goods: 5 years",
+            "complaint": "Records on consumer complaints or dispute resolution: 3 years"
+          },
+          "3": "If the user withdraws membership or revokes consent to data collection/use, the information will be promptly destroyed.",
+          "4": "If retention is required under applicable law, data will be retained for that period and then destroyed."
+        }
+      },
+      "4": {
+        "title": "Article 4 (Provision of Personal Information to Third Parties)",
+        "content": "The Company does not provide personal information to third parties without user consent, except in the following cases:",
+        "exceptions": {
+          "1": "The user has given explicit prior consent",
+          "2": "Required by law or upon legitimate request by investigative authorities",
+          "3": "If a job seeker publicly shares a resume with an academy, that academy may access the relevant data"
+        }
+      },
+      "5": {
+        "title": "Article 5 (Outsourcing of Personal Information Processing)",
+        "content": "To ensure seamless service delivery, the Company may outsource parts of its data processing to third-party vendors. Details of such outsourcing are disclosed in the Company's [Privacy Policy]."
+      },
+      "6": {
+        "title": "Article 6 (Overseas Transfer of Personal Information)",
+        "content": "The Company does not transfer personal information overseas. If such transfer becomes necessary, the Company will seek separate consent in accordance with the law and provide information on the destination country, transfer date and method, and recipient."
+      },
+      "7": {
+        "title": "Article 7 (User Rights and How to Exercise Them)",
+        "content": {
+          "1": "Users may request to access, correct, delete, suspend processing of, or withdraw consent regarding their personal information at any time.",
+          "2": "Such requests may be made via written application, email, or through the customer center.",
+          "3": "For users under the age of 14, a legal guardian must act on their behalf."
+        }
+      },
+      "8": {
+        "title": "Article 8 (Use of Cookies and Refusal)",
+        "content": {
+          "1": "The Company may use cookies to offer personalized services.",
+          "2": "Users may refuse cookie storage via browser settings, though this may limit some service functionality."
+        }
+      },
+      "9": {
+        "title": "Article 9 (Destruction of Personal Information)",
+        "content": {
+          "1": "Personal information will be promptly destroyed once its retention period expires or its purpose is achieved.",
+          "2": "Electronic files will be permanently deleted using irreversible technical methods, and paper documents will be shredded or incinerated."
+        }
+      },
+      "10": {
+        "title": "Article 10 (Right to Refuse Consent and Disadvantages)",
+        "content": {
+          "1": "Users have the right to refuse consent to the collection and use of personal information.",
+          "2": "However, refusal to consent to essential information may result in restricted access to services.",
+          "3": "Refusing optional information will not affect basic service usage."
+        }
+      }
+    }
+  }
+}

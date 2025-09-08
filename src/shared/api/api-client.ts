@@ -76,7 +76,15 @@ export class ApiClient {
       const formData = new FormData()
 
       Object.entries(body as Record<string, any>).forEach(([key, value]) => {
-        formData.append(key, value)
+        if (isArray(value)) {
+          if (value.some(item => item instanceof File)) {
+            value.forEach((file: File) => {
+              formData.append(key, file)
+            })
+          }
+        } else {
+          formData.append(key, value)
+        }
       })
 
       requestBody = formData
@@ -142,18 +150,37 @@ export class ApiClient {
     return this.handleResponse<TResult>(response)
   }
 
-  public async put<TResult = unknown, TData = Record<string, unknown>>({
+  public async put<
+    TResult = unknown,
+    TData = Record<string, unknown>,
+    TParams = Record<string, any>,
+  >({
     endpoint,
     body,
+    queryParams,
     option,
   }: {
     endpoint: string
     body: TData
+    queryParams?: TParams
     option?: RequestOption
   }): Promise<TResult> {
     const { requestBody, headers } = this.getRequestInit(body, option)
 
-    const response = await fetch(this.getUrl(endpoint, option), {
+    const url = new URL(this.getUrl(endpoint, option))
+
+    if (queryParams) {
+      Object.entries(queryParams).forEach(([key, value]) => {
+        if (isNil(value)) return
+        if (isArray(value)) {
+          value.forEach(item => url.searchParams.append(key, item.toString()))
+        } else {
+          url.searchParams.append(key, (value as any).toString())
+        }
+      })
+    }
+
+    const response = await fetch(url.toString(), {
       method: 'PUT',
       headers,
       body: requestBody,

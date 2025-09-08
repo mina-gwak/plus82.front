@@ -96,7 +96,9 @@ export const TextField = forwardRef<HTMLInputElement, Props>(
         )}
         onClick={handleClick}
       >
-        {slots?.left && <div className="py-3 pl-2.5">{slots.left}</div>}
+        {slots?.left && (
+          <div className="shrink-0 py-3 pl-2.5">{slots.left}</div>
+        )}
         <input
           {...restProps}
           type={type}
@@ -114,7 +116,9 @@ export const TextField = forwardRef<HTMLInputElement, Props>(
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        {slots?.right && <div className="py-3 pr-2.5">{slots.right}</div>}
+        {slots?.right && (
+          <div className="shrink-0 py-3 pr-2.5">{slots.right}</div>
+        )}
       </div>
     )
   },

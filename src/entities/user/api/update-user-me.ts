@@ -15,8 +15,9 @@ const handleError = (error: Error) => {
   const isHttpError = error instanceof HttpError
   if (!isHttpError) throw error
 
-  return errorHandler.toast('An error occurred while updating the user', {
+  return errorHandler.toast('my-account.error.save', {
     error,
+    translate: true,
   })
 }
 

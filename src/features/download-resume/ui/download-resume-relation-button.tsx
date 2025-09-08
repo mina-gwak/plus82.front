@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useState, MouseEvent } from 'react'
 import { toast } from 'react-toastify'
 
@@ -17,6 +18,8 @@ type Props = {
 }
 
 export const DownloadResumeRelationButton = ({ resumeRelation }: Props) => {
+  const t = useTranslations('applicant-management-detail')
+
   const [isLoading, setIsLoading] = useState(false)
 
   const handleDownload = async (event: MouseEvent<HTMLButtonElement>) => {
@@ -49,7 +52,7 @@ export const DownloadResumeRelationButton = ({ resumeRelation }: Props) => {
 
       containers.forEach(container => document.body.removeChild(container))
     } catch (error) {
-      toast.error('Failed to download resume')
+      toast.error(t('error.download-resume'))
     } finally {
       setIsLoading(false)
     }
@@ -63,7 +66,7 @@ export const DownloadResumeRelationButton = ({ resumeRelation }: Props) => {
       className="body-large flex gap-0.5 text-gray-700"
     >
       <Icon name="Download" size="medium" color={colors.gray[700]} />
-      {isLoading ? '다운로드 중...' : 'PDF로 다운받기'}
+      {isLoading ? t('button.downloading') : t('button.download-as-pdf')}
     </button>
   )
 }

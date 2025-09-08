@@ -8,6 +8,7 @@ import { ApplicationStatus } from '../model/status'
 
 export type GetJobPostResumeRequest = PaginationParams<{
   status?: ApplicationStatus
+  jobPostId?: number
 }>
 
 type GetJobPostResumeResponse = Pagination<JobPostRelation>

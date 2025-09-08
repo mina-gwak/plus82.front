@@ -1,4 +1,4 @@
-import { getTeacherSession } from 'entities/auth'
+import { getNullableTeacherSession } from 'entities/auth'
 import { getJobPost, getTeacherApplicationStatus } from 'entities/job-post'
 import { getResumeCount } from 'entities/resume'
 import { JobPostingDetailPage as _JobPostingDetailPage } from 'pages/job-post'
@@ -14,7 +14,7 @@ const JobPostingDetailPage = async ({
 }) => {
   const { jobPostId } = await params
 
-  const session = await getTeacherSession()
+  const session = await getNullableTeacherSession()
 
   const resumeCount = await getResumeCount()
   const jobPostDetail = await getJobPost({ jobPostId: Number(jobPostId) })

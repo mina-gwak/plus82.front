@@ -9,7 +9,10 @@ type FormErrorMessageProps = HelperTextProps & {
   name?: string
 }
 
-export const FormErrorMessage = ({ name = '' }: FormErrorMessageProps) => {
+export const FormErrorMessage = ({
+  name = '',
+  className,
+}: FormErrorMessageProps) => {
   const {
     formState: { errors },
   } = useFormContext()
@@ -21,8 +24,16 @@ export const FormErrorMessage = ({ name = '' }: FormErrorMessageProps) => {
   if (!error) return null
 
   if (error.message.includes('validation')) {
-    return <HelperText variant="error">{t(error.message)}</HelperText>
+    return (
+      <HelperText variant="error" className={className}>
+        {t(error.message)}
+      </HelperText>
+    )
   }
 
-  return <HelperText variant="error">{error.message}</HelperText>
+  return (
+    <HelperText variant="error" className={className}>
+      {error.message}
+    </HelperText>
+  )
 }

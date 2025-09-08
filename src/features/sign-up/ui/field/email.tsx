@@ -120,7 +120,11 @@ export const Email = () => {
 
     if (!isCodeValid) return
 
-    if (requestVerification.isPending || requestVerification.isIdle) {
+    const verificationService = isBusiness
+      ? academyRequestVerification
+      : requestVerification
+
+    if (verificationService.isPending || verificationService.isIdle) {
       setError('email', {
         message: t('sign-up.error.email-verification-required'),
       })

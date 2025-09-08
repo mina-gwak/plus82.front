@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
@@ -22,6 +23,8 @@ type Props = {
 }
 
 export const SubmitButton = ({ hasToOpenModal, onSubmit, ...props }: Props) => {
+  const t = useTranslations()
+
   const [isOpen, setIsOpen] = useState(false)
 
   const form = useFormContext<FormValues>()
@@ -47,29 +50,53 @@ export const SubmitButton = ({ hasToOpenModal, onSubmit, ...props }: Props) => {
         onClick={handleSubmitButtonClick}
         {...props}
       >
-        저장하기
+        {t('applicant-management-detail.button.save')}
       </Button>
       <Modal.Content className="flex h-[244px] w-[500px] flex-col">
-        <Modal.Title className="hidden">채용 단계 변경</Modal.Title>
+        <Modal.Title className="hidden">
+          {t('applicant-management-detail.status-update-modal.title')}
+        </Modal.Title>
         <div className="mb-7 w-full text-center">
           <p>
-            채용 단계를 &apos;
-            <mark className="bg-white font-bold">
-              {StatusLabel[props.status.prev]}
-            </mark>
-            &apos;에서 &apos;
-            <mark className="bg-white font-bold">
-              {StatusLabel[props.status.next]}
-            </mark>
-            &apos;으로 변경했어요.
+            {t.rich(
+              'applicant-management-detail.status-update-modal.description1',
+              {
+                prev: () => (
+                  <>
+                    &quot;
+                    <mark className="bg-white font-bold">
+                      {t(
+                        `field.application-status.option.${StatusLabel[props.status.prev]}`,
+                      )}
+                    </mark>
+                    &quot;
+                  </>
+                ),
+                next: () => (
+                  <>
+                    &quot;
+                    <mark className="bg-white font-bold">
+                      {t(
+                        `field.application-status.option.${StatusLabel[props.status.next]}`,
+                      )}
+                    </mark>
+                    &quot;
+                  </>
+                ),
+              },
+            )}
           </p>
-          <p>저장하면 지원자에게 결과가 전달돼요.</p>
-          <p>변경 사항을 저장할까요?</p>
+          <p>
+            {t('applicant-management-detail.status-update-modal.description2')}
+          </p>
+          <p>
+            {t('applicant-management-detail.status-update-modal.description3')}
+          </p>
         </div>
         <div className="flex w-full gap-2">
           <Modal.Close asChild>
             <Button variant="lined" size="large" fullWidth>
-              취소
+              {t('applicant-management-detail.button.cancel')}
             </Button>
           </Modal.Close>
           <Modal.Close asChild>
@@ -79,7 +106,7 @@ export const SubmitButton = ({ hasToOpenModal, onSubmit, ...props }: Props) => {
               fullWidth
               onClick={handleConfirmButtonClick}
             >
-              저장하기
+              {t('applicant-management-detail.button.save')}
             </Button>
           </Modal.Close>
         </div>

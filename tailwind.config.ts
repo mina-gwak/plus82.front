@@ -15,7 +15,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        'spoqa-han-sans-neo': ['var(--font-spoqa-han-sans-neo)'],
+        pretendard: ['var(--font-pretendard)'],
       },
       colors: {
         ...colors,
@@ -42,6 +42,7 @@ const config: Config = {
   plugins: [
     plugin(function ({ addVariant }) {
       addVariant('not-last', '&:not(:last-child)')
+      addVariant('not-first', '&:not(:first-child)')
       addVariant('not-checked', '&:not(:checked)')
       addVariant('not-empty', '&:not(:empty)')
     }),

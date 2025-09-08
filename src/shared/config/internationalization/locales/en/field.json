@@ -42,9 +42,19 @@
       "label": "Academy Name (English)",
       "placeholder": "Enter the academy name (English)"
     },
+    "academy-description": {
+      "label": "Academy Description",
+      "placeholder": "Please enter in English"
+    },
     "address": {
       "label": "Academy Address",
-      "placeholder": "Enter the remaining address"
+      "placeholder": "Enter the remaining address",
+      "button": "Search"
+    },
+    "introduction-image": {
+      "label": "Introduction Image",
+      "placeholder": "Upload Image",
+      "description": "Please upload at least one introduction image."
     },
     "business-registration-number": {
       "label": "Business Registration Number",
@@ -70,6 +80,141 @@
         "gyeongnam": "Gyeongsangnam-do",
         "jeju": "Jeju"
       }
+    },
+    "application-date": {
+      "label": "Application Date"
+    },
+    "nationality": {
+      "label": "Nationality"
+    },
+    "residence-country": {
+      "label": "Current Country of Residence"
+    },
+    "degree": {
+      "label": "Degree"
+    },
+    "visa": {
+      "label": "Visa"
+    },
+    "student-type": {
+      "label": "Student Type"
+    },
+    "application-status": {
+      "option": {
+        "submitted": "Submitted",
+        "reviewed": "Reviewed",
+        "accepted": "Accepted",
+        "rejected": "Rejected"
+      }
+    },
+    "job-posting-title": {
+      "label": "Job Title",
+      "placeholder": "Please enter concisely and clearly. ex) Full-Time ESL Instructor"
+    },
+    "job-posting-description": {
+      "label": "Job Description",
+      "placeholder": "Please provide detailed information about the responsibilities after joining.\nex) Teach [elementary-level] English classes [30 hours per week]. Develop lesson plans and class materials."
+    },
+    "job-posting-required-qualification": {
+      "label": "Required Qualifications",
+      "placeholder": "Please enter the necessary requirements for the applicant.\nex) Native or native-level English speaker. Valid TEFL/TESOL/CELTA certification (preferred)."
+    },
+    "job-posting-preferred-qualification": {
+      "label": "Preferred Qualifications",
+      "placeholder": "If there are any preferred qualifications, please enter them.\nex) Basic Korean language skills for simple communication.\nExperience teaching [elementary students/IELTS/TOEFL]."
+    },
+    "job-posting-benefits": {
+      "label": "Benefits",
+      "placeholder": "Please describe the benefits provided to employees.\nex) Provided housing or housing allowance. Paid vacation days (ex. 10 days) + national holidays. Round-trip airfare reimbursement (depending on contract)."
+    },
+    "job-posting-salary": {
+      "label": "Salary",
+      "placeholder": "Please enter numbers only"
+    },
+    "job-posting-salary-negotiable": {
+      "label": "Negotiable"
+    },
+    "target-student": {
+      "label": "Target Student",
+      "option": {
+        "all": "All",
+        "kindergarten": "Kindergarten",
+        "elementary": "Elementary",
+        "middle-school": "Middle School",
+        "high-school": "High School",
+        "adult": "Adult"
+      }
+    },
+    "job-posting-start-date": {
+      "label": "Start Date",
+      "placeholder": "Please select the start date"
+    },
+    "job-posting-due-date": {
+      "label": "Application deadline",
+      "placeholder": "Please select the application deadline"
+    },
+    "job-posting-no-expiration-date": {
+      "label": "Open Recruitment"
+    },
+    "currency-unit": {
+      "label": "in 10,000 KRW"
+    },
+    "feed-content": {
+      "placeholder": "Please enter the content you want to share"
+    },
+    "feed-image": {
+      "label": "Upload Image",
+      "placeholder": "Up to 5MB, image files only",
+      "error": {
+        "type": "Invalid file type",
+        "size": "File size must be less than 5MB"
+      }
+    },
+    "feed-visibility": {
+      "label": "Post Visibility Settings",
+      "option": {
+        "public": "Public",
+        "members-only": "Members Only"
+      }
+    },
+    "comment-content": {
+      "placeholder": "Enter a comment"
+    },
+    "report-comment-reason": {
+      "option": {
+        "pornographic-content": "Pornographic content",
+        "spam-promotion-flooding-posts": "Spam promotion/flooding posts",
+        "profanity-hate-discriminatory-language": "Profanity/hate/discriminatory language",
+        "promotional-commercial-posts": "Promotional/commercial posts",
+        "other": "Other"
+      }
+    },
+    "report-comment-other-reason": {
+      "placeholder": "Please enter the reason for reporting"
+    },
+    "report-user-reason": {
+      "option": {
+        "profanity-hate-discriminatory-language": "Profanity/Hate speech/Discriminatory remarks",
+        "spam-promotion-flooding-posts": "Spam promoter/Flood poster",
+        "spreader-of-false-information-agitator": "Spreader of false information/Agitator",
+        "inappropriate-nickname-profile": "Inappropriate nickname or profile picture",
+        "other": "Other"
+      }
+    },
+    "report-user-other-reason": {
+      "placeholder": "Please enter the reason for reporting"
+    },
+    "report-post-reason": {
+      "option": {
+        "pornographic-content": "Pornographic content",
+        "spam-promotion-flooding-posts": "Spam promotion/flooding posts",
+        "profanity-hate-discriminatory-language": "Profanity/hate/discriminatory language",
+        "promotional-commercial-posts": "Promotional/commercial posts",
+        "other": "Other"
+      }
+    },
+    "report-post-other-reason": {
+      "placeholder": "Please enter the reason for reporting"
     }
   }
 }

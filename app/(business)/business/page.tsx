@@ -1,36 +1,51 @@
-import { colors } from 'shared/config'
-import { Icon } from 'shared/ui'
+import { getNullableBusinessSession } from 'entities/auth'
+import { Button, Image } from 'shared/ui'
 import { Layout } from 'shared/ui'
 
-export default function BusinessPage() {
+const BusinessPage = async () => {
+  const session = await getNullableBusinessSession()
+
+  const link = session ? '/business/job-posting/create' : '/business/sign-up'
+
   return (
     <Layout wide>
-      <div className="flex h-full flex-col items-center justify-center gap-8">
-        <Icon
-          name="ExclamationMark"
-          size="custom"
-          className="h-[150px] w-[150px]"
-          color={colors.blue[800]}
-        />
-        <h2 className="display-medium font-medium text-gray-900">
-          현재{' '}
-          <mark className="bg-transparent font-bold text-blue-800">
-            페이지 준비중
-          </mark>
-          입니다.
-        </h2>
-        <div className="flex flex-col items-center gap-1">
-          <p className="title-medium text-gray-600">
-            이용에 불편을 드려 죄송합니다.
-          </p>
-          <p className="title-medium text-gray-600">
-            보다 나은 서비스 제공을 위하여 페이지 준비중에 있습니다.
-          </p>
-          <p className="title-medium text-gray-600">
-            빠른 시일 내에 준비하여 찾아뵙겠습니다.
-          </p>
+      <div
+        className="flex h-full max-h-[900px] min-h-[667px] flex-col items-center justify-between rounded-3xl"
+        style={{
+          background: 'linear-gradient(180deg, #FFFFFF 0%, #D9E8FF 100%)',
+        }}
+      >
+        <div className="flex w-full flex-col items-center">
+          <h2 className="display-large mt-10 text-center font-bold text-gray-900">
+            강사를 손쉽게 관리하고,
+            <br />
+            빠르게 채용하세요
+          </h2>
+          <div className="mt-6 w-fit text-center">
+            <p className="title-small font-normal text-gray-700">
+              학원에 맞는 원어민 강사를 찾고 계신가요?
+            </p>
+            <p className="title-small font-normal text-gray-700">
+              지금, Plus82와 시작하세요.
+            </p>
+          </div>
+          <Button as="a" href={link} size="large" className="mt-6 w-fit">
+            무료로 가입하기
+          </Button>
         </div>
+
+        <Image
+          src="/images/business-banner.png"
+          useCDN={false}
+          alt="business-page-image"
+          fill={false}
+          width={700}
+          height={386}
+          className="border-none"
+        />
       </div>
     </Layout>
   )
 }
+
+export default BusinessPage

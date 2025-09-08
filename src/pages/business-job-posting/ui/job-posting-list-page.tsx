@@ -3,14 +3,15 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { type MouseEvent } from 'react'
 import { useState } from 'react'
 
 import { jobPostQueries } from 'entities/job-post'
 import { CopyJobPostingButton } from 'features/copy-job-posting'
 import { PreviewJobPostingButton } from 'features/preview-job-posting'
 import { colors } from 'shared/config'
-import { cn, formatCurrency } from 'shared/lib'
+import { cn, formatCurrencyWithRule } from 'shared/lib'
 import { Layout, Tabs, Table, Pagination, Icon, Button } from 'shared/ui'
 
 import { useBusinessJobPosts } from '../api/use-business-job-posts'
@@ -18,6 +19,7 @@ import { convertJobFilterToParams, JobFilter } from '../lib/job-filter'
 
 export const BusinessJobPostingListPage = () => {
   const t = useTranslations('job-posting-list')
+  const locale = useLocale()
 
   const queryClient = useQueryClient()
 
@@ -42,7 +44,20 @@ export const BusinessJobPostingListPage = () => {
   }
 
   const handleItemClick = (id: number) => () => {
-    router.push(`/business/job-posting/${id}`)
+    if (status === JobFilter.SAVED) return
+
+    router.push(`/business/job-posting/${id}/applicant-management`)
+  }
+
+  const handleEditButtonClick = (id: number) => (event: MouseEvent) => {
+    event.stopPropagation()
+    event.preventDefault()
+
+    if (status === JobFilter.SAVED) {
+      router.push(`/business/job-posting/${id}/update/draft`)
+    } else {
+      router.push(`/business/job-posting/${id}/update`)
+    }
   }
 
   const handleCopySuccess = () => {
@@ -122,19 +137,33 @@ export const BusinessJobPostingListPage = () => {
                       <Table.Row
                         key={jobPost.id}
                         onClick={handleItemClick(jobPost.id)}
-                        className="min-h-[54px] cursor-pointer"
+                        className={cn('min-h-[54px]', {
+                          'cursor-pointer': status !== JobFilter.SAVED,
+                          'hover:bg-white': status === JobFilter.SAVED,
+                        })}
                       >
-                        <Table.Cell>{jobPost.title}</Table.Cell>
-                        <Table.Cell>{jobPost.resumeCount}명</Table.Cell>
                         <Table.Cell>
-                          {formatCurrency({
-                            number: jobPost.salary,
-                            code: '만원',
-                          })}
+                          <div className="line-clamp-1 w-[392px]">
+                            {jobPost.title ?? '-'}
+                          </div>
                         </Table.Cell>
                         <Table.Cell>
-                          {jobPost.createdAt
-                            ? format(jobPost.createdAt, 'yyyy.MM.dd')
+                          {jobPost.resumeCount}
+                          {t('application-count')}
+                        </Table.Cell>
+                        <Table.Cell>
+                          {formatCurrencyWithRule({
+                            number: jobPost.salary,
+                            locale,
+                          }) ?? '-'}
+                          {jobPost?.salaryNegotiable &&
+                            ` (${t('table.salary-negotiable')})`}
+                        </Table.Cell>
+                        <Table.Cell
+                          className={cn(!jobPost.openDate && 'text-blue-800')}
+                        >
+                          {jobPost.openDate
+                            ? format(jobPost.openDate, 'yyyy.MM.dd')
                             : t('table.draft')}
                         </Table.Cell>
                         <Table.Cell
@@ -148,6 +177,7 @@ export const BusinessJobPostingListPage = () => {
                           <button
                             className="flex h-10 w-10 items-center justify-center"
                             disabled={status === JobFilter.CLOSED}
+                            onClick={handleEditButtonClick(jobPost.id)}
                           >
                             <Icon
                               name="Pen"
