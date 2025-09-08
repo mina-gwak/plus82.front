@@ -12,6 +12,7 @@
       "job-title": "공고명",
       "application": "지원 현황",
       "salary": "연봉",
+      "salary-negotiable": "협의 가능",
       "posted-date": "등록일",
       "expiration-date": "마감일",
       "no-data": "아직 등록한 공고가 없어요",

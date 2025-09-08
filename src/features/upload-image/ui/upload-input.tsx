@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { ChangeEvent, forwardRef, InputHTMLAttributes } from 'react'
 import { toast } from 'react-toastify'
 
@@ -9,6 +10,8 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB in bytes
 
 export const ImageUploadInput = forwardRef<HTMLInputElement, Props>(
   ({ onChange, ...props }, ref) => {
+    const t = useTranslations('field.feed-image')
+
     const isAllowedType = (type: string) =>
       ['image/jpeg', 'image/jpg', 'image/png'].includes(type)
 
@@ -20,14 +23,14 @@ export const ImageUploadInput = forwardRef<HTMLInputElement, Props>(
       if (!file) return
 
       if (!isAllowedType(file.type)) {
-        toast.error('Invalid file type')
+        toast.error(t('error.type'))
         event.target.value = ''
 
         return
       }
 
       if (!isAllowedSize(file.size)) {
-        toast.error('File size must be less than 5MB')
+        toast.error(t('error.size'))
         event.target.value = ''
 
         return

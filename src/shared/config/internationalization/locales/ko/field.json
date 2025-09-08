@@ -158,6 +158,63 @@
     },
     "currency-unit": {
       "label": "만원"
+    },
+    "feed-content": {
+      "placeholder": "공유하고 싶은 내용을 입력해 주세요"
+    },
+    "feed-image": {
+      "label": "이미지 업로드",
+      "placeholder": "최대 5MB까지, 이미지 파일만 업로드 가능",
+      "error": {
+        "type": "잘못된 파일 형식입니다",
+        "size": "파일 크기는 5MB 이하여야 합니다"
+      }
+    },
+    "feed-visibility": {
+      "label": "게시글 공개 설정",
+      "option": {
+        "public": "전체 공개",
+        "members-only": "회원만 보기"
+      }
+    },
+    "comment-content": {
+      "placeholder": "댓글을 입력해보세요"
+    },
+    "report-comment-reason": {
+      "option": {
+        "pornographic-content": "음란물",
+        "spam-promotion-flooding-posts": "스팸 홍보/도배글",
+        "profanity-hate-discriminatory-language": "욕설/혐오/차별적 표현",
+        "promotional-commercial-posts": "홍보/상업글",
+        "other": "기타"
+      }
+    },
+    "report-comment-other-reason": {
+      "placeholder": "신고 사유를 입력해 주세요"
+    },
+    "report-user-reason": {
+      "option": {
+        "profanity-hate-discriminatory-language": "욕설/혐오/차별 발언",
+        "spam-promotion-flooding-posts": "스팸 홍보/도배글 작성자",
+        "spreader-of-false-information-agitator": "허위 정보 유포/선동자",
+        "inappropriate-nickname-profile": "부적절한 닉네임 혹은 프로필",
+        "other": "기타"
+      }
+    },
+    "report-user-other-reason": {
+      "placeholder": "신고 사유를 입력해 주세요"
+    },
+    "report-post-reason": {
+      "option": {
+        "pornographic-content": "음란물",
+        "spam-promotion-flooding-posts": "스팸 홍보/도배글",
+        "profanity-hate-discriminatory-language": "욕설/혐오/차별적 표현",
+        "promotional-commercial-posts": "홍보/상업글",
+        "other": "기타"
+      }
+    },
+    "report-post-other-reason": {
+      "placeholder": "신고 사유를 입력해 주세요"
     }
   }
 }

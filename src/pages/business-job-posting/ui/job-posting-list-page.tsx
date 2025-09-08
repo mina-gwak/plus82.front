@@ -3,7 +3,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { type MouseEvent } from 'react'
 import { useState } from 'react'
 
@@ -11,7 +11,7 @@ import { jobPostQueries } from 'entities/job-post'
 import { CopyJobPostingButton } from 'features/copy-job-posting'
 import { PreviewJobPostingButton } from 'features/preview-job-posting'
 import { colors } from 'shared/config'
-import { cn, formatCurrency } from 'shared/lib'
+import { cn, formatCurrencyWithRule } from 'shared/lib'
 import { Layout, Tabs, Table, Pagination, Icon, Button } from 'shared/ui'
 
 import { useBusinessJobPosts } from '../api/use-business-job-posts'
@@ -19,6 +19,7 @@ import { convertJobFilterToParams, JobFilter } from '../lib/job-filter'
 
 export const BusinessJobPostingListPage = () => {
   const t = useTranslations('job-posting-list')
+  const locale = useLocale()
 
   const queryClient = useQueryClient()
 
@@ -141,16 +142,22 @@ export const BusinessJobPostingListPage = () => {
                           'hover:bg-white': status === JobFilter.SAVED,
                         })}
                       >
-                        <Table.Cell>{jobPost.title ?? '-'}</Table.Cell>
+                        <Table.Cell>
+                          <div className="line-clamp-1 w-[392px]">
+                            {jobPost.title ?? '-'}
+                          </div>
+                        </Table.Cell>
                         <Table.Cell>
                           {jobPost.resumeCount}
                           {t('application-count')}
                         </Table.Cell>
                         <Table.Cell>
-                          {formatCurrency({
+                          {formatCurrencyWithRule({
                             number: jobPost.salary,
-                            code: t('currency-unit'),
+                            locale,
                           }) ?? '-'}
+                          {jobPost?.salaryNegotiable &&
+                            ` (${t('table.salary-negotiable')})`}
                         </Table.Cell>
                         <Table.Cell
                           className={cn(!jobPost.openDate && 'text-blue-800')}

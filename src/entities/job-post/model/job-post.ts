@@ -22,5 +22,6 @@ export type BusinessJobPost = {
   openDate: string
   createdAt: string
   salary: number
+  salaryNegotiable?: boolean
   resumeCount: number
 }

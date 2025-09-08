@@ -150,14 +150,71 @@
       "placeholder": "Please select the start date"
     },
     "job-posting-due-date": {
-      "label": "Expiration Date",
-      "placeholder": "Please select the expiration date"
+      "label": "Application deadline",
+      "placeholder": "Please select the application deadline"
     },
     "job-posting-no-expiration-date": {
       "label": "Open Recruitment"
     },
     "currency-unit": {
       "label": "in 10,000 KRW"
+    },
+    "feed-content": {
+      "placeholder": "Please enter the content you want to share"
+    },
+    "feed-image": {
+      "label": "Upload Image",
+      "placeholder": "Up to 5MB, image files only",
+      "error": {
+        "type": "Invalid file type",
+        "size": "File size must be less than 5MB"
+      }
+    },
+    "feed-visibility": {
+      "label": "Post Visibility Settings",
+      "option": {
+        "public": "Public",
+        "members-only": "Members Only"
+      }
+    },
+    "comment-content": {
+      "placeholder": "Enter a comment"
+    },
+    "report-comment-reason": {
+      "option": {
+        "pornographic-content": "Pornographic content",
+        "spam-promotion-flooding-posts": "Spam promotion/flooding posts",
+        "profanity-hate-discriminatory-language": "Profanity/hate/discriminatory language",
+        "promotional-commercial-posts": "Promotional/commercial posts",
+        "other": "Other"
+      }
+    },
+    "report-comment-other-reason": {
+      "placeholder": "Please enter the reason for reporting"
+    },
+    "report-user-reason": {
+      "option": {
+        "profanity-hate-discriminatory-language": "Profanity/Hate speech/Discriminatory remarks",
+        "spam-promotion-flooding-posts": "Spam promoter/Flood poster",
+        "spreader-of-false-information-agitator": "Spreader of false information/Agitator",
+        "inappropriate-nickname-profile": "Inappropriate nickname or profile picture",
+        "other": "Other"
+      }
+    },
+    "report-user-other-reason": {
+      "placeholder": "Please enter the reason for reporting"
+    },
+    "report-post-reason": {
+      "option": {
+        "pornographic-content": "Pornographic content",
+        "spam-promotion-flooding-posts": "Spam promotion/flooding posts",
+        "profanity-hate-discriminatory-language": "Profanity/hate/discriminatory language",
+        "promotional-commercial-posts": "Promotional/commercial posts",
+        "other": "Other"
+      }
+    },
+    "report-post-other-reason": {
+      "placeholder": "Please enter the reason for reporting"
     }
   }
 }

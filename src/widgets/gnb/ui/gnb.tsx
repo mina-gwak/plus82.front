@@ -35,6 +35,9 @@ export const GNB = () => {
               <Navigation.Item value="/job-board">
                 {t('tab.job-board')}
               </Navigation.Item>
+              <Navigation.Item value="/community">
+                {t('tab.community')}
+              </Navigation.Item>
             </Navigation.Root>
           </div>
           <div className={cn(css.rightSection())}>

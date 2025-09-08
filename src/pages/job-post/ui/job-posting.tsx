@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { Card } from 'entities/job-post'
 import { JobPostFilter } from 'features/job-post-filter'
-import { useObserver } from 'shared/lib/observer'
+import { useObserver } from 'shared/lib'
 
 import { JobListSkeleton } from './job-list-skeleton'
 import { useJobPosts } from '../api/use-job-posts'

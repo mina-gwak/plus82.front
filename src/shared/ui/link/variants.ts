@@ -6,7 +6,7 @@ export const link = cva('body-large transition-all', {
       primary:
         'text-blue-800 underline visited:text-blue-800 hover:text-blue-900',
       secondary:
-        'text-gray-900 underline visited:text-gray-900 hover:text-gray-500',
+        'text-gray-700 visited:text-gray-900 hover:text-gray-900 hover:underline',
       tertiary: 'text-gray-700 visited:text-gray-700 hover:text-gray-900',
     },
     disabled: {

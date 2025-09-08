@@ -1,3 +1,4 @@
+export { AnimatedCount } from './animated-count'
 export { Button } from './button'
 export { Calendar, type CalendarProps } from './calendar'
 export { Checkbox, type CheckboxValue, type CheckboxProps } from './checkbox'

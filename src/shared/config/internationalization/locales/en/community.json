@@ -1,0 +1,120 @@
+{
+  "feed-list": {
+    "side-panel": {
+      "sign-in": "Sign in for Plus 82\nand enjoy more features",
+      "button": {
+        "sign-in": "Sign In",
+        "write-post": "Write Post"
+      }
+    },
+    "search": {
+      "placeholder": "Try searching with keywords you’re interested in"
+    },
+    "feed-form": {
+      "button": {
+        "cancel": "Cancel",
+        "post": "Post",
+        "edit": "Edit"
+      },
+      "success": {
+        "post": "Post added successfully",
+        "edit": "Post updated successfully"
+      },
+      "error": {
+        "add": "An error occurred while adding feed",
+        "update": "An error occurred while updating feed",
+        "delete": "An error occurred while deleting feed",
+        "like": "An error occurred while liking feed",
+        "unlike": "An error occurred while unliking feed"
+      }
+    },
+    "feed-list": {
+      "empty": "There are no posts yet,\nCreate a post and share it!"
+    },
+    "feed-menu": {
+      "link-copied": "Link copied successfully",
+      "button": {
+        "report-post": "Report Post",
+        "report-comment": "Report Comment",
+        "report-user": "Report User",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "error": {
+        "public": "You have to sign in"
+      }
+    },
+    "feed-item": {
+      "me": "(Me)",
+      "comment": {
+        "sign-in": "Sign in and join the comments",
+        "button": {
+          "cancel": "Cancel",
+          "post": "Post"
+        },
+        "error": {
+          "add": "An error occurred while adding feed comment",
+          "update": "An error occurred while updating feed comment",
+          "delete": "An error occurred while deleting feed comment",
+          "like": "An error occurred while liking comment",
+          "unlike": "An error occurred while unliking comment"
+        }
+      },
+      "button": {
+        "show-more": "...Show more"
+      },
+      "liked-people-modal": {
+        "title": "People who like this post",
+        "empty": "There's no one who likes this post"
+      },
+      "delete-comment-modal": {
+        "title": "Delete comment",
+        "description": "Do you really want to delete this comment?\nOnce deleted, it can't be undone.",
+        "success": "Comment deleted successfully",
+        "button": {
+          "cancel": "Cancel",
+          "delete": "Delete"
+        }
+      },
+      "delete-feed-modal": {
+        "title": "Delete Post",
+        "description": "Do you really want to delete this post?\nOnce deleted, it can't be undone.",
+        "success": "Post deleted successfully",
+        "button": {
+          "cancel": "Cancel",
+          "delete": "Delete"
+        }
+      },
+      "report-post-modal": {
+        "title": "Report Post",
+        "description": "Report post",
+        "success": "Your report has been successfully submitted",
+        "error": "An error occurred while reporting post",
+        "button": {
+          "cancel": "Cancel",
+          "report": "Report"
+        }
+      },
+      "report-comment-modal": {
+        "title": "Report Comment",
+        "description": "Report comment",
+        "success": "Your report has been successfully submitted",
+        "error": "An error occurred while reporting comment",
+        "button": {
+          "cancel": "Cancel",
+          "report": "Report"
+        }
+      },
+      "report-user-modal": {
+        "title": "Report User",
+        "description": "Report user",
+        "success": "Your report has been successfully submitted",
+        "error": "An error occurred while reporting user",
+        "button": {
+          "cancel": "Cancel",
+          "report": "Report"
+        }
+      }
+    }
+  }
+}

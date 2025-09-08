@@ -40,3 +40,25 @@ export const formatCurrency = ({
 
   return `${formattedNumber} ${code}`
 }
+
+export const formatCurrencyWithRule = ({
+  number,
+  locale = 'ko',
+}: {
+  number?: number | null
+  locale?: string
+}) => {
+  if (!number) return null
+
+  // 입력값을 100으로 나누고 소수점 2자리까지 표시
+  const dividedValue = number / 100
+  const formattedValue = dividedValue.toFixed(2)
+
+  if (locale === 'ko') {
+    // 한국어: "300만 원" 형식
+    return `${formatNumber(number)} 만원`
+  } else {
+    // 영어: "3.00M KRW" 형식
+    return `${formattedValue}M KRW`
+  }
+}

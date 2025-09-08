@@ -38,11 +38,14 @@ export const BusinessGNB = () => {
               <Navigation.Item value="/business/applicant-management">
                 {t('tab.applicant-management')}
               </Navigation.Item>
+              <Navigation.Item value="/business/job-posting">
+                {t('tab.job-posting')}
+              </Navigation.Item>
               <Navigation.Item value="/business/academy-detail">
                 {t('tab.academy-detail')}
               </Navigation.Item>
-              <Navigation.Item value="/business/job-posting">
-                {t('tab.job-posting')}
+              <Navigation.Item value="/business/community">
+                {t('tab.community')}
               </Navigation.Item>
             </Navigation.Root>
           </div>
