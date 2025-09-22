@@ -1,7 +1,8 @@
 'use client'
 
-import { PropsWithChildren, useEffect, useRef } from 'react'
+import { PropsWithChildren, useEffect, useRef, useState } from 'react'
 import type { MouseEvent, ReactNode, SelectHTMLAttributes } from 'react'
+import { usePopper } from 'react-popper'
 
 import { colors } from 'shared/config'
 import { cn, ListValue, useSelect } from 'shared/lib'
@@ -65,6 +66,24 @@ const SelectRoot = ({
   className,
 }: SelectRootProps) => {
   const selectRef = useRef<HTMLDivElement>(null)
+
+  const [targetElement, setTargetElement] = useState<HTMLDivElement | null>(
+    null,
+  )
+  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
+    null,
+  )
+  const { styles, attributes } = usePopper(targetElement, popperElement, {
+    placement: 'bottom-start',
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 6],
+        },
+      },
+    ],
+  })
 
   const selectionLimit = (() => {
     if (multiple)
@@ -135,6 +154,7 @@ const SelectRoot = ({
       ref={selectRef}
     >
       <div
+        ref={setTargetElement}
         tabIndex={disabled ? -1 : 0}
         role="combobox"
         aria-expanded={isOpen}
@@ -181,7 +201,14 @@ const SelectRoot = ({
       )}
       {isOpen && (
         <SelectProvider value={contextValue}>
-          <Dropdown id={dropdownId} role="listbox" displayLimit={displayLimit}>
+          <Dropdown
+            id={dropdownId}
+            role="listbox"
+            displayLimit={displayLimit}
+            ref={setPopperElement}
+            style={styles.popper}
+            {...attributes.popper}
+          >
             {children}
           </Dropdown>
         </SelectProvider>

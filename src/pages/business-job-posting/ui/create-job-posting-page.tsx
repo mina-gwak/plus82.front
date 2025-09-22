@@ -85,7 +85,7 @@ export const CreateJobPostingPage = () => {
       </h1>
       <Form {...form} className="flex gap-[20px]">
         <JobPostingForm className="flex-grow" />
-        <div className="space-y-2">
+        <div className="sticky top-10 h-fit space-y-2">
           <SidePanel
             type="register"
             onRegister={registerJobPosting}

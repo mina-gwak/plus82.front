@@ -102,7 +102,7 @@ export const ApplicationSidePanel = ({ values }: Props) => {
   }
 
   return (
-    <div className="h-fit min-h-[329px] w-[250px] shrink-0 rounded-2xl border border-gray-300 p-6">
+    <div className="sticky top-10 h-fit min-h-[329px] w-[250px] shrink-0 rounded-2xl border border-gray-300 p-6">
       <Form {...form}>
         <div className="mb-3 flex h-[38px] items-center gap-2">
           <Form.Control name="status">

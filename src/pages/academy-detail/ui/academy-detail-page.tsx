@@ -30,7 +30,7 @@ export const AcademyDetailPage = ({ academyDetail }: Props) => {
       </h1>
       <Form {...form} className="flex gap-[20px]">
         <AcademyDetailForm className="flex-grow" />
-        <div className="space-y-2">
+        <div className="sticky top-10 h-fit space-y-2">
           <SidePanel />
         </div>
       </Form>
