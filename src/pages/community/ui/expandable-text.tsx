@@ -55,7 +55,7 @@ export const ExpandableText = ({ content, lineClamp = 2 }: Props) => {
 
       <p
         ref={pRef}
-        className="relative overflow-hidden"
+        className="relative overflow-hidden whitespace-break-spaces"
         style={{ maxHeight: expanding ? undefined : maxHeight }}
       >
         {content}

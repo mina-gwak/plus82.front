@@ -112,7 +112,7 @@ export const ResumeForm = ({ userProfileImage, resume, submit }: Props) => {
 
   return (
     <Form {...form} className="relative">
-      <Layout wide>
+      <Layout wide className="h-[calc(100dvh-161px)]">
         <input
           {...form.register('title', {
             required: true,
@@ -135,7 +135,7 @@ export const ResumeForm = ({ userProfileImage, resume, submit }: Props) => {
             fullWidth
           />
         </section>
-        <section>
+        <section className="pb-10">
           <Heading size="small" className="mb-8">
             Personal Information
           </Heading>

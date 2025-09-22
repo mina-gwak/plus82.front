@@ -46,7 +46,7 @@ export const SidePanel = ({ type, onRegister, onSave }: Props) => {
   })
 
   return (
-    <div className="h-fit w-[340px] shrink-0 rounded-2xl border border-gray-300 p-6">
+    <div className="h-fit w-[340px] shrink-0 rounded-2xl border border-gray-300 bg-white p-6">
       <p className="body-large mb-2 text-blue-800">{t('side-panel.title')}</p>
       <div className="mb-6">
         <p className="body-medium text-gray-700">
