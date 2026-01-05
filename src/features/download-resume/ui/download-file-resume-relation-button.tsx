@@ -17,7 +17,10 @@ import {
 } from '../lib/download-pdf'
 
 type Props = {
-  resumeRelation: JobPostRelationDetail
+  resumeRelation: Pick<
+    JobPostRelationDetail,
+    'filePath' | 'fileName' | 'coverLetter'
+  >
 }
 
 const ELEMENT_ID = 'cover-letter-pdf'
@@ -59,7 +62,11 @@ export const DownloadFileResumeRelationButton = ({ resumeRelation }: Props) => {
 
   const downloadMergedResumePDF = async () => {
     const resumePdf = await fetchResumePDF()
-    const coverLetterPDF = await convertCoverLetterToPDF()
+    let coverLetterPDF: ArrayBuffer | null = null
+
+    if (resumeRelation.coverLetter) {
+      coverLetterPDF = await convertCoverLetterToPDF()
+    }
 
     const mergedPDF = await mergePdfs(
       resumePdf,

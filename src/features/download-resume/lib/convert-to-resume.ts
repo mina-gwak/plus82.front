@@ -2,7 +2,33 @@ import { JobPostRelationDetail } from 'entities/job-post-resume-relation'
 import { Resume } from 'entities/resume'
 
 export const convertToResume = (
-  resumeRelation: JobPostRelationDetail,
+  resumeRelation: Pick<
+    JobPostRelationDetail,
+    | 'id'
+    | 'resumeTitle'
+    | 'personalIntroduction'
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'degree'
+    | 'major'
+    | 'genderType'
+    | 'birthDate'
+    | 'hasVisa'
+    | 'visaType'
+    | 'forKindergarten'
+    | 'forElementary'
+    | 'forMiddleSchool'
+    | 'forHighSchool'
+    | 'forAdult'
+    | 'countryId'
+    | 'countryNameEn'
+    | 'residenceCountryId'
+    | 'residenceCountryNameEn'
+    | 'profileImagePath'
+    | 'filePath'
+    | 'fileName'
+  >,
 ): Resume => {
   return {
     id: resumeRelation.id,

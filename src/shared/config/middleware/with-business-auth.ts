@@ -13,6 +13,7 @@ const matchersForAuth = [
   '/business/job-posting/*path',
   '/business/academy-detail',
   '/business/preview/*path',
+  '/business/find-teacher/*path',
 ]
 const matchersForSignIn = ['/business/sign-up', '/business/sign-in']
 
