@@ -40,6 +40,7 @@ export type SelectRootProps = Omit<
     ) => ReactNode
     onChange: (event: MouseEvent | null, updatedValues: SelectValue[]) => void
     onBlur?: () => void
+    useRemoveButton?: boolean
   }
 
 const DEFAULT_SELECTION_LIMIT_IN_SINGLE_SELECT = 1
@@ -64,6 +65,7 @@ const SelectRoot = ({
   onChange = () => {},
   onBlur,
   className,
+  useRemoveButton = true,
 }: SelectRootProps) => {
   const selectRef = useRef<HTMLDivElement>(null)
 
@@ -73,17 +75,37 @@ const SelectRoot = ({
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
     null,
   )
-  const { styles, attributes } = usePopper(targetElement, popperElement, {
-    placement: 'bottom-start',
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 6],
+  const { styles, attributes, update } = usePopper(
+    targetElement,
+    popperElement,
+    {
+      placement: 'bottom-start',
+      strategy: 'absolute',
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 6],
+          },
         },
-      },
-    ],
-  })
+      ],
+    },
+  )
+
+  // targetElement의 크기 변화를 감지하여 popper 위치 업데이트
+  useEffect(() => {
+    if (!targetElement || !update) return
+
+    const resizeObserver = new ResizeObserver(() => {
+      update()
+    })
+
+    resizeObserver.observe(targetElement)
+
+    return () => {
+      resizeObserver.disconnect()
+    }
+  }, [targetElement, update])
 
   const selectionLimit = (() => {
     if (multiple)
@@ -129,7 +151,9 @@ const SelectRoot = ({
   })()
 
   const isRemoveButtonVisible =
-    canEditSelectedValuesInMultiSelect && !isSelectedValuesEmpty
+    canEditSelectedValuesInMultiSelect &&
+    !isSelectedValuesEmpty &&
+    useRemoveButton
 
   const showPlaceholder = placeholder && isSelectedValuesEmpty
 

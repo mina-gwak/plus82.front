@@ -40,7 +40,7 @@ export const selected = cva(
       },
       isRemoveButtonVisible: {
         true: 'pr-[4.25rem]',
-        false: '',
+        false: 'pr-9',
       },
     },
 

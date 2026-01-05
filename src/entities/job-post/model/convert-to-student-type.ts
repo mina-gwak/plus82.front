@@ -29,6 +29,7 @@ export const convertStudentTypeToArray = ({
   forMiddleSchool,
   forHighSchool,
   forAdult,
+  locale,
 }: Pick<
   JobPost,
   | 'forKindergarten'
@@ -36,14 +37,20 @@ export const convertStudentTypeToArray = ({
   | 'forMiddleSchool'
   | 'forHighSchool'
   | 'forAdult'
->) => {
+> & {
+  locale?: string
+}) => {
   const studentType: string[] = []
 
-  if (forKindergarten) studentType.push('Kindergarten')
-  if (forElementary) studentType.push('Elementary')
-  if (forMiddleSchool) studentType.push('MiddleSchool')
-  if (forHighSchool) studentType.push('HighSchool')
-  if (forAdult) studentType.push('Adult')
+  if (forKindergarten)
+    studentType.push(locale === 'ko' ? '유치원' : 'Kindergarten')
+  if (forElementary)
+    studentType.push(locale === 'ko' ? '초등학생' : 'Elementary')
+  if (forMiddleSchool)
+    studentType.push(locale === 'ko' ? '중학생' : 'MiddleSchool')
+  if (forHighSchool)
+    studentType.push(locale === 'ko' ? '고등학생' : 'HighSchool')
+  if (forAdult) studentType.push(locale === 'ko' ? '성인' : 'Adult')
 
   return studentType
 }

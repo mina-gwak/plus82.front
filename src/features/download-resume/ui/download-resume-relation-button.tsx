@@ -39,12 +39,14 @@ export const DownloadResumeRelationButton = ({ resumeRelation }: Props) => {
           <Resume resume={convertToResume(resumeRelation)} />,
         ),
       )
-      containers.push(
-        renderToTempContainer(
-          elementIds[1],
-          <CoverLetter coverLetter={resumeRelation.coverLetter} />,
-        ),
-      )
+      if (resumeRelation.coverLetter) {
+        containers.push(
+          renderToTempContainer(
+            elementIds[1],
+            <CoverLetter coverLetter={resumeRelation.coverLetter} />,
+          ),
+        )
+      }
 
       await new Promise(resolve => setTimeout(resolve, 100))
 

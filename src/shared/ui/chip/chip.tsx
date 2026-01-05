@@ -76,15 +76,13 @@ type ChipRemoveButtonProps = Omit<
 >
 
 const ChipRemoveButton = (props: ChipRemoveButtonProps) => {
-  const { size, variant, selected, disabled } = useChipContext()
-
-  if (!selected) return null
+  const { size, variant, disabled } = useChipContext()
 
   const iconSize = size === 'small' ? 'small' : 'medium'
   const iconColor = (() => {
     if (disabled) return colors.gray[300]
 
-    return variant === 'lined' ? colors.white : colors.blue[800]
+    return variant === 'lined' ? colors.white : colors.gray[700]
   })()
 
   return (

@@ -5,6 +5,7 @@ import { Form as FormRoot } from './form'
 import { FormErrorMessage } from './message'
 import { FormRadio } from './radio'
 import { FormSelect } from './select'
+import { FormSlider } from './slider'
 import { FormTextArea } from './text-area'
 import { FormTextField, FormPasswordField } from './text-field'
 export type { FormSelectProps } from './select'
@@ -22,4 +23,5 @@ export const Form = Object.assign(FormRoot, {
   TextArea: FormTextArea,
   TextField: FormTextField,
   PasswordField: FormPasswordField,
+  Slider: FormSlider,
 })
